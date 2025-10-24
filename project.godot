@@ -11,8 +11,19 @@ config_version=5
 [application]
 
 config/name="SpectrumDefence"
+run/main_scene="uid://rd85whs4473n"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
+[editor]
+
+naming/scene_name_casing=1
+naming/script_name_casing=1
 
 [rendering]
 
