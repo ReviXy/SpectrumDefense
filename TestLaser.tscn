@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2p0kd0hs4hkw"]
+
+[ext_resource type="PackedScene" uid="uid://cmo11yu60i0b" path="res://turret.tscn" id="1_p5e8f"]
+[ext_resource type="PackedScene" uid="uid://c2puurpqryu8j" path="res://laser.tscn" id="2_gqjnj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gqjnj"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ol8y4"]
+sky_material = SubResource("ProceduralSkyMaterial_gqjnj")
+
+[sub_resource type="Environment" id="Environment_xqob7"]
+background_mode = 2
+sky = SubResource("Sky_ol8y4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7hb1h"]
+size = Vector2(5, 5)
+
+[node name="TestLaser" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xqob7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_7hb1h")
+
+[node name="Turret" parent="." instance=ExtResource("1_p5e8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24, 0.25, -0.024)
+
+[node name="Turret2" parent="." instance=ExtResource("1_p5e8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.25, 0)
+
+[node name="Laser" parent="." instance=ExtResource("2_gqjnj")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1, 0.25, 0)
+target_position = Vector3(0, -10, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.809017, 0.58778524, 0, -0.58778524, 0.809017, 0, 1.4938637, 2.9997244)
