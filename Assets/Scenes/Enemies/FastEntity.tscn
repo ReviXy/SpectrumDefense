@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8fsp0257cefq"]
+
+[ext_resource type="Script" uid="uid://dty531yx5pnj2" path="res://Assets/Scripts/Enemies/BaseEntity.gd" id="1_7hb6q"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_i3tbn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7hb6q"]
+
+[node name="PathFollow3D" type="PathFollow3D"]
+loop = false
+script = ExtResource("1_7hb6q")
+BaseSpeed = 10.0
+HP = 50.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)
+mesh = SubResource("PrismMesh_i3tbn")
+skeleton = NodePath("../Area3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_7hb6q")
