@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="SpectrumDefence"
-run/main_scene="uid://vs72j4mljes5"
+run/main_scene="uid://bbrm3x1wpc4o1"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalLevelManager="*res://Assets/Scripts/GlobalLevelManager.gd"
 
 [display]
 
@@ -24,7 +28,3 @@ window/size/viewport_height=720
 
 naming/scene_name_casing=1
 naming/script_name_casing=1
-
-[rendering]
-
-renderer/rendering_method="mobile"
