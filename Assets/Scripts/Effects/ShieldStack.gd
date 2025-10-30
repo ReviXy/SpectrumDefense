@@ -3,9 +3,11 @@ extends EnemyAttachment
 @export var Shields: Array[Shield]
 
 func _ready() -> void:
+	pass
 ## This is needed because the references get duplicated on instantiation.
 ## This way the array copies itself into the instance, leaving it with a clone
-	Shields = Shields.duplicate(true)
+	#for i in range(Shields.size()):
+		#Shields[i] = Shields[i].duplicate()
 
 func pre_damage(_baseDamage:float, _preSum:Ref, _mult:Ref, _sum:Ref, _color:Color):
 	var i = -1

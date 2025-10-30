@@ -72,6 +72,7 @@ point_count = 6
 [node name="Pathing" type="Node3D"]
 script = ExtResource("1_860qo")
 waves = Array[ExtResource("2_5sfky")]([SubResource("Resource_1lknj"), SubResource("Resource_87r1j"), SubResource("Resource_e3oex")])
+HP = 10
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_860qo")

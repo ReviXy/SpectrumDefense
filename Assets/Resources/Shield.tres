@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bcn40rvf8bcbe"]
+[gd_resource type="Resource" script_class="Shield" load_steps=2 format=3 uid="uid://bcn40rvf8bcbe"]
 
 [ext_resource type="Script" uid="uid://bki43m27mpk23" path="res://Assets/Resources/Shield.gd" id="1_6y4ki"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_6y4ki")

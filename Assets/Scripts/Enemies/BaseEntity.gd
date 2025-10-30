@@ -38,7 +38,8 @@ func _physics_process(delta: float) -> void:
 	if (HP <= 0):
 		queue_free()
 		return
-	
+	for attachment in Attachments.values():
+		attachment.pre_physics_process()
 	progress += BaseSpeed*SpeedMult*delta
 	
 	if progress_ratio == 1:
