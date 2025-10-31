@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7ns1ggnla5wd"]
+
+[ext_resource type="Script" uid="uid://be3yimttc2o6c" path="res://Assets/Scripts/Effects/Suppressed.gd" id="1_sox4v"]
+
+[node name="Suppressed" type="Node3D"]
+script = ExtResource("1_sox4v")

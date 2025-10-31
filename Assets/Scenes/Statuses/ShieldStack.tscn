@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqk76vrotqklh"]
+
+[ext_resource type="Script" uid="uid://6dwidnlmy1sa" path="res://Assets/Scripts/Effects/ShieldStack.gd" id="1_ax7ff"]
+
+[node name="ShieldStack" type="Node3D"]
+script = ExtResource("1_ax7ff")

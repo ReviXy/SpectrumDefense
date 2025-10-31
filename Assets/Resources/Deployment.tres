@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="Deployment" load_steps=2 format=3 uid="uid://5twbdr4fr4y3"]
+
+[ext_resource type="Script" uid="uid://0igd8g4yf8ww" path="res://Assets/Resources/Deployment.gd" id="1_aik5l"]
+
+[resource]
+script = ExtResource("1_aik5l")
