@@ -1,5 +1,5 @@
 @abstract
-class_name Target extends Node2D
+class_name Target extends MeshInstance3D
 
 var can_stop_laser: bool
 

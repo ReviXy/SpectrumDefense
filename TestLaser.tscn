@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cmo11yu60i0b" path="res://turret.tscn" id="1_p5e8f"]
 [ext_resource type="PackedScene" uid="uid://c2puurpqryu8j" path="res://laser.tscn" id="2_gqjnj"]
+[ext_resource type="Script" uid="uid://q5rsc04ckco7" path="res://Scripts/Mirror.gd" id="2_ol8y4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gqjnj"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,8 +19,6 @@ glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7hb1h"]
 size = Vector2(5, 5)
-
-[sub_resource type="GDScript" id="GDScript_gqjnj"]
 
 [node name="TestLaser" type="Node3D"]
 
@@ -41,7 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7955301, 0.25, 1.4627327)
 
 [node name="Mirror" parent="." instance=ExtResource("1_p5e8f")]
 transform = Transform3D(0.94269395, 0, 0.33365875, 0, 1, 0, -0.33365875, 0, 0.94269395, 1.25, 0.25, -0.12226117)
-script = SubResource("GDScript_gqjnj")
+script = ExtResource("2_ol8y4")
 
 [node name="Laser" parent="." instance=ExtResource("2_gqjnj")]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1, 0.25, 0)

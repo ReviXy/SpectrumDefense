@@ -22,30 +22,9 @@ func _process(delta):
 	# Проверяем столкновение с объектом группы "Mirror"
 	if is_colliding():
 		var collider = get_collider()
-		
-		# Проверяем коллайдер и всех его родителей на наличие группы "Mirror"
-		#is_hitting_mirror = false
-		#var current_node = collider
-		#while current_node and not is_hitting_mirror:
-		#	if current_node.is_in_group("Mirror"):
-		#		is_hitting_mirror = true
-		#	current_node = current_node.get_parent()
-		
-		# Выводим информацию о столкновении (можно убрать в финальной версии)
-		#if is_hitting_mirror:
-		#	print("Луч попал в зеркало!")
-		#else:
-		#	print("Луч попал в объект, но не в зеркало")
-		
-		# Получаем точку столкновения в локальных координатах
 		end_position = to_local(get_collision_point())
 		beam_length = end_position.y
 	else:
-		# Если нет коллизии, сбрасываем флаг
-		#is_hitting_mirror = false
-		#print("Луч не попал ни в один объект")
-		
-		# Если нет коллизии, луч простирается на максимальную дистанцию
 		beam_length = -max_beam_distance
 		end_position = Vector3(0, beam_length, 0)
 	
