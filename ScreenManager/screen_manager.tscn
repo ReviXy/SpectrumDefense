@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0x6f1vuepvox"]
+
+[ext_resource type="Script" uid="uid://bxrt2xa5l81ak" path="res://ScreenManager/ScreenManager.gd" id="1_kmgid"]
+
+[node name="ScreenManager" type="Node" node_paths=PackedStringArray("MainMenu", "BattleScreen")]
+script = ExtResource("1_kmgid")
+MainMenu = NodePath("")
+BattleScreen = NodePath("")
