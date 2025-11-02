@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://vs72j4mljes5"]
 
-[ext_resource type="Script" uid="uid://bgog3l3jt8cfc" path="res://Assets/Scripts/LevelSelector.gd" id="1_47755"]
-[ext_resource type="Script" uid="uid://b0pt1ly3v1iry" path="res://Assets/Scripts/LevelCamera.gd" id="3_1vc4c"]
-[ext_resource type="Script" uid="uid://db1lnab1efs5d" path="res://Assets/Scripts/UI/LevelUI.gd" id="4_47755"]
-[ext_resource type="Texture2D" uid="uid://wlu77osrcluu" path="res://Assets/Sprites/Rotate.png" id="4_gs6we"]
-[ext_resource type="Texture2D" uid="uid://bi3p4l8t25wvh" path="res://Assets/Sprites/Configure.png" id="4_qqh6b"]
-[ext_resource type="Texture2D" uid="uid://dq6n3hy5lhj2h" path="res://Assets/Sprites/Destroy.png" id="6_47755"]
-[ext_resource type="Texture2D" uid="uid://banh43vc7nu10" path="res://Assets/Sprites/Pause.png" id="7_47755"]
-[ext_resource type="Texture2D" uid="uid://c1tbn8gxymmf7" path="res://Assets/Sprites/Coin.png" id="7_v3mp7"]
-[ext_resource type="Texture2D" uid="uid://8f8oqyk25hcp" path="res://Assets/Sprites/Lifes.png" id="8_ps5qm"]
+[ext_resource type="Script" uid="uid://bgog3l3jt8cfc" path="res://Assets/Scripts/LevelSelector.gd" id="1_j6vvw"]
+[ext_resource type="Script" uid="uid://b0pt1ly3v1iry" path="res://Assets/Scripts/LevelCamera.gd" id="2_6jwxn"]
+[ext_resource type="Script" uid="uid://db1lnab1efs5d" path="res://Assets/Scripts/UI/LevelUI.gd" id="3_qxdb1"]
+[ext_resource type="Texture2D" uid="uid://wlu77osrcluu" path="res://Assets/Sprites/Rotate.png" id="4_ggqha"]
+[ext_resource type="Texture2D" uid="uid://bi3p4l8t25wvh" path="res://Assets/Sprites/Configure.png" id="5_b6myp"]
+[ext_resource type="Texture2D" uid="uid://dq6n3hy5lhj2h" path="res://Assets/Sprites/Destroy.png" id="6_r5kyp"]
+[ext_resource type="Texture2D" uid="uid://c1tbn8gxymmf7" path="res://Assets/Sprites/Coin.png" id="7_xnpqu"]
+[ext_resource type="Texture2D" uid="uid://8f8oqyk25hcp" path="res://Assets/Sprites/Lifes.png" id="8_uhh13"]
+[ext_resource type="Texture2D" uid="uid://banh43vc7nu10" path="res://Assets/Sprites/Pause.png" id="9_4ymob"]
 
 [sub_resource type="Environment" id="Environment_numvf"]
 ambient_light_source = 2
@@ -17,15 +17,15 @@ ambient_light_color = Color(1, 1, 1, 1)
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2rron"]
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_47755")
+script = ExtResource("1_j6vvw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.17364822, 0.9848078, 0, -0.9848078, 0.17364822, 0, 15, 0)
+transform = Transform3D(1, 0, 0, 0, 0.17364822, 0.9848077, 0, -0.9848077, 0.17364822, 0, 15, 0)
 projection = 1
 current = true
 size = 30.0
 near = 1.0
-script = ExtResource("3_1vc4c")
+script = ExtResource("2_6jwxn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_numvf")
@@ -33,7 +33,7 @@ camera_attributes = SubResource("CameraAttributesPractical_2rron")
 
 [node name="LevelUI" type="CanvasLayer" parent="."]
 process_mode = 1
-script = ExtResource("4_47755")
+script = ExtResource("3_qxdb1")
 
 [node name="TowerConfigurationPanel" type="Panel" parent="LevelUI"]
 offset_left = 1030.0
@@ -48,7 +48,7 @@ offset_top = 7.0
 offset_right = 32.0
 offset_bottom = 31.0
 focus_mode = 0
-icon = ExtResource("4_gs6we")
+icon = ExtResource("4_ggqha")
 expand_icon = true
 
 [node name="ConfigureButton" type="Button" parent="LevelUI/TowerConfigurationPanel"]
@@ -58,7 +58,7 @@ offset_top = 7.0
 offset_right = 65.0
 offset_bottom = 31.0
 focus_mode = 0
-icon = ExtResource("4_qqh6b")
+icon = ExtResource("5_b6myp")
 expand_icon = true
 
 [node name="DestroyButton" type="Button" parent="LevelUI/TowerConfigurationPanel"]
@@ -68,7 +68,7 @@ offset_top = 7.0
 offset_right = 97.0
 offset_bottom = 31.0
 focus_mode = 0
-icon = ExtResource("6_47755")
+icon = ExtResource("6_r5kyp")
 expand_icon = true
 
 [node name="TowerPlacementPanel" type="Panel" parent="LevelUI"]
@@ -105,7 +105,7 @@ offset_bottom = 85.0
 layout_mode = 0
 offset_right = 25.0
 offset_bottom = 25.0
-texture = ExtResource("7_v3mp7")
+texture = ExtResource("7_xnpqu")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="LevelUI/Currency"]
@@ -128,7 +128,7 @@ offset_bottom = 125.0
 layout_mode = 0
 offset_right = 25.0
 offset_bottom = 25.0
-texture = ExtResource("8_ps5qm")
+texture = ExtResource("8_uhh13")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="LevelUI/Health"]
@@ -145,7 +145,7 @@ offset_top = 10.0
 offset_right = 50.0
 offset_bottom = 50.0
 focus_mode = 0
-icon = ExtResource("7_47755")
+icon = ExtResource("9_4ymob")
 icon_alignment = 1
 expand_icon = true
 
