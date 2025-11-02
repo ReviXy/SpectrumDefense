@@ -2,7 +2,7 @@ class_name LevelUI extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	await $"..".ready
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,30 +24,30 @@ var minimized := false
 
 @onready var pauseMenu = $PauseMenu
 
-var gridmap: GridMap # soon to be manager (get promoted upon merge)
-
 #__________ Tower Configuration __________
 
 func resetTowerPanel():
 	towerConfigurationPanel.global_position = Vector2(-50, -50)
 
 func showTowerPanel(tower):
-	towerConfigurationPanel.global_position = camera.unproject_position(gridmap.map_to_local(tower.cellCoords[0]))
+	towerConfigurationPanel.global_position = camera.unproject_position(LevelManager.this.GridM.map_to_local(tower.cellCoords[0]))
 	rotateButton.disabled = !tower.rotatable
 	configureButton.disabled = !tower.configurable
 	destroyButton.disabled = !tower.destroyable
 
 func _on_rotate_button_pressed() -> void:
-	gridmap.towers[gridmap.configuratedTowerIndex].rotateTower()
+	LevelManager.this.GridM.configuratedTower.rotateTower()
 
 func _on_configure_button_pressed() -> void:
 	pass 
 
 func _on_destroy_button_pressed() -> void:
-	gridmap.set_cell_item(gridmap.towers[gridmap.configuratedTowerIndex].cellCoords[0], gridmap.mesh_library.find_item_by_name("TowerTile"))
-	gridmap.towers[gridmap.configuratedTowerIndex].destroyTower()
-	gridmap.towers.remove_at(gridmap.configuratedTowerIndex)
-	gridmap.state = gridmap.State.None
+	LevelManager.this.GridM.set_cell_item(LevelManager.this.GridM.configuratedTower.cellCoords[0], LevelManager.this.GridM.mesh_library.find_item_by_name("TowerTile"))
+	for pos in LevelManager.this.GridM.configuratedTower.cellCoords:
+		LevelManager.this.GridM.towers.erase(pos)
+	LevelManager.this.GridM.configuratedTower.destroyTower()
+	
+	LevelManager.this.GridM.state = LevelManager.this.GridM.State.None
 	resetTowerPanel()
 
 #__________ Tower Placement __________
@@ -62,11 +62,11 @@ func _on_minimize_panel_button_pressed() -> void:
 	minimized = !minimized
 
 func _on_place_test_tower_button_pressed() -> void:
-	if gridmap.state == gridmap.State.None: 
-		gridmap.state = gridmap.State.Placing
-	elif gridmap.state == gridmap.State.Placing: 
-		gridmap.state = gridmap.State.None
-		gridmap.resetHighlight()
+	if LevelManager.this.GridM.state == LevelManager.this.GridM.State.None: 
+		LevelManager.this.GridM.state = LevelManager.this.GridM.State.Placing
+	elif LevelManager.this.GridM.state == LevelManager.this.GridM.State.Placing: 
+		LevelManager.this.GridM.state = LevelManager.this.GridM.State.None
+		LevelManager.this.GridM.resetHighlight()
 
 #__________ Pause Menu __________
 
@@ -84,3 +84,11 @@ func _on_main_menu_button_pressed() -> void:
 func _on_pause_button_pressed() -> void:
 	pauseMenu.visible = true
 	get_tree().paused = true
+
+#__________ Labels __________
+
+func _update_hp() -> void:
+	healthLabel.text = str(LevelManager.this.ResourceM.HP)
+
+func _update_currency() -> void:
+	currencyLabel.text = str(LevelManager.this.ResourceM.AbsractTowerCurrency)

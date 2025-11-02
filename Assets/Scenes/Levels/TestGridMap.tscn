@@ -16,6 +16,7 @@ transparency = 1
 albedo_color = Color(0, 1, 0, 0.47843137)
 
 [sub_resource type="Resource" id="Resource_oikdg"]
+resource_local_to_scene = true
 script = ExtResource("5_utpo8")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("6_oikdg")
@@ -24,11 +25,13 @@ DeployDelay = 1.0
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_tvoln"]
+resource_local_to_scene = true
 script = ExtResource("4_lgef8")
 Deployments = Array[ExtResource("5_utpo8")]([SubResource("Resource_oikdg")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_8ts4v"]
+resource_local_to_scene = true
 script = ExtResource("5_utpo8")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("7_tvoln")
@@ -37,6 +40,7 @@ DeployDelay = 0.3
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_vndl8"]
+resource_local_to_scene = true
 script = ExtResource("5_utpo8")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("7_tvoln")
@@ -46,6 +50,7 @@ PreDeployDelay = 0.12
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_iqdjn"]
+resource_local_to_scene = true
 script = ExtResource("5_utpo8")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("7_tvoln")
@@ -55,6 +60,7 @@ PreDeployDelay = 5.0
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_tthxk"]
+resource_local_to_scene = true
 script = ExtResource("5_utpo8")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("7_tvoln")
@@ -64,11 +70,13 @@ PreDeployDelay = 5.12
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_kwglr"]
+resource_local_to_scene = true
 script = ExtResource("4_lgef8")
 Deployments = Array[ExtResource("5_utpo8")]([SubResource("Resource_8ts4v"), SubResource("Resource_vndl8"), SubResource("Resource_iqdjn"), SubResource("Resource_tthxk")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_klv5n"]
+resource_local_to_scene = true
 script = ExtResource("5_utpo8")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("8_tvoln")
@@ -77,6 +85,7 @@ DeployDelay = 3.0
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_ge0li"]
+resource_local_to_scene = true
 script = ExtResource("4_lgef8")
 Deployments = Array[ExtResource("5_utpo8")]([SubResource("Resource_klv5n")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
