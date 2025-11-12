@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dl6raglsem7bf"]
+
+[ext_resource type="Script" uid="uid://dty531yx5pnj2" path="res://Assets/Scripts/Enemies/BaseEntity.gd" id="1_hc82f"]
+[ext_resource type="PackedScene" uid="uid://dqk76vrotqklh" path="res://Assets/Scenes/Statuses/ShieldStack.tscn" id="2_mlfmq"]
+[ext_resource type="Script" uid="uid://bki43m27mpk23" path="res://Assets/Resources/Shield.gd" id="3_20b7e"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6p6g4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6p6g4"]
+
+[sub_resource type="Resource" id="Resource_mlfmq"]
+script = ExtResource("3_20b7e")
+WeakColor = Color(0, 1, 0, 1)
+HP = 200.0
+currentHP = 200.0
+metadata/_custom_type_script = "uid://bki43m27mpk23"
+
+[sub_resource type="Resource" id="Resource_20b7e"]
+script = ExtResource("3_20b7e")
+WeakColor = Color(0, 0, 1, 1)
+HP = 200.0
+currentHP = 200.0
+metadata/_custom_type_script = "uid://bki43m27mpk23"
+
+[sub_resource type="Resource" id="Resource_iepx6"]
+script = ExtResource("3_20b7e")
+WeakColor = Color(1, 0, 1, 1)
+HP = 200.0
+currentHP = 200.0
+metadata/_custom_type_script = "uid://bki43m27mpk23"
+
+[node name="PathFollow3D" type="PathFollow3D"]
+loop = false
+script = ExtResource("1_hc82f")
+BaseSpeed = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_6p6g4")
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_6p6g4")
+
+[node name="ShieldStack" parent="." instance=ExtResource("2_mlfmq")]
+Shields = Array[ExtResource("3_20b7e")]([SubResource("Resource_mlfmq"), SubResource("Resource_20b7e"), SubResource("Resource_iepx6")])

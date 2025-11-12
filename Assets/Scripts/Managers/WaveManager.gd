@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 		else:
 			printerr("NYI: implement a victory condition")
 
-signal WaveLaunched(wave)
+signal WaveLaunched(wave_index)
 
 func LaunchNextWave():
 	# This is a redundancy check in case someone calls the function when there are no more waves.

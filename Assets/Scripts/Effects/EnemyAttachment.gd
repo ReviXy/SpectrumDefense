@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 ##This class is used for various effects that can affect an entity.
 ##This is a class so it can have it's own animations and effects (Like the shield).
 ##This should be attached to the entity's base Node.
@@ -6,16 +6,15 @@ class_name EnemyAttachment
 
 var Parent: BaseEntity
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Parent = get_parent() as BaseEntity
-	Parent.Attachments[name] = self
-	Parent.pre_damage.connect(pre_damage)
-	Parent.post_damage.connect(post_damage)
-	Parent.pre_physics.connect(pre_physics)
+	if Parent:
+		Parent.Attachments[name] = self
+		
 
 func _exit_tree() -> void:
-	Parent.Attachments.erase(name)
+	if Parent:
+		Parent.Attachments.erase(name)
 
 func pre_physics():
 	pass

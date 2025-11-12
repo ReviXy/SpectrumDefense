@@ -7,14 +7,14 @@
 [ext_resource type="MeshLibrary" uid="uid://cii6cupimmybi" path="res://Assets/Models/Tiles.tres" id="4_iw5u7"]
 [ext_resource type="Script" uid="uid://c8gtchiwo1c1e" path="res://Assets/Scripts/Managers/GridManager.gd" id="4_nyyhf"]
 [ext_resource type="Script" uid="uid://0igd8g4yf8ww" path="res://Assets/Resources/Deployment.gd" id="5_qckgf"]
-[ext_resource type="PackedScene" uid="uid://43kchsu37yop" path="res://Assets/Scenes/Enemies/BaseEntity.tscn" id="6_7raby"]
+[ext_resource type="PackedScene" uid="uid://dl6raglsem7bf" path="res://Assets/Scenes/Enemies/ShieldEnemy.tscn" id="6_3e7vo"]
 [ext_resource type="PackedScene" uid="uid://b8fsp0257cefq" path="res://Assets/Scenes/Enemies/FastEntity.tscn" id="7_43aa2"]
 [ext_resource type="PackedScene" uid="uid://3hbbyq0vhtle" path="res://Assets/Scenes/Enemies/StrongEntity.tscn" id="8_bq8rn"]
 
 [sub_resource type="Resource" id="Resource_muap1"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
-Enemy = ExtResource("6_7raby")
+Enemy = ExtResource("6_3e7vo")
 _EnemyCount = 15.0
 DeployDelay = 1.0
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"

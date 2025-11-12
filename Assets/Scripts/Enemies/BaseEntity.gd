@@ -13,10 +13,12 @@ var Attachments: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	LevelManager.this.WaveM.EntityCount += 1
+	if (LevelManager.this):
+		LevelManager.this.WaveM.EntityCount += 1
 	
 func _exit_tree() -> void:
-	LevelManager.this.WaveM.EntityCount -= 1
+	if (LevelManager.this):
+		LevelManager.this.WaveM.EntityCount -= 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -34,6 +36,8 @@ func TakeDamage(damage: float, color: Color):
 		HP -= damageTaken
 		for a:EnemyAttachment in Attachments.values():
 			a.post_damage(damageTaken,color)
+		if HP <= 0:
+			queue_free()
 
 func _physics_process(delta: float) -> void:
 	if (HP <= 0):
