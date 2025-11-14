@@ -5,11 +5,15 @@ class_name GridManager
 @onready var camera := get_viewport().get_camera_3d()
 
 enum State {None, Placing, Configuration}
-var state := State.None
-var configuratedTower: Tower
+var state: State = State.None
+var configuratedTower: BaseTower
 var towers := {}
 
-var towerPrefab := preload("res://Assets/Scenes/Towers/Tower.tscn")
+var placingTowerKey: String
+var towerPrefabDictionary = {
+	"Emitter": preload("res://Assets/Scenes/Towers/Emitter.tscn"),
+	"Mirror": preload("res://Assets/Scenes/Towers/Mirror.tscn")
+}
 
 func resetHighlight():
 	tileHighlight.global_position = Vector3(0, 100, 0)
@@ -27,7 +31,7 @@ func getTileUnderMouse(mouseEvent):
 		var to = from + camera.project_ray_normal(mouseEvent.position) * 1000 # Adjust ray length as needed
 
 		var space_state = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(from, to)
+		var query = PhysicsRayQueryParameters3D.create(from, to, 1)
 		var result = space_state.intersect_ray(query)
 
 		if result:
@@ -62,15 +66,15 @@ func _unhandled_input(event):
 				else:
 					resetHighlight()
 			
-			# Place tower	
+			# Place tower
 			if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 				var cell_coords = getTileUnderMouse(event)
 				if cell_coords and mesh_library.get_item_name(get_cell_item(cell_coords)) == "TowerTile":
 					set_cell_item(cell_coords, mesh_library.find_item_by_name("PlaceholderTile"))
 					
-					var newTower = towerPrefab.instantiate()
+					var newTower = towerPrefabDictionary[placingTowerKey].instantiate()
 					add_child(newTower)
-					newTower.global_position = map_to_local(cell_coords)
+					newTower.global_position = map_to_local(cell_coords) + Vector3(0, 0.7, 0) #Y offset so tower doesnt sink into the ground
 					newTower.cellCoords = [cell_coords]
 					towers[cell_coords] = newTower
 					

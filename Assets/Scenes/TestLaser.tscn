@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2p0kd0hs4hkw"]
+[gd_scene load_steps=9 format=3 uid="uid://c2p0kd0hs4hkw"]
 
-[ext_resource type="PackedScene" uid="uid://cmo11yu60i0b" path="res://Assets/Scenes/Towers/turret.tscn" id="1_mgy1n"]
-[ext_resource type="Script" uid="uid://q5rsc04ckco7" path="res://Assets/Scripts/Mirror.gd" id="2_yi4mg"]
-[ext_resource type="PackedScene" uid="uid://c2puurpqryu8j" path="res://Assets/Shaders/laser.tscn" id="3_goi5b"]
+[ext_resource type="Script" uid="uid://b0pt1ly3v1iry" path="res://Assets/Scripts/Managers/LevelCamera.gd" id="1_yi4mg"]
+[ext_resource type="PackedScene" uid="uid://qq3kxv0itx6w" path="res://Assets/Scenes/Towers/Emitter.tscn" id="2_mgy1n"]
+[ext_resource type="PackedScene" uid="uid://dmum1q1k3y2qk" path="res://Assets/Scenes/Towers/Mirror.tscn" id="3_yi4mg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gqjnj"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,7 +18,10 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7hb1h"]
-size = Vector2(5, 5)
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgy1n"]
+albedo_color = Color(0.5882353, 0.5882353, 0.5882353, 1)
 
 [node name="TestLaser" type="Node3D"]
 
@@ -29,22 +32,30 @@ environment = SubResource("Environment_xqob7")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.17364824, 0.9848078, 0, -0.9848078, 0.17364824, 0, 10, 3)
+current = true
+size = 8.0
+near = 1.0
+script = ExtResource("1_yi4mg")
+
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_7hb1h")
+surface_material_override/0 = SubResource("StandardMaterial3D_mgy1n")
 
-[node name="Turret" parent="." instance=ExtResource("1_mgy1n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24, 0.25, -0.024)
+[node name="Emitter1" parent="." instance=ExtResource("2_mgy1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.529, 0.7, -3.879)
 
-[node name="Wall" parent="." instance=ExtResource("1_mgy1n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7955301, 0.25, 1.4627327)
+[node name="Emitter2" parent="." instance=ExtResource("2_mgy1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.204, 0.7, 4.462)
+color = Color(0.8303061, 0.8259384, 1.540184e-06, 1)
 
-[node name="Mirror" parent="." instance=ExtResource("1_mgy1n")]
-transform = Transform3D(0.94269395, 0, 0.33365875, 0, 1, 0, -0.33365875, 0, 0.94269395, 1.25, 0.25, -0.12226117)
-script = ExtResource("2_yi4mg")
+[node name="Emitter3" parent="." instance=ExtResource("2_mgy1n")]
+transform = Transform3D(0.8079899, 0, 0.5891963, 0, 1, 0, -0.5891963, 0, 0.8079899, -3.098, 0.7, 0.369)
+color = Color(0, 0, 1, 1)
 
-[node name="Laser" parent="." instance=ExtResource("3_goi5b")]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1, 0.25, 0)
-target_position = Vector3(0, -10, 0)
+[node name="Mirror1" parent="." instance=ExtResource("3_yi4mg")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 2.389867, 0.7, -3.6525302)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.8701149, 0.28968927, -0.3987231, 0, 0.809017, 0.58778524, 0.49284884, -0.5114407, 0.70393777, -1.1762023, 1.4938637, 2.9997244)
+[node name="Mirror2" parent="." instance=ExtResource("3_yi4mg")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2.486, 0.7, 4.665)

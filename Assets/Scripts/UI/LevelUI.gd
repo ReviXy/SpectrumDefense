@@ -8,7 +8,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-@onready var camera = get_viewport().get_camera_3d()
+@onready var camera: Camera3D = get_viewport().get_camera_3d()
 
 @onready var towerConfigurationPanel = $TowerConfigurationPanel
 @onready var rotateButton = $TowerConfigurationPanel/RotateButton
@@ -23,6 +23,8 @@ var minimized := false
 @onready var healthLabel = $Health/Label
 
 @onready var pauseMenu = $PauseMenu
+@onready var missionWin = $MissionWin
+@onready var missionLose = $MissionLose
 
 #__________ Tower Configuration __________
 
@@ -61,18 +63,21 @@ func _on_minimize_panel_button_pressed() -> void:
 		minimizePanelButton.text = "<-"
 	minimized = !minimized
 
-func _on_place_test_tower_button_pressed() -> void:
-	if LevelManager.this.GridM.state == LevelManager.this.GridM.State.None: 
-		LevelManager.this.GridM.state = LevelManager.this.GridM.State.Placing
-	elif LevelManager.this.GridM.state == LevelManager.this.GridM.State.Placing: 
-		LevelManager.this.GridM.state = LevelManager.this.GridM.State.None
-		LevelManager.this.GridM.resetHighlight()
+func _on_place_tower_button_pressed(button: Button) -> void:
+	var gridmap = LevelManager.this.GridM
+	
+	if gridmap.state == gridmap.State.None:
+		gridmap.state = gridmap.State.Placing
+		gridmap.placingTowerKey = button.get_meta("TowerType")
+	elif gridmap.state == gridmap.State.Placing:
+		gridmap.state = gridmap.State.None
+		gridmap.resetHighlight()
 
 #__________ Pause Menu __________
 
 func _on_continue_button_pressed() -> void:
-	pauseMenu.visible = false
 	get_tree().paused = false
+	pauseMenu.visible = false
 
 func _on_options_button_pressed() -> void:
 	SettingsManager.showSettingsMenu()
@@ -82,8 +87,35 @@ func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Assets/Scenes/MainMenu.tscn")
 
 func _on_pause_button_pressed() -> void:
-	pauseMenu.visible = true
 	get_tree().paused = true
+	pauseMenu.visible = true
+
+#__________ Mission end screens __________
+
+func show_mission_win():
+	# TODO
+	# Check if next level exists. If not? Block or delete NextLevelButton
+	get_tree().paused = true
+	missionWin.visible = true
+	
+func show_mission_lose():
+	get_tree().paused = true
+	missionLose.visible = true
+
+#__________ Scene Manipulation __________
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Assets/Scenes/Level.tscn")
+
+func _on_level_selection_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Assets/Scenes/LevelSelectionMenu.tscn")
+
+func _on_next_level_button_pressed() -> void:
+	GlobalLevelManager.levelID += 1
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Assets/Scenes/Level.tscn")
 
 #__________ Labels __________
 

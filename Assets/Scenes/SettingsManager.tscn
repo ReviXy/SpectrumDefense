@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn2ciudf1u16y"]
 
-[ext_resource type="Script" uid="uid://5lv2cyxu8f1k" path="res://Assets/Scripts/SettingsManager.gd" id="1_1mpwi"]
+[ext_resource type="Script" uid="uid://5lv2cyxu8f1k" path="res://Assets/Scripts/Managers/SettingsManager.gd" id="1_1mpwi"]
 
 [sub_resource type="Theme" id="Theme_1mpwi"]
 

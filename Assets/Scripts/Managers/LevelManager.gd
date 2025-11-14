@@ -9,6 +9,8 @@ static var this:LevelManager
 @onready var UIM: LevelUI = $"../LevelUI"
 
 func _init() -> void:
+	if this != null:
+		await this.tree_exited
 	this = self
 func _exit_tree() -> void:
 	this = null

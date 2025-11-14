@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalLevelManager="*res://Assets/Scripts/GlobalLevelManager.gd"
+GlobalLevelManager="*res://Assets/Scripts/Managers/GlobalLevelManager.gd"
 SettingsManager="*res://Assets/Scenes/SettingsManager.tscn"
+DebugLabel="*res://Assets/Scenes/DebugLabel.tscn"
 
 [display]
 
@@ -42,3 +43,4 @@ LaunchWave={
 
 3d_physics/layer_1="Ground"
 3d_physics/layer_2="Enemies"
+3d_physics/layer_3="Towers"

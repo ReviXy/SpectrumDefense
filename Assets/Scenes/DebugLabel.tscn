@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://duqfv4rl2h6nu"]
+
+[ext_resource type="Script" uid="uid://c5jbp8r8mkyv3" path="res://Assets/Scripts/UI/DebugLabel.gd" id="1_srdyb"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_srdyb")
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_top = 570.0
+offset_right = 150.0
+offset_bottom = 720.0
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 2
