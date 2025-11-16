@@ -10,6 +10,7 @@
 loop = false
 script = ExtResource("1_7hb6q")
 BaseSpeed = 10.0
+MaxHP = 50.0
 HP = 50.0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]

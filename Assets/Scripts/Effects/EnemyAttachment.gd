@@ -16,7 +16,10 @@ func _exit_tree() -> void:
 	if Parent:
 		Parent.Attachments.erase(name)
 
-func pre_physics():
+func pre_physics(_delta: float):
+	pass
+
+func post_physics(_delta: float, _distance: float):
 	pass
 
 ##damage is calculated with this formula: y = (x+preSum)*mult+sum
@@ -28,4 +31,13 @@ func pre_damage(_baseDamage: float, _color:Color, _preSum:Ref, _mult:Ref, _sum:R
 	return true
 
 func post_damage(_damage: float, _color: Color):
+	pass
+
+func pre_death():
+	pass
+
+func on_death():
+	pass
+
+func on_end_reached():
 	pass

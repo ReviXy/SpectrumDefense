@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://jvwcodm55c1t"]
+[gd_scene load_steps=33 format=3 uid="uid://jvwcodm55c1t"]
 
 [ext_resource type="Script" uid="uid://ddyd0xgiwrfys" path="res://Assets/Scripts/Managers/LevelManager.gd" id="1_p5wma"]
 [ext_resource type="Script" uid="uid://fe5igt3dfey2" path="res://Assets/Scripts/Managers/ResourceManager.gd" id="2_3i3hp"]
@@ -7,21 +7,64 @@
 [ext_resource type="MeshLibrary" uid="uid://cii6cupimmybi" path="res://Assets/Models/Tiles.tres" id="4_iw5u7"]
 [ext_resource type="Script" uid="uid://c8gtchiwo1c1e" path="res://Assets/Scripts/Managers/GridManager.gd" id="4_nyyhf"]
 [ext_resource type="Script" uid="uid://0igd8g4yf8ww" path="res://Assets/Resources/Deployment.gd" id="5_qckgf"]
-[ext_resource type="PackedScene" uid="uid://dl6raglsem7bf" path="res://Assets/Scenes/Enemies/ShieldEnemy.tscn" id="6_3e7vo"]
+[ext_resource type="PackedScene" uid="uid://dl6raglsem7bf" path="res://Assets/Scenes/Enemies/ShieldEntity.tscn" id="6_3e7vo"]
+[ext_resource type="PackedScene" uid="uid://43kchsu37yop" path="res://Assets/Scenes/Enemies/BaseEntity.tscn" id="6_43aa2"]
 [ext_resource type="PackedScene" uid="uid://b8fsp0257cefq" path="res://Assets/Scenes/Enemies/FastEntity.tscn" id="7_43aa2"]
+[ext_resource type="PackedScene" uid="uid://bmraycytajhkk" path="res://Assets/Scenes/Enemies/Regenerator.tscn" id="8_3n5l5"]
 [ext_resource type="PackedScene" uid="uid://3hbbyq0vhtle" path="res://Assets/Scenes/Enemies/StrongEntity.tscn" id="8_bq8rn"]
+[ext_resource type="PackedScene" uid="uid://c6pucg2t3wfnf" path="res://Assets/Scenes/Enemies/DashEntity.tscn" id="8_muap1"]
+[ext_resource type="Script" uid="uid://16e5jemtsbm2" path="res://Assets/Scripts/WrathOfHeavens.gd" id="11_qckgf"]
+
+[sub_resource type="Resource" id="Resource_oena1"]
+script = ExtResource("5_qckgf")
+PathNode = NodePath("Path3D")
+Enemy = ExtResource("8_3n5l5")
+_EnemyCount = 5.0
+DeployDelay = 2.0
+metadata/_custom_type_script = "uid://0igd8g4yf8ww"
+
+[sub_resource type="Resource" id="Resource_svaum"]
+script = ExtResource("4_3e7vo")
+Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_oena1")])
+metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_muap1"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("6_3e7vo")
-_EnemyCount = 15.0
-DeployDelay = 1.0
+_EnemyCount = 5.0
+DeployDelay = 2.0
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_3n5l5"]
 script = ExtResource("4_3e7vo")
 Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_muap1")])
+metadata/_custom_type_script = "uid://ds3m5it8756mk"
+
+[sub_resource type="Resource" id="Resource_ng7bl"]
+script = ExtResource("5_qckgf")
+PathNode = NodePath("Path3D")
+Enemy = ExtResource("8_muap1")
+_EnemyCount = 5.0
+DeployDelay = 2.0
+metadata/_custom_type_script = "uid://0igd8g4yf8ww"
+
+[sub_resource type="Resource" id="Resource_wie7u"]
+script = ExtResource("4_3e7vo")
+Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_ng7bl")])
+metadata/_custom_type_script = "uid://ds3m5it8756mk"
+
+[sub_resource type="Resource" id="Resource_i01aw"]
+script = ExtResource("5_qckgf")
+PathNode = NodePath("Path3D")
+Enemy = ExtResource("6_43aa2")
+_EnemyCount = 15.0
+DeployDelay = 1.0
+metadata/_custom_type_script = "uid://0igd8g4yf8ww"
+
+[sub_resource type="Resource" id="Resource_owcc2"]
+script = ExtResource("4_3e7vo")
+Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_i01aw")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_c5xmg"]
@@ -98,7 +141,8 @@ script = ExtResource("2_3i3hp")
 
 [node name="WaveManager" type="Node3D" parent="."]
 script = ExtResource("2_7x1ww")
-waves = Array[ExtResource("4_3e7vo")]([SubResource("Resource_3n5l5"), SubResource("Resource_f54oi"), SubResource("Resource_ukere")])
+waves = Array[ExtResource("4_3e7vo")]([SubResource("Resource_svaum"), SubResource("Resource_3n5l5"), SubResource("Resource_wie7u"), SubResource("Resource_owcc2"), SubResource("Resource_f54oi"), SubResource("Resource_ukere")])
+autoLaunch = true
 
 [node name="Path3D" type="Path3D" parent="WaveManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -116,3 +160,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 mesh = SubResource("PlaneMesh_nyyhf")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_iw5u7")
+
+[node name="WrathOfHeavens" type="Node3D" parent="."]
+script = ExtResource("11_qckgf")

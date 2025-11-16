@@ -1,7 +1,14 @@
 extends EnemyAttachment
+class_name ShieldStack
 
 @export var Shields: Array[Shield]
 @export var ShieldMesh: MeshInstance3D
+
+const BaseInstance = preload("res://Assets/Scenes/Statuses/ShieldStack.tscn")
+
+signal OnDestroyAny
+
+signal OnDestroyAll
 
 func _ready() -> void:
 	super()
@@ -35,8 +42,11 @@ func pre_damage(_baseDamage:float, _color:Color, _preSum:Ref, _mult:Ref, _sum:Re
 		return true
 	Shields[i].currentHP -= max(_baseDamage*(2.0 if _color == Shields[i].WeakColor else (0.25 if _color == Shields[i].StrongColor else 1.0)),0.0)
 	if (Shields[i].currentHP <= 0):
+		Shields[i].OnDestroy.emit()
+		OnDestroyAny.emit()
 		Shields.remove_at(i)
 		if Shields.size() == 0:
+			OnDestroyAll.emit()
 			queue_free()
 	update_graphic()
 	return false

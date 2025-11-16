@@ -3,6 +3,7 @@ class_name WaveManager
 
 @export var waves: Array[WaveData]
 @export var wave: int = 0
+@export var autoLaunch: bool = false
 var EntityCount: int = 0
 var PendingDeployments: int = 0
 
@@ -11,13 +12,11 @@ func _ready() -> void:
 	
 # Called when the node enters the scene tree for the first time.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("LaunchWave") and (wave < waves.size()):
-		LaunchNextWave()
 	if (EntityCount == 0 and PendingDeployments == 0):
-		if (wave < waves.size()):
-			LaunchNextWave()
-		else:
+		if (wave >= waves.size()):
 			printerr("NYI: implement a victory condition")
+		elif Input.is_action_just_pressed("LaunchWave") or (autoLaunch and wave > 0):
+			LaunchNextWave()
 
 signal WaveLaunched(wave_index)
 

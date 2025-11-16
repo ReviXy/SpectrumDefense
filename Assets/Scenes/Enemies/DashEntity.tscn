@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6pucg2t3wfnf"]
+
+[ext_resource type="Script" uid="uid://nv7u5lxiaa8y" path="res://Assets/Scripts/Enemies/DashEntity.gd" id="1_5n70v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x4ay6"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="PrismMesh" id="PrismMesh_i3tbn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ohao"]
+
+[node name="PathFollow3D" type="PathFollow3D"]
+loop = false
+script = ExtResource("1_5n70v")
+DashSpeedMult = 3.0
+DashDuration = 1.0
+DashCooldown = 2.0
+BaseSpeed = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.25)
+mesh = SubResource("BoxMesh_x4ay6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -2.1855694e-08, 1, 0, -0.5, -4.371139e-08, 0, 0.5, -0.25)
+mesh = SubResource("PrismMesh_i3tbn")
+skeleton = NodePath("../Area3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_0ohao")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="DurationTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true

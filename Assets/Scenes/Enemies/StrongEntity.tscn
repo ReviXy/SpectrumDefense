@@ -10,6 +10,7 @@
 loop = false
 script = ExtResource("1_fx85n")
 BaseSpeed = 2.5
+MaxHP = 200.0
 HP = 200.0
 Damage = 5
 
