@@ -13,6 +13,7 @@ var EnemyStrongColor: Color:
 @export var Damage: int = 1
 @export var ResourcesGain: int = 0
 var Attachments: Dictionary = {}
+@onready var MainMeshInstance: MeshInstance3D = find_child("MainMesh")
 
 func on_spawn():
 	pass
@@ -40,6 +41,10 @@ func on_end_reached():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if MainMeshInstance:
+		if MainMeshInstance.mesh.surface_get_material(0):
+			var AccentMaterial: StandardMaterial3D = MainMeshInstance.mesh.surface_get_material(0)
+			AccentMaterial.albedo_color = EnemyWeakColor
 	if (LevelManager.this):
 		LevelManager.this.WaveM.EntityCount += 1
 		on_spawn()
@@ -47,6 +52,7 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	if (LevelManager.this):
 		LevelManager.this.WaveM.EntityCount -= 1
+		LevelManager.this.WaveM.EnemyDied()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -98,11 +104,13 @@ func ReachedExit():
 	queue_free()
 
 func DeathCheck():
-	pre_death()
-	for a:EnemyAttachment in Attachments.values():
-		a.pre_death()
-	if (HP <= 0):
-		on_death()
+	if (not is_queued_for_deletion()):
+		pre_death()
 		for a:EnemyAttachment in Attachments.values():
-			a.on_death()
-		queue_free()
+			a.pre_death()
+		if (HP <= 0):
+			on_death()
+			for a:EnemyAttachment in Attachments.values():
+				a.on_death()
+			LevelManager.this.ResourceM.GainResources(ResourcesGain)
+			queue_free()

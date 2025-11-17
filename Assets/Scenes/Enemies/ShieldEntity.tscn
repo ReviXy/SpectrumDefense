@@ -12,8 +12,9 @@ script = ExtResource("1_ol4pi")
 ShieldCooldown = 5.0
 ShieldHP = 100.0
 EnemyWeakColor = Color(0, 1, 0, 1)
+ResourcesGain = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MainMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_6p6g4")
 skeleton = NodePath("")

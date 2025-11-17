@@ -1,21 +1,24 @@
 extends Node3D
 class_name ResourceManager
 
-@export var _HP: int = 100:
+@export var HP: int = 100:
 	set(value):
-		_HP = value
+		HP = value
 		if LevelManager.this.UIM:
 			LevelManager.this.UIM._update_hp()
-var HP: int:
-	get:
-		return _HP
-@export var AbsractTowerCurrency: int = 0:
-	set(value):
-		AbsractTowerCurrency = value
-		if LevelManager.this.UIM:
-			LevelManager.this.UIM._update_hp()
+		if HP <= 0:
+			printerr("NYI: level lost")
 
-signal damage_taken
+@export var Resources: int = 0:
+	set(value):
+		Resources = value
+		if LevelManager.this.UIM:
+			LevelManager.this.UIM._update_currency()
+
+signal health_gained(health: int)
+signal damage_taken(damage: int)
+signal resources_gained(resource: int)
+signal resources_lost(resource: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,8 +30,22 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func GainHealth(health: int):
+	health_gained.emit(health)
+	HP = max(HP,HP + health)
+
 func TakeDamage(damage: int):
 	damage_taken.emit(damage)
-	_HP = max(0, _HP - damage)
-	if HP == 0:
-		printerr("NYI: level lost")
+	HP = max(0, min(HP - damage,HP))
+
+func GainResources(resource: int):
+	resources_gained.emit(resource)
+	Resources = max(Resources,Resources + resource)
+
+func LoseResources(resource: int):
+	if (resource <= Resources):
+		resources_lost.emit(resource)
+		Resources = max(0, min(Resources - resource,HP))
+		return true
+	else:
+		return false

@@ -13,8 +13,9 @@ BaseSpeed = 2.5
 MaxHP = 200.0
 HP = 200.0
 Damage = 5
+ResourcesGain = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MainMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_fx85n")
 skeleton = NodePath("")

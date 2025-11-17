@@ -12,8 +12,14 @@
 loop = false
 script = ExtResource("1_i3tbn")
 BaseSpeed = 5.0
+SpeedMult = null
+EnemyWeakColor = null
+MaxHP = null
+HP = null
+Damage = null
+ResourcesGain = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MainMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_6p6g4")
 skeleton = NodePath("")

@@ -19,104 +19,125 @@
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("8_3n5l5")
-_EnemyCount = 5.0
+EnemyCount = 5
 DeployDelay = 2.0
+EnemyColor = Color(0, 1, 0, 1)
+Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_svaum"]
 script = ExtResource("4_3e7vo")
 Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_oena1")])
+WaveReward = 10
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_muap1"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("6_3e7vo")
-_EnemyCount = 5.0
+EnemyCount = 5
 DeployDelay = 2.0
+EnemyColor = Color(1, 0, 0, 1)
+Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_3n5l5"]
 script = ExtResource("4_3e7vo")
+Pre_wave_delay = 5.0
 Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_muap1")])
+WaveReward = 12
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_ng7bl"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("8_muap1")
-_EnemyCount = 5.0
+EnemyCount = 5
 DeployDelay = 2.0
+Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_wie7u"]
 script = ExtResource("4_3e7vo")
+Pre_wave_delay = 5.0
 Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_ng7bl")])
+WaveReward = 15
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_i01aw"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("6_43aa2")
-_EnemyCount = 15.0
+EnemyCount = 5
 DeployDelay = 1.0
+Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_owcc2"]
 script = ExtResource("4_3e7vo")
+Pre_wave_delay = 5.0
 Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_i01aw")])
+WaveReward = 17
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_c5xmg"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("7_43aa2")
-_EnemyCount = 5.0
+EnemyCount = 3
 DeployDelay = 0.3
+Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_5yq84"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("7_43aa2")
-_EnemyCount = 5.0
+EnemyCount = 3
 DeployDelay = 0.3
 PreDeployDelay = 0.12
+Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_1hwsu"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("7_43aa2")
-_EnemyCount = 5.0
+EnemyCount = 3
 DeployDelay = 0.3
 PreDeployDelay = 5.0
+Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_eumoi"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("7_43aa2")
-_EnemyCount = 5.0
+EnemyCount = 3
 DeployDelay = 0.3
 PreDeployDelay = 5.12
+Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_f54oi"]
 script = ExtResource("4_3e7vo")
+Pre_wave_delay = 5.0
 Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_c5xmg"), SubResource("Resource_5yq84"), SubResource("Resource_1hwsu"), SubResource("Resource_eumoi")])
+WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_wt8ej"]
 script = ExtResource("5_qckgf")
 PathNode = NodePath("Path3D")
 Enemy = ExtResource("8_bq8rn")
-_EnemyCount = 5.0
+EnemyCount = 5
 DeployDelay = 3.0
+Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_ukere"]
 script = ExtResource("4_3e7vo")
+Pre_wave_delay = 5.0
 Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_wt8ej")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
@@ -143,6 +164,9 @@ script = ExtResource("2_3i3hp")
 script = ExtResource("2_7x1ww")
 waves = Array[ExtResource("4_3e7vo")]([SubResource("Resource_svaum"), SubResource("Resource_3n5l5"), SubResource("Resource_wie7u"), SubResource("Resource_owcc2"), SubResource("Resource_f54oi"), SubResource("Resource_ukere")])
 autoLaunch = true
+
+[node name="WaveDelayTimer" type="Timer" parent="WaveManager"]
+one_shot = true
 
 [node name="Path3D" type="Path3D" parent="WaveManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

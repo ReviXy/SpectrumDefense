@@ -123,4 +123,4 @@ func _update_hp() -> void:
 	healthLabel.text = str(LevelManager.this.ResourceM.HP)
 
 func _update_currency() -> void:
-	currencyLabel.text = str(LevelManager.this.ResourceM.AbsractTowerCurrency)
+	currencyLabel.text = str(LevelManager.this.ResourceM.Resources)

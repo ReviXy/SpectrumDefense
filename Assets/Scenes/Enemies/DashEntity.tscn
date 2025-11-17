@@ -16,8 +16,9 @@ DashSpeedMult = 3.0
 DashDuration = 1.0
 DashCooldown = 2.0
 BaseSpeed = 5.0
+ResourcesGain = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MainMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.25)
 mesh = SubResource("BoxMesh_x4ay6")
 skeleton = NodePath("")

@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmraycytajhkk"]
 
 [ext_resource type="Script" uid="uid://crwhq6y0kmgr7" path="res://Assets/Scripts/Enemies/Regenerator.gd" id="1_eac0g"]
+[ext_resource type="ArrayMesh" uid="uid://cp16dg3vhg68p" path="res://Assets/Models/Ico_Sphere.res" id="2_3rc7y"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_eac0g"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3rc7y"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_b7j2o"]
 
 [node name="PathFollow3D" type="PathFollow3D"]
 loop = false
@@ -12,10 +11,12 @@ script = ExtResource("1_eac0g")
 RegenAmount = 10.0
 RegenCooldown = 1.0
 BaseSpeed = 5.0
+EnemyWeakColor = Color(0, 1, 0, 1)
+ResourcesGain = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.70479566, -0.0023109317, 0.70940644, 0.57922786, 0.579228, -0.57357633, -0.40958253, 0.8151623, 0.40957594, 0, 0.87, 0)
-mesh = SubResource("BoxMesh_eac0g")
+[node name="MainMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+mesh = ExtResource("2_3rc7y")
 skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -25,8 +26,8 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.7047958, -0.0023109317, 0.70940655, 0.579228, 0.579228, -0.57357645, -0.40958259, 0.8151623, 0.409576, 0, 0.87, 0)
-shape = SubResource("BoxShape3D_3rc7y")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_b7j2o")
 
 [node name="CooldownTimer" type="Timer" parent="."]
 process_callback = 0
