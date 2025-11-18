@@ -3,6 +3,7 @@ const ColorRYB = preload("res://Assets/Scripts/ColorRYB.gd").ColorRYB
 
 @onready var laser_prefab = preload("res://Assets/Scenes/Towers/Laser.tscn")
 @onready var indicator_material = ($Indicator).get_surface_override_material(0)
+@onready var mainCollider = $MainCollider
 
 @export var color: ColorRYB = ColorRYB.Red:
 	set(new_color):
@@ -13,48 +14,50 @@ var laser_dictionary = {}
 
 func _ready() -> void:
 	rotatable = false
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	var lasers = (mainCollider as Area3D).get_overlapping_areas()
+	for l in lasers:
+		(l.get_parent() as Laser).set_update_flag()
 
 func configureTower():
 	color = ((color + 1) % ColorRYB.size() ) as ColorRYB
+	for l in laser_dictionary.keys():
+		l.set_update_flag()
 
-func begin_laser_collision(laser: Laser):
+func begin_laser_collision(laser: Laser, collider = null):
 	var filtered_color = ColorRYB_Operations.Filter(laser.color, color)
-	if (filtered_color == null):
-		return
-	
-	var new_laser: Laser = laser_prefab.instantiate()
-	add_child(new_laser)
-	var laser_direction = (laser.get_collision_point() - laser.global_position).normalized()
-	new_laser.position = to_local(laser.get_collision_point())
-	new_laser.look_at(new_laser.global_position + laser_direction, Vector3.UP)
-	new_laser.rotate_object_local(Vector3.RIGHT, -PI / 2)
-	
-	new_laser.color = filtered_color
-	new_laser.distance = laser.distance - laser.global_position.distance_to(laser.get_collision_point())
-	new_laser.intensity = laser.intensity * (1 - intensity_penalty)
-	laser_dictionary[laser] = new_laser
+	if (filtered_color != null):
+		var new_laser: Laser = laser_prefab.instantiate()
+		add_child(new_laser)
+		laser_dictionary[laser] = new_laser
+		continue_laser_collision(laser, collider)
+	else:
+		laser_dictionary[laser] = null
 
-func continue_laser_collision(laser):
+func continue_laser_collision(laser, collider = null):
 	var filtered_color = ColorRYB_Operations.Filter(laser.color, color)
-	if (filtered_color == null):
-		if (laser_dictionary.has(laser)):
+	if (filtered_color != null):
+		if (!laser_dictionary[laser]):
+			begin_laser_collision(laser, collider)
+			return
+		var laser_direction = (laser.get_collision_point() - laser.global_position).normalized()
+		laser_dictionary[laser].position = to_local(laser.get_collision_point() + 0.05 * laser_direction)
+		laser_dictionary[laser].look_at(laser_dictionary[laser].global_position + laser_direction, Vector3.UP)
+		laser_dictionary[laser].rotate_object_local(Vector3.RIGHT, -PI / 2)
+		laser_dictionary[laser].set_params(filtered_color, laser.distance - laser.global_position.distance_to(laser.get_collision_point()), laser.intensity * (1 - intensity_penalty))
+	else:
+		if (laser_dictionary[laser]):
 			laser_dictionary[laser].queue_free()
-			laser_dictionary.erase(laser)
-		return
-	
-	if (!laser_dictionary.has(laser)):
-		begin_laser_collision(laser)
-	
-	var laser_direction = (laser.get_collision_point() - laser.global_position).normalized()
-	laser_dictionary[laser].position = to_local(laser.get_collision_point())
-	laser_dictionary[laser].look_at(laser_dictionary[laser].global_position + laser_direction, Vector3.UP)
-	laser_dictionary[laser].rotate_object_local(Vector3.RIGHT, -PI / 2)
-	
-	laser_dictionary[laser].color = filtered_color
-	laser_dictionary[laser].distance = laser.distance - laser.global_position.distance_to(laser.get_collision_point())
-	laser_dictionary[laser].intensity = laser.intensity * (1 - intensity_penalty)
+			laser_dictionary[laser] = null
 
 func end_laser_collision(laser):
-	if (laser_dictionary.has(laser)):
+	if (laser_dictionary[laser]):
 		laser_dictionary[laser].queue_free()
-		laser_dictionary.erase(laser)
+	laser_dictionary.erase(laser)
+
+func destroyTower():
+	await get_tree().physics_frame
+	for l in laser_dictionary.keys():
+		l.set_update_flag()
+	super()

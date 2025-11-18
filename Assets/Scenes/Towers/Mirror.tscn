@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmum1q1k3y2qk"]
+[gd_scene load_steps=6 format=3 uid="uid://dmum1q1k3y2qk"]
 
 [ext_resource type="Script" uid="uid://q5rsc04ckco7" path="res://Assets/Scripts/Towers/Mirror.gd" id="1_cbmgx"]
 
@@ -11,15 +11,34 @@ albedo_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cbmgx"]
 size = Vector3(0.001, 1.4, 1.4)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvp3j"]
+size = Vector3(0.2, 1.4, 0.001)
+
 [node name="MeshInstance3D" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 mesh = SubResource("BoxMesh_xvp3j")
 surface_material_override/0 = SubResource("StandardMaterial3D_cbmgx")
 script = ExtResource("1_cbmgx")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="MainCollider" type="Area3D" parent="."]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCollider"]
 shape = SubResource("BoxShape3D_cbmgx")
+
+[node name="LeftCollider" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftCollider"]
+shape = SubResource("BoxShape3D_xvp3j")
+
+[node name="RightCollider" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightCollider"]
+shape = SubResource("BoxShape3D_xvp3j")

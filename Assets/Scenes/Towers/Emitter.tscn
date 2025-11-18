@@ -18,12 +18,12 @@ mesh = SubResource("BoxMesh_rl6do")
 surface_material_override/0 = SubResource("StandardMaterial3D_cu1tk")
 script = ExtResource("1_cu1tk")
 
+[node name="MainCollider" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCollider"]
+shape = SubResource("ConcavePolygonShape3D_83p1e")
+
 [node name="Laser" parent="." instance=ExtResource("2_cu1tk")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.71, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_83p1e")

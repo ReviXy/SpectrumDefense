@@ -24,10 +24,10 @@ func a(lasers: Array[Laser]):
 			new_intensity += lasers[i].intensity
 			new_distance += lasers[i].distance - lasers[i].global_position.distance_to(lasers[i].get_collision_point())
 
-func begin_laser_collision(laser: Laser):
+func begin_laser_collision(laser: Laser, collider = null):
 	pass
 
-func continue_laser_collision(laser):
+func continue_laser_collision(laser, collider = null):
 	pass
 
 func end_laser_collision(laser):

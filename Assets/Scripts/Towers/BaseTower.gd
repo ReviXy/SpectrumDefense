@@ -17,17 +17,17 @@ func rotateTower():
 func destroyTower():
 	self.queue_free()
 
-@abstract
-func configureTower()
+func configureTower():
+	pass
 
 #===========================================================
 # Laser interraction
 
 @abstract
-func begin_laser_collision(laser: Laser)
+func begin_laser_collision(laser: Laser, collider = null)
 
 @abstract
-func continue_laser_collision(laser)
+func continue_laser_collision(laser: Laser, collider = null)
 
 @abstract
-func end_laser_collision(laser)
+func end_laser_collision(laser: Laser)

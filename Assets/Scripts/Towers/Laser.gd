@@ -29,15 +29,25 @@ var color: ColorRYB = ColorRYB.Red:
 
 var last_colliding_object: BaseTower = null
 
-func _ready():
-	pass
+func set_params(color1, distance1, intensity1):
+	color = color1
+	distance = distance1
+	intensity = intensity1
+	update()
 
 func _exit_tree() -> void:
 	if last_colliding_object != null:
 		if (last_colliding_object is BaseTower):
 			(last_colliding_object as BaseTower).end_laser_collision(self)
 
-func _process(delta):
+var update_flag = false
+func set_update_flag():
+	update_flag = true
+
+static var i = 0
+func update():
+	i += 1
+	print(i)
 	target_position = Vector3(0, distance, 0)
 	force_raycast_update()
 	var collider = get_collider()
@@ -52,11 +62,11 @@ func _process(delta):
 	else:
 		var new_colliding_object = collider.get_parent() as BaseTower
 		if (last_colliding_object == new_colliding_object):
-			last_colliding_object.continue_laser_collision(self)
+			last_colliding_object.continue_laser_collision(self, collider)
 		else:
 			if(last_colliding_object != null):
 				last_colliding_object.end_laser_collision(self)
-			new_colliding_object.begin_laser_collision(self)
+			new_colliding_object.begin_laser_collision(self, collider)
 			last_colliding_object = new_colliding_object
 			
 		beam_length = to_local(get_collision_point()).length()
@@ -67,6 +77,11 @@ func _process(delta):
 	area_of_effect_shape.height = beam_length
 	area_of_effect.position.y = beam_length / 2
 	end_particles.position = beam_end_position
+
+func _process(delta):
+	if update_flag:
+		update()
+		update_flag = false
 	
 	var enemies_in_aoe = area_of_effect.get_overlapping_areas()
 

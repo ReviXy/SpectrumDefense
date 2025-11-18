@@ -61,7 +61,7 @@ transform = Transform3D(-0.029666286, 0, 0.9995599, 0, 1, 0, -0.9995599, 0, -0.0
 color = 1
 
 [node name="Emitter3" parent="." instance=ExtResource("2_mgy1n")]
-transform = Transform3D(0.99002355, 0, 0.14090121, 0, 1, 0, -0.14090121, 0, 0.99002355, -3.098, 0.7, 0.369)
+transform = Transform3D(0.32226563, 0, -0.94664913, 0, 1, 0, 0.94664913, 0, 0.32226563, -3.098, 0.7, 0.369)
 color = 5
 distance = 5.0
 
