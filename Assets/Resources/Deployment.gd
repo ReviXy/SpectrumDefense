@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Resource
 class_name Deployment
 
@@ -11,14 +11,16 @@ class_name Deployment
 @export var DeployDelay: float
 @export var PreDeployDelay: float
 @export var EnemyColor: Color
+@export var Value_Overrides: Dictionary
 
-func _get_property_list():
-		var properties = []
-		# Add your dynamic properties here
-		properties.append({
-			"name": "Enemy_Color",
-			"type": TYPE_COLOR,
-			"hint": PROPERTY_HINT_NONE,
-			"usage": PROPERTY_USAGE_DEFAULT
-		})
-		return properties
+
+#func _get_property_list():
+		#var properties = []
+		## Add your dynamic properties here
+		#properties.append({
+			#"name": "Enemy_Color",
+			#"type": TYPE_COLOR,
+			#"hint": PROPERTY_HINT_NONE,
+			#"usage": PROPERTY_USAGE_DEFAULT
+		#})
+		#return properties

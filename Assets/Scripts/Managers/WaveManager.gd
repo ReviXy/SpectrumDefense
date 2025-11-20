@@ -39,6 +39,9 @@ func DeployDeployment(deployment: Deployment):
 	for i in range(deployment.EnemyCount):
 		var Enemy: BaseEntity = deployment.Enemy.instantiate()
 		Enemy.EnemyWeakColor = deployment.EnemyColor
+		for override in deployment.Value_Overrides:
+			if override in Enemy:
+				Enemy.set(override,deployment.Value_Overrides[override])
 		get_node(deployment.PathNode).add_child(Enemy)
 		if (i < deployment.EnemyCount-1):
 			await get_tree().create_timer(deployment.DeployDelay, false).timeout

@@ -22,7 +22,6 @@ Enemy = ExtResource("8_3n5l5")
 EnemyCount = 5
 DeployDelay = 2.0
 EnemyColor = Color(0, 1, 0, 1)
-Enemy_Color = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_svaum"]
@@ -38,7 +37,7 @@ Enemy = ExtResource("6_3e7vo")
 EnemyCount = 5
 DeployDelay = 2.0
 EnemyColor = Color(1, 0, 0, 1)
-Enemy_Color = null
+Value_Overrides = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_3n5l5"]
@@ -54,7 +53,7 @@ PathNode = NodePath("Path3D")
 Enemy = ExtResource("8_muap1")
 EnemyCount = 5
 DeployDelay = 2.0
-Enemy_Color = null
+Value_Overrides = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_wie7u"]
@@ -70,7 +69,7 @@ PathNode = NodePath("Path3D")
 Enemy = ExtResource("6_43aa2")
 EnemyCount = 5
 DeployDelay = 1.0
-Enemy_Color = null
+Value_Overrides = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_owcc2"]
@@ -86,7 +85,7 @@ PathNode = NodePath("Path3D")
 Enemy = ExtResource("7_43aa2")
 EnemyCount = 3
 DeployDelay = 0.3
-Enemy_Color = null
+Value_Overrides = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_5yq84"]
@@ -96,7 +95,7 @@ Enemy = ExtResource("7_43aa2")
 EnemyCount = 3
 DeployDelay = 0.3
 PreDeployDelay = 0.12
-Enemy_Color = null
+Value_Overrides = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_1hwsu"]
@@ -106,7 +105,7 @@ Enemy = ExtResource("7_43aa2")
 EnemyCount = 3
 DeployDelay = 0.3
 PreDeployDelay = 5.0
-Enemy_Color = null
+Value_Overrides = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_eumoi"]
@@ -116,7 +115,7 @@ Enemy = ExtResource("7_43aa2")
 EnemyCount = 3
 DeployDelay = 0.3
 PreDeployDelay = 5.12
-Enemy_Color = null
+Value_Overrides = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_f54oi"]
@@ -132,7 +131,7 @@ PathNode = NodePath("Path3D")
 Enemy = ExtResource("8_bq8rn")
 EnemyCount = 5
 DeployDelay = 3.0
-Enemy_Color = null
+Value_Overrides = null
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_ukere"]

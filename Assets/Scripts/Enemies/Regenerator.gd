@@ -6,7 +6,8 @@ class_name Regenerator
 @export var RegenCooldown: float
 
 func post_damage(_damage: float, _color: Color):
-	cooldown_timer.start(RegenCooldown)
+	if RegenCooldown > 0:
+		cooldown_timer.start(RegenCooldown)
 
 func pre_physics(_delta: float):
 	if cooldown_timer.is_stopped():

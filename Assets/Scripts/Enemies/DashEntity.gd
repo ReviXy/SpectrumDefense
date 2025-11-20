@@ -10,7 +10,8 @@ class_name DashEntity
 func on_spawn():
 	duration_timer.timeout.connect(func(): 
 		SpeedMult /= DashSpeedMult
-		cooldown_timer.start(DashCooldown)
+		if (DashCooldown > 0):
+			cooldown_timer.start(DashCooldown)
 	)
 
 func post_damage(_damage: float, _color: Color):
