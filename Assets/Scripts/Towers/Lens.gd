@@ -70,7 +70,6 @@ func continue_laser_collision(laser, collider = null):
 			begin_laser_collision(laser, collider)
 			return
 		var laser_direction = (laser.get_collision_point() - laser.global_position).normalized()
-		print(laser_direction)
 		laser_dictionary[laser].global_position = (laser.get_collision_point() + 0.05 * laser_direction) # Связано с костылём
 		laser_dictionary[laser].look_at(laser_dictionary[laser].global_position + laser_direction, Vector3.UP)
 		laser_dictionary[laser].rotate_object_local(Vector3.RIGHT, -PI / 2)

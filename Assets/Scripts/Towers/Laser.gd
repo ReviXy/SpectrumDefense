@@ -44,10 +44,7 @@ var update_flag = false
 func set_update_flag():
 	update_flag = true
 
-static var i = 0
 func update():
-	i += 1
-	print(i)
 	target_position = Vector3(0, distance, 0)
 	force_raycast_update()
 	var collider = get_collider()

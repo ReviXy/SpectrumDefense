@@ -24,11 +24,9 @@ func _ready() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	var lasers = (mainCollider as Area3D).get_overlapping_areas()
-	print(lasers)
 	for l in lasers:
 		(l.get_parent() as Laser).set_update_flag()
 	laser.set_params(color, distance, intensity)
-
 
 var is_rotating: bool = false
 var cur_step : int = 1
