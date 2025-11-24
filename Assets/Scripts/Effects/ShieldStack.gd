@@ -30,9 +30,9 @@ func _ready() -> void:
 		Shields[i] = Shields[i].duplicate(true)
 	update_graphic()
 
-func pre_damage(_baseDamage:float, _color:Color, _preSum:Ref, _mult:Ref, _sum:Ref):
+func pre_damage(_baseDamage:float, _color:ColorRYB_Operations.ColorRYB, _preSum:Ref, _mult:Ref, _sum:Ref):
 	var i = -1
-	for a in range(Shields.size()):
+	for a in range(Shields.size()-1,-1,-1):
 		if (not Parent) or (not (Parent.Attachments.has("Suppressed")) or (not (Parent.Attachments["Suppressed"] as Suppressed).Colors.has(Shields[a].WeakColor))):
 			i = a
 			break
@@ -55,7 +55,7 @@ func  _process(_delta: float) -> void:
 	#pre_damage(1,Color(1,0,1),null,null,null)
 	pass
 
-func  add_shield(hp: float, weakColor: Color):
+func  add_shield(hp: float, weakColor: ColorRYB_Operations.ColorRYB):
 	var S = Shield.new()
 	S.HP = hp
 	S.currentHP = hp
@@ -66,7 +66,7 @@ func  add_shield(hp: float, weakColor: Color):
 func update_graphic():
 	var shader_material : ShaderMaterial = ShieldMesh.material_override
 	var i = -1
-	for a in range(Shields.size()):
+	for a in range(Shields.size()-1,-1,-1):
 		if (not Parent) or (not (Parent.Attachments.has("Suppressed")) or (not (Parent.Attachments["Suppressed"] as Suppressed).Colors.has(Shields[a].WeakColor))):
 			i = a
 			break
@@ -76,7 +76,7 @@ func update_graphic():
 		shader_material.set_shader_parameter("_displacement",0.1)
 	else:
 		var instability = (1-Shields[i].currentHP/Shields[i].HP)*0.25+0.05
-		shader_material.set_shader_parameter("fresnel_color",Shields[i].WeakColor)
+		shader_material.set_shader_parameter("fresnel_color",ColorRYB_Operations.ToColor(Shields[i].WeakColor))
 		shader_material.set_shader_parameter("_panning",instability)
 		shader_material.set_shader_parameter("_displacement",instability)
 	

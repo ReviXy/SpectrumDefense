@@ -17,4 +17,4 @@ func _unhandled_input(event):
 		var result = space_state.intersect_ray(query)
 		if result.has("collider"):
 			var Enemy = (result["collider"] as Node3D).get_parent_node_3d() as BaseEntity
-			Enemy.TakeDamage(20,Color(0,0,0))
+			Enemy.TakeDamage(20,ColorRYB_Operations.ColorRYB.White)

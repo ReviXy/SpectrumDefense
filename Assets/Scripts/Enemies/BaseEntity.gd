@@ -1,13 +1,14 @@
 extends PathFollow3D
 class_name BaseEntity
+const ColorRYB = ColorRYB_Operations.ColorRYB
 
 @export var BaseSpeed: float = 3
 @export var SpeedMult: float = 1
 ##Because multiplying by zero is the only multiplication, which can't be reversed
 var Stops: int = 0
-@export var EnemyWeakColor: Color
-var EnemyStrongColor: Color:
-	get: return EnemyStrongColor.inverted()
+@export var EnemyWeakColor: ColorRYB
+var EnemyStrongColor: ColorRYB:
+	get: return ColorRYB_Operations.Invert(EnemyStrongColor)
 @export var MaxHP: float = 100
 @export var HP: float = 100
 @export var Damage: int = 1
@@ -44,7 +45,7 @@ func _ready() -> void:
 	if MainMeshInstance:
 		if MainMeshInstance.mesh.surface_get_material(0):
 			var AccentMaterial: StandardMaterial3D = MainMeshInstance.mesh.surface_get_material(0)
-			AccentMaterial.albedo_color = EnemyWeakColor
+			AccentMaterial.albedo_color = ColorRYB_Operations.ToColor(EnemyWeakColor)
 	if (LevelManager.this):
 		LevelManager.this.WaveM.EntityCount += 1
 		on_spawn()
@@ -52,13 +53,13 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	if (LevelManager.this):
 		LevelManager.this.WaveM.EntityCount -= 1
-		LevelManager.this.WaveM.EnemyDied()
+		LevelManager.this.WaveM.EnemyGone()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
-func TakeDamage(damage: float, color: Color):
+func TakeDamage(damage: float, color: ColorRYB):
 	var preSum = Ref.new(0.0)
 	var mult = Ref.new(1.0)
 	var postSum = Ref.new(0.0)

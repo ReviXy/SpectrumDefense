@@ -33,6 +33,9 @@ const colorVisualizeation = [
 static func ToColor(color: ColorRYB) -> Color:
 	return colorVisualizeation[color]
 
+static func FromColor(color: Color) -> ColorRYB:
+	return colorVisualizeation.find(color)
+
 static func Add(... colors):
 	var arrs = colors.map(func(c): return colorArrays[c])
 	var new_arr = [0, 0, 0]
@@ -71,7 +74,7 @@ static func Filter(color, filter):
 
 static func Invert(color: ColorRYB):
 	var arr = colorArrays[color]
-	var new_arr = []
+	var new_arr = [0,0,0]
 	
 	for i in range(3):
 		new_arr[i] = float(!arr[i])

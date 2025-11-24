@@ -10,7 +10,7 @@ class_name Deployment
 @export var EnemyCount: int
 @export var DeployDelay: float
 @export var PreDeployDelay: float
-@export var EnemyColor: Color
+@export var EnemyColor: ColorRYB_Operations.ColorRYB
 @export var Value_Overrides: Dictionary
 
 

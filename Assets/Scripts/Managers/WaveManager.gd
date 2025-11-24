@@ -31,7 +31,6 @@ func LaunchNextWave():
 		for deployment in waves[wave].Deployments:
 			DeployDeployment(deployment)
 		WaveLaunched.emit(wave)
-		wave += 1
 
 func DeployDeployment(deployment: Deployment):
 	PendingDeployments += 1
@@ -47,11 +46,12 @@ func DeployDeployment(deployment: Deployment):
 			await get_tree().create_timer(deployment.DeployDelay, false).timeout
 	PendingDeployments -= 1
 
-func EnemyDied():
+func EnemyGone():
 	if (EntityCount == 0 and PendingDeployments == 0):
 		WaveEnded.emit(wave)
-		if (wave >= waves.size()):
+		if (wave >= waves.size()-1):
 			printerr("NYI: implement a victory condition")
 		elif(autoLaunch):
 			LevelManager.this.ResourceM.GainResources(waves[wave].WaveReward)
-			WaveDelayTimer.start(waves[wave+1].Pre_wave_delay)
+			wave += 1
+			WaveDelayTimer.start(waves[wave].Pre_wave_delay)
