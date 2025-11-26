@@ -26,7 +26,7 @@ bg_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 script = ExtResource("1_j6vvw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.17364822, 0.9848077, 0, -0.9848077, 0.17364822, 0, 15, 0)
+transform = Transform3D(1, 0, 0, 0, 0.17364821, 0.98480767, 0, -0.98480767, 0.17364821, 0, 15, 0)
 projection = 1
 current = true
 size = 30.0
@@ -127,8 +127,15 @@ metadata/TowerType = "Filter"
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
-text = "Поставить Линзу"
+text = "Поставить линзу"
 metadata/TowerType = "Lens"
+
+[node name="PlacePrismButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_mode = 0
+text = "Поставить призму"
+metadata/TowerType = "Prism"
 
 [node name="Currency" type="Control" parent="LevelUI"]
 layout_mode = 3
@@ -415,6 +422,7 @@ text = "Выбор уровня"
 [connection signal="pressed" from="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceMirrorButton" to="LevelUI" method="_on_place_tower_button_pressed" flags=18]
 [connection signal="pressed" from="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceFilterButton" to="LevelUI" method="_on_place_tower_button_pressed" flags=18]
 [connection signal="pressed" from="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceLensButton" to="LevelUI" method="_on_place_tower_button_pressed" flags=18]
+[connection signal="pressed" from="LevelUI/TowerPlacementPanel/VBoxContainer/PlacePrismButton" to="LevelUI" method="_on_place_tower_button_pressed" flags=18]
 [connection signal="pressed" from="LevelUI/PauseButton" to="LevelUI" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/PauseMenu/Panel/VBoxContainer/ContinueButton" to="LevelUI" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="LevelUI/PauseMenu/Panel/VBoxContainer/OptionsButton" to="LevelUI" method="_on_options_button_pressed"]

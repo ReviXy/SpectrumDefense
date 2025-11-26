@@ -28,11 +28,11 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_qjot6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_wjfwt"]
-size = Vector2(0.02, 0.02)
+size = Vector2(0.05, 0.05)
 
 [node name="EndParticles" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_end8h")
 amount = 25
-lifetime = 0.2
+lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_7kv8b")
 draw_pass_1 = SubResource("QuadMesh_wjfwt")

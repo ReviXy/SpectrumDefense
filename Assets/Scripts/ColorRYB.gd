@@ -36,9 +36,9 @@ static func ToColor(color: ColorRYB) -> Color:
 static func FromColor(color: Color) -> ColorRYB:
 	return colorVisualizeation.find(color)
 
-static func Add(... colors):
+static func Add(colors):
 	var arrs = colors.map(func(c): return colorArrays[c])
-	var new_arr = [0, 0, 0]
+	var new_arr = [0.0, 0.0, 0.0]
 	
 	for i in range(len(arrs)):
 		for j in range(3):
@@ -54,7 +54,7 @@ static func Split(color):
 	
 	for i in range(3):
 		if (color_arr[i] == 1.0):
-			var new_arr = [0, 0, 0]
+			var new_arr = [0.0, 0.0, 0.0]
 			new_arr[i] = 1.0
 			res.append(colorArrays.find(new_arr) as ColorRYB)
 	return res
@@ -62,7 +62,7 @@ static func Split(color):
 static func Filter(color, filter):
 	var color_arr = colorArrays[color]
 	var filter_arr = colorArrays[filter]
-	var new_arr = [0, 0, 0]
+	var new_arr = [0.0, 0.0, 0.0]
 	
 	for i in range(3):
 		new_arr[i] = float(color_arr[i] and filter_arr[i])
@@ -74,7 +74,7 @@ static func Filter(color, filter):
 
 static func Invert(color: ColorRYB):
 	var arr = colorArrays[color]
-	var new_arr = [0,0,0]
+	var new_arr = [0.0, 0.0, 0.0]
 	
 	for i in range(3):
 		new_arr[i] = float(!arr[i])

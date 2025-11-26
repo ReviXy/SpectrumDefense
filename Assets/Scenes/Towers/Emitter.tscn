@@ -9,8 +9,8 @@ size = Vector3(1.4, 1.4, 1.4)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cu1tk"]
 albedo_color = Color(0.8627451, 0.8627451, 0.8627451, 1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_83p1e"]
-data = PackedVector3Array(-0.7, 0.7, 0.7, 0.7, 0.7, 0.7, -0.7, -0.7, 0.7, 0.7, 0.7, 0.7, 0.7, -0.7, 0.7, -0.7, -0.7, 0.7, 0.7, 0.7, -0.7, -0.7, 0.7, -0.7, 0.7, -0.7, -0.7, -0.7, 0.7, -0.7, -0.7, -0.7, -0.7, 0.7, -0.7, -0.7, 0.7, 0.7, 0.7, 0.7, 0.7, -0.7, 0.7, -0.7, 0.7, 0.7, 0.7, -0.7, 0.7, -0.7, -0.7, 0.7, -0.7, 0.7, -0.7, 0.7, -0.7, -0.7, 0.7, 0.7, -0.7, -0.7, -0.7, -0.7, 0.7, 0.7, -0.7, -0.7, 0.7, -0.7, -0.7, -0.7, 0.7, 0.7, 0.7, -0.7, 0.7, 0.7, 0.7, 0.7, -0.7, -0.7, 0.7, 0.7, -0.7, 0.7, -0.7, 0.7, 0.7, -0.7, -0.7, -0.7, 0.7, 0.7, -0.7, 0.7, -0.7, -0.7, -0.7, 0.7, -0.7, 0.7, 0.7, -0.7, -0.7, -0.7, -0.7, -0.7)
+[sub_resource type="BoxShape3D" id="BoxShape3D_cu1tk"]
+size = Vector3(1.4, 1.4, 1.4)
 
 [node name="MeshInstance3D" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
@@ -23,7 +23,7 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainCollider"]
-shape = SubResource("ConcavePolygonShape3D_83p1e")
+shape = SubResource("BoxShape3D_cu1tk")
 
 [node name="Laser" parent="." instance=ExtResource("2_cu1tk")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.71, 0, 0)

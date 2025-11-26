@@ -31,6 +31,7 @@ func begin_laser_collision(laser: Laser, collider = null):
 		var new_laser: Laser = laser_prefab.instantiate()
 		add_child(new_laser)
 		laser_dictionary[laser] = new_laser
+		new_laser.encountered_prisms = laser.encountered_prisms
 		continue_laser_collision(laser, collider)
 	else:
 		laser_dictionary[laser] = null

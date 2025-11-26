@@ -60,6 +60,7 @@ func begin_laser_collision(laser: Laser, collider = null):
 		var new_laser: Laser = laser_prefab.instantiate()
 		get_tree().root.add_child(new_laser) # Костыль? без этого лазер дёргается при повороте
 		laser_dictionary[laser] = new_laser
+		new_laser.encountered_prisms = laser.encountered_prisms
 		continue_laser_collision(laser, collider)
 	else:
 		laser_dictionary[laser] = null
@@ -89,5 +90,8 @@ func destroyTower():
 	await get_tree().physics_frame
 	for l in laser_dictionary.keys():
 		l.set_update_flag()
+	for l in laser_dictionary.values():
+		if l:
+			l.queue_free()
 	super()
 	
