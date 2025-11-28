@@ -11,26 +11,24 @@ var autoLaunch: bool = false
 
 func _ready() -> void:
 	await LevelManager.this.get_parent_node_3d().ready
-	WaveDelayTimer.timeout.connect(LaunchNextWave)
-	
-# Called when the node enters the scene tree for the first time.
-func _process(_delta: float) -> void:
-	#print(WaveDelayTimer.time_left)
-	if (EntityCount == 0 and PendingDeployments == 0) and (Input.is_action_just_pressed("LaunchWave") or autoLaunch):
+	WaveDelayTimer.timeout.connect(func(): 
 		LaunchNextWave()
-		WaveDelayTimer.stop()
+		LevelManager.this.UIM.startWaveLabel.text = "")
+	LevelManager.this.UIM.maxWaveLabel.text = str(len(waves))
+	LevelManager.this.UIM.waveLabel.text = "1"
 
 signal WaveLaunched(wave_index)
 signal WaveEnded(wave_index)
 
 func LaunchNextWave():
-	# This is a redundancy check in case someone calls the function when there are no more waves.
-	if (wave >= waves.size()):
-		printerr("Attempt to call the next wave when all waves have been finished.\nImplement the check in the caller and check the call cases.\n this branch should never be reached.")
-	else:
-		for deployment in waves[wave].Deployments:
-			DeployDeployment(deployment)
-		WaveLaunched.emit(wave)
+	if (EntityCount == 0 and PendingDeployments == 0):
+		if (wave >= waves.size()):
+			printerr("Attempt to call the next wave when all waves have been finished.\nImplement the check in the caller and check the call cases.\n this branch should never be reached.")
+		else:
+			LevelManager.this.UIM.waveLabel.text = str(wave+1)
+			for deployment in waves[wave].Deployments:
+				DeployDeployment(deployment)
+			WaveLaunched.emit(wave)
 
 func DeployDeployment(deployment: Deployment):
 	PendingDeployments += 1
@@ -55,4 +53,7 @@ func EnemyGone():
 		else:
 			LevelManager.this.ResourceM.GainResources(waves[wave].WaveReward)
 			wave += 1
-			WaveDelayTimer.start(waves[wave].Pre_wave_delay)
+			if autoLaunch:
+				LaunchNextWave()
+			else:
+				WaveDelayTimer.start(waves[wave].Pre_wave_delay)
