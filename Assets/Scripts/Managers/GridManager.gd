@@ -1,3 +1,4 @@
+@tool
 extends GridMap
 class_name GridManager
 
@@ -23,10 +24,44 @@ func resetHighlight():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Engine.is_editor_hint(): 
+		for tower in get_children():
+			if tower is BaseTower:
+				towers[local_to_map(to_local(tower.global_position))] = tower
+		return
+
+	state = State.None
 	resetHighlight()
 	#This waits until everything is ready in scene
 	await LevelManager.this.get_parent_node_3d().ready
 	LevelManager.this.UIM.resetTowerPanel()
+	
+	for tower in get_children():
+		if tower is BaseTower:
+			towers[local_to_map(to_local(tower.global_position))] = tower
+			tower.cellCoords = [local_to_map(to_local(tower.global_position))]
+
+var update_cooldown = 0.0
+func _process(delta: float) -> void:
+	if !Engine.is_editor_hint(): return 
+	if update_cooldown > 0: update_cooldown -= delta; return
+	update_cooldown = 0.2
+	
+	for cell in towers.keys():
+		if mesh_library.get_item_name(get_cell_item(cell)) != (towers[cell] as BaseTower).get_script().get_global_name():
+			var tower = towers[cell] as BaseTower
+			towers.erase(local_to_map(to_local(tower.global_position)))
+			tower.queue_free()
+	
+	for cell in get_used_cells():
+		var tileName = mesh_library.get_item_name(get_cell_item(cell))
+		if towerPrefabDictionary.keys().has(tileName) and !towers.keys().has(cell):
+			var newTower = towerPrefabDictionary[tileName].instantiate()
+			add_child(newTower)
+			newTower.owner = get_tree().edited_scene_root
+			newTower.name = tileName
+			newTower.global_position = map_to_local(cell) + Vector3(0, 0.7, 0) #Y offset so tower doesnt sink into the ground
+			towers[cell] = newTower
 
 func getTileUnderMouse(mouseEvent):
 	if camera:
@@ -45,13 +80,14 @@ func getTileUnderMouse(mouseEvent):
 		return null
 
 func _unhandled_input(event):
+	if Engine.is_editor_hint(): return 
 	match state:
 		State.None:
 			# Click on existing tower
 			# Open Configuration menu
 			if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 				var cell_coords = getTileUnderMouse(event)
-				if cell_coords and mesh_library.get_item_name(get_cell_item(cell_coords)) == "PlaceholderTile":
+				if cell_coords and towerPrefabDictionary.has(mesh_library.get_item_name(get_cell_item(cell_coords))):
 					state = State.Configuration
 					configuratedTower = towers[cell_coords]
 					LevelManager.this.UIM.showTowerPanel(configuratedTower)
@@ -73,7 +109,7 @@ func _unhandled_input(event):
 			if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 				var cell_coords = getTileUnderMouse(event)
 				if cell_coords and mesh_library.get_item_name(get_cell_item(cell_coords)) == "TowerTile":
-					set_cell_item(cell_coords, mesh_library.find_item_by_name("PlaceholderTile"))
+					set_cell_item(cell_coords, mesh_library.find_item_by_name(placingTowerKey))
 					
 					var newTower = towerPrefabDictionary[placingTowerKey].instantiate()
 					add_child(newTower)

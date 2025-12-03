@@ -1,12 +1,12 @@
 @abstract
 class_name BaseTower extends MeshInstance3D
 
-var cellCoords = []
+@export var cellCoords = []
 
-var active := true
-var rotatable := true
-var configurable := true
-var destroyable := true
+@export var active := true
+@export var rotatable := true
+@export var configurable := true
+@export var destroyable := true
 
 #===========================================================
 # Functions for rotate, destroy, configure placeholder

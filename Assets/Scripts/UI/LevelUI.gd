@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 @onready var destroyButton = $TowerConfigurationPanel/DestroyButton
 
 @onready var towerPlacementPanel = $TowerPlacementPanel
-@onready var minimizePanelButton = $TowerPlacementPanel/MinimizePanelButton
+#@onready var minimizePanelButton = $TowerPlacementPanel/MinimizePanelButton
 var minimized := false
 
 @onready var currencyLabel = $TowerPlacementPanel/VBoxContainer/HBoxContainer/Currency/Label

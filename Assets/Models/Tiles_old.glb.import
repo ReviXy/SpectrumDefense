@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://mc14aab4tis4"
-path="res://.godot/imported/Tiles.glb-42dfb41582c6fd391313a30a8db258e2.scn"
+uid="uid://bdwjr4nd1jjku"
+path="res://.godot/imported/Tiles_old.glb-fe46b5a819c9e70d3f78daede4301194.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Tiles.glb"
-dest_files=["res://.godot/imported/Tiles.glb-42dfb41582c6fd391313a30a8db258e2.scn"]
+source_file="res://Assets/Models/Tiles_old.glb"
+dest_files=["res://.godot/imported/Tiles_old.glb-fe46b5a819c9e70d3f78daede4301194.scn"]
 
 [params]
 

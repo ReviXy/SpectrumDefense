@@ -45,10 +45,7 @@ func rotateTower():
 func configureTower():
 	pass
 
-static var c = 0
 func process_input_lasers(lasers: Array[Laser]):
-	c += 1
-	print(c)
 	for l in output_lasers:
 		l.queue_free()
 	output_lasers.clear()

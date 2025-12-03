@@ -8,7 +8,7 @@ const ColorRYB = preload("res://Assets/Scripts/ColorRYB.gd").ColorRYB
 @export var color: ColorRYB = ColorRYB.Red:
 	set(new_color):
 		color = new_color
-		indicator_material.albedo_color = ColorRYB_Operations.ToColor(new_color)
+		if indicator_material: indicator_material.albedo_color = ColorRYB_Operations.ToColor(new_color)
 var intensity_penalty: float = 0.1
 var laser_dictionary = {}
 
@@ -16,6 +16,7 @@ func _ready() -> void:
 	rotatable = false
 	await get_tree().physics_frame
 	await get_tree().physics_frame
+	color = color # Yes. Because this is godot
 	var lasers = (mainCollider as Area3D).get_overlapping_areas()
 	for l in lasers:
 		(l.get_parent() as Laser).set_update_flag()
