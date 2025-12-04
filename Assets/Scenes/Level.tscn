@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vs72j4mljes5"]
+[gd_scene load_steps=17 format=3 uid="uid://vs72j4mljes5"]
 
 [ext_resource type="Script" uid="uid://bgog3l3jt8cfc" path="res://Assets/Scripts/Managers/LevelSelector.gd" id="1_j6vvw"]
 [ext_resource type="Script" uid="uid://b0pt1ly3v1iry" path="res://Assets/Scripts/Managers/LevelCamera.gd" id="2_6jwxn"]
@@ -9,12 +9,21 @@
 [ext_resource type="Texture2D" uid="uid://c1tbn8gxymmf7" path="res://Assets/Sprites/Coin.png" id="7_xnpqu"]
 [ext_resource type="Texture2D" uid="uid://8f8oqyk25hcp" path="res://Assets/Sprites/Lifes.png" id="8_uhh13"]
 [ext_resource type="Texture2D" uid="uid://banh43vc7nu10" path="res://Assets/Sprites/Pause.png" id="9_4ymob"]
+[ext_resource type="Texture2D" uid="uid://cblitmodxsdvn" path="res://Assets/Models/StartButton.png" id="9_6jwxn"]
 
 [sub_resource type="Environment" id="Environment_numvf"]
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2rron"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6jwxn"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_qxdb1"]
+events = [SubResource("InputEventKey_6jwxn")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6vvw"]
 bg_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
@@ -169,6 +178,63 @@ layout_mode = 2
 focus_mode = 0
 text = "Поставить призму"
 metadata/TowerType = "Prism"
+
+[node name="StartWave" type="Button" parent="LevelUI/TowerPlacementPanel"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 623.0
+offset_right = 221.0
+offset_bottom = 691.0
+focus_mode = 0
+shortcut = SubResource("Shortcut_qxdb1")
+icon = ExtResource("9_6jwxn")
+
+[node name="Label" type="Label" parent="LevelUI/TowerPlacementPanel/StartWave"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartWaveHoldTimer" type="Timer" parent="LevelUI/TowerPlacementPanel/StartWave"]
+one_shot = true
+
+[node name="Slash" type="Label" parent="LevelUI/TowerPlacementPanel"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 600.0
+offset_right = 190.0
+offset_bottom = 623.0
+text = "/"
+
+[node name="WaveLabel" type="Label" parent="LevelUI/TowerPlacementPanel"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 600.0
+offset_right = 183.0
+offset_bottom = 623.0
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MaxWaveLabel" type="Label" parent="LevelUI/TowerPlacementPanel"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 600.0
+offset_right = 210.0
+offset_bottom = 623.0
+text = "1"
+vertical_alignment = 1
 
 [node name="PauseButton" type="Button" parent="LevelUI"]
 offset_left = 10.0
@@ -409,6 +475,8 @@ text = "Выбор уровня"
 [connection signal="pressed" from="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceFilterButton" to="LevelUI" method="_on_place_tower_button_pressed" flags=18]
 [connection signal="pressed" from="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceLensButton" to="LevelUI" method="_on_place_tower_button_pressed" flags=18]
 [connection signal="pressed" from="LevelUI/TowerPlacementPanel/VBoxContainer/PlacePrismButton" to="LevelUI" method="_on_place_tower_button_pressed" flags=18]
+[connection signal="button_down" from="LevelUI/TowerPlacementPanel/StartWave" to="LevelUI" method="_on_start_wave_button_down"]
+[connection signal="button_up" from="LevelUI/TowerPlacementPanel/StartWave" to="LevelUI" method="_on_start_wave_button_up"]
 [connection signal="pressed" from="LevelUI/PauseButton" to="LevelUI" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="LevelUI/PauseMenu/Panel/VBoxContainer/ContinueButton" to="LevelUI" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="LevelUI/PauseMenu/Panel/VBoxContainer/OptionsButton" to="LevelUI" method="_on_options_button_pressed"]

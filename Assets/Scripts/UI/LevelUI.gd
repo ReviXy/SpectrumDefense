@@ -6,7 +6,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if not LevelManager.this.WaveM.WaveDelayTimer.is_stopped():
+		startWaveLabel.text = str(LevelManager.this.WaveM.WaveDelayTimer.time_left+1).pad_decimals(0) 
 
 @onready var camera: Camera3D = get_viewport().get_camera_3d()
 
@@ -25,6 +26,12 @@ var minimized := false
 @onready var pauseMenu = $PauseMenu
 @onready var missionWin = $MissionWin
 @onready var missionLose = $MissionLose
+
+@onready var startWaveButton = $TowerPlacementPanel/StartWave
+@onready var startWaveLabel = $TowerPlacementPanel/StartWave/Label
+@onready var startWaveHoldTimer = $TowerPlacementPanel/StartWave/StartWaveHoldTimer
+@onready var waveLabel = $TowerPlacementPanel/WaveLabel
+@onready var maxWaveLabel = $TowerPlacementPanel/MaxWaveLabel
 
 #__________ Tower Configuration __________
 
@@ -116,3 +123,20 @@ func _update_hp() -> void:
 
 func _update_currency() -> void:
 	currencyLabel.text = str(LevelManager.this.ResourceM.Resources)
+
+#__________ Waves __________
+
+func _on_start_wave_button_down() -> void:
+	startWaveHoldTimer.timeout.connect(func():
+		startWaveLabel.text = "auto"
+		LevelManager.this.WaveM.autoLaunch = true
+		LevelManager.this.WaveM.LaunchNextWave())
+	startWaveHoldTimer.start(1)
+
+func _on_start_wave_button_up() -> void:
+	if not startWaveHoldTimer.is_stopped():
+		startWaveHoldTimer.stop()
+		startWaveLabel.text = ""
+		LevelManager.this.WaveM.autoLaunch = false
+		LevelManager.this.WaveM.LaunchNextWave()
+		LevelManager.this.WaveM.WaveDelayTimer.stop()
