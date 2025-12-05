@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbjiaaue5iipg"]
+
+[ext_resource type="Script" uid="uid://qqybwk2l34xk" path="res://HealthBar/HealthBar.gd" id="1_04e0r"]
+
+[sub_resource type="Gradient" id="Gradient_612pj"]
+offsets = PackedFloat32Array(0.53246754)
+colors = PackedColorArray(0.65515417, 0.15234339, 0.21497971, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_asog6"]
+gradient = SubResource("Gradient_612pj")
+width = 10
+
+[node name="HealthBar" type="Node3D"]
+script = ExtResource("1_04e0r")
+hp = 54.225
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.005, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+pixel_size = 1.0
+billboard = 1
+texture = SubResource("GradientTexture1D_asog6")
+
+[node name="Label3D" type="Label3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.1950846, 0)
+top_level = true
+pixel_size = 0.03
+billboard = 1
+text = "-23"
