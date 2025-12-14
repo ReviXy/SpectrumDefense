@@ -6,7 +6,7 @@ const ColorRYB = ColorRYB_Operations.ColorRYB
 @export var SpeedMult: float = 1
 ##Because multiplying by zero is the only multiplication, which can't be reversed
 var Stops: int = 0
-@export var EnemyWeakColor: ColorRYB
+var EnemyWeakColor: ColorRYB
 var EnemyStrongColor: ColorRYB:
 	get: return ColorRYB_Operations.Invert(EnemyStrongColor)
 @export var MaxHP: float = 100
@@ -15,6 +15,7 @@ var EnemyStrongColor: ColorRYB:
 @export var ResourcesGain: int = 0
 var Attachments: Dictionary = {}
 @onready var MainMeshInstance: MeshInstance3D = find_child("MainMesh")
+@onready var APlayer: AnimationPlayer = find_child("AnimationPlayer")
 
 func on_spawn():
 	pass
@@ -43,9 +44,9 @@ func on_end_reached():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if MainMeshInstance:
-		if MainMeshInstance.mesh.surface_get_material(0):
-			var AccentMaterial: StandardMaterial3D = MainMeshInstance.mesh.surface_get_material(0)
-			AccentMaterial.albedo_color = ColorRYB_Operations.ToColor(EnemyWeakColor)
+		if MainMeshInstance.material_override:
+			var shader_material: ShaderMaterial = MainMeshInstance.material_override
+			shader_material.set_shader_parameter("part_color",ColorRYB_Operations.ToColor(EnemyWeakColor))
 	if (LevelManager.this):
 		LevelManager.this.WaveM.EntityCount += 1
 		on_spawn()
@@ -114,4 +115,8 @@ func DeathCheck():
 			for a:EnemyAttachment in Attachments.values():
 				a.on_death()
 			LevelManager.this.ResourceM.GainResources(ResourcesGain)
-			queue_free()
+			set_physics_process(false)
+			set_process(false)
+			$Area3D.monitorable = false
+			$Area3D.monitoring = false
+			APlayer.play("BaseEntityAnims/death")

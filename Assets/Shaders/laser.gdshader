@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_add;
+render_mode blend_mix;
 
 
 uniform vec4 laser_color : source_color = vec4(1.0, 0.0, 0.0, 1.0);

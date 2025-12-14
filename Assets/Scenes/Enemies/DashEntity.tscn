@@ -1,6 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6pucg2t3wfnf"]
+[gd_scene load_steps=8 format=3 uid="uid://c6pucg2t3wfnf"]
 
 [ext_resource type="Script" uid="uid://nv7u5lxiaa8y" path="res://Assets/Scripts/Enemies/DashEntity.gd" id="1_5n70v"]
+[ext_resource type="Shader" uid="uid://cvtm237ygpufq" path="res://Assets/Shaders/enemy_shader.gdshader" id="2_0ohao"]
+[ext_resource type="AnimationLibrary" uid="uid://bsm87ocimnggh" path="res://Assets/AnimLibraries/BaseEntityAnims.res" id="2_x4ay6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phblu"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0ohao")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/part_color = Color(1, 1, 1, 1)
+shader_parameter/fade_factor = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_x4ay6"]
 size = Vector3(1, 1, 0.5)
@@ -20,6 +30,7 @@ ResourcesGain = 1
 
 [node name="MainMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.25)
+material_override = SubResource("ShaderMaterial_phblu")
 mesh = SubResource("BoxMesh_x4ay6")
 skeleton = NodePath("")
 
@@ -29,6 +40,9 @@ mesh = SubResource("PrismMesh_i3tbn")
 skeleton = NodePath("../Area3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"BaseEntityAnims": ExtResource("2_x4ay6")
+}
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2

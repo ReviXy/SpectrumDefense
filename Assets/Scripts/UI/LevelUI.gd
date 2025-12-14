@@ -305,7 +305,8 @@ func _on_start_wave_button_down() -> void:
 	startWaveHoldTimer.timeout.connect(func():
 		startWaveLabel.text = "auto"
 		LevelManager.this.WaveM.autoLaunch = true
-		LevelManager.this.WaveM.LaunchNextWave())
+		LevelManager.this.WaveM.LaunchNextWave()
+		LevelManager.this.WaveM.WaveDelayTimer.stop())
 	startWaveHoldTimer.start(1)
 
 func _on_start_wave_button_up() -> void:

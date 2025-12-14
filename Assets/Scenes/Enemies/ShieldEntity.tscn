@@ -1,6 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl6raglsem7bf"]
+[gd_scene load_steps=7 format=3 uid="uid://dl6raglsem7bf"]
 
 [ext_resource type="Script" uid="uid://ghov08fleort" path="res://Assets/Scripts/Enemies/ShieldEntity.gd" id="1_ol4pi"]
+[ext_resource type="AnimationLibrary" uid="uid://bsm87ocimnggh" path="res://Assets/AnimLibraries/BaseEntityAnims.res" id="2_c5ugb"]
+[ext_resource type="Shader" uid="uid://cvtm237ygpufq" path="res://Assets/Shaders/enemy_shader.gdshader" id="2_ol4pi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjd1v"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_ol4pi")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/part_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6p6g4"]
 
@@ -10,15 +19,20 @@
 loop = false
 script = ExtResource("1_ol4pi")
 ShieldCooldown = 5.0
+PauseDuration = 0.5
 ShieldHP = 100.0
 ResourcesGain = 1
 
 [node name="MainMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("ShaderMaterial_hjd1v")
 mesh = SubResource("CapsuleMesh_6p6g4")
 skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"BaseEntityAnims": ExtResource("2_c5ugb")
+}
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2
@@ -29,5 +43,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_6p6g4")
 
 [node name="CooldownTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="PauseTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
