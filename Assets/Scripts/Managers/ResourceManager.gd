@@ -40,13 +40,13 @@ func TakeDamage(damage: int):
 	HP = max(0, min(HP - damage,HP))
 
 func GainResources(resource: int):
-	resources_gained.emit(resource)
 	Resources = max(Resources,Resources + resource)
+	resources_gained.emit(resource)
 
 func LoseResources(resource: int):
 	if (resource <= Resources):
-		resources_lost.emit(resource)
 		Resources = max(0, min(Resources - resource,HP))
+		resources_lost.emit(resource)
 		return true
 	else:
 		return false

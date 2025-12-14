@@ -1,13 +1,27 @@
 class_name LevelUI extends CanvasLayer
 const ColorRYB = preload("res://Assets/Scripts/ColorRYB.gd").ColorRYB
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await $"..".ready
 	get_node("TopPanel").mouse_entered.connect(func(): LevelManager.this.GridM.resetHighlight())
 	get_node("PauseButton").mouse_entered.connect(func(): LevelManager.this.GridM.resetHighlight())
+	LevelManager.this.ResourceM.resources_gained.connect(updateUpgradeButton)
+	LevelManager.this.ResourceM.resources_lost.connect(updateUpgradeButton)
+	LevelManager.this.ResourceM.resources_gained.connect(updatePlacementButtons)
+	LevelManager.this.ResourceM.resources_lost.connect(updatePlacementButtons)
+	towerConfigurationPanel.position = Vector2(1280, 0)
+	towerPlacementPanel.position = Vector2(1280, 0)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func updateUpgradeButton(a):
+	var tower = LevelManager.this.GridM.configuratedTower
+	if (tower): 
+		upgradeButton.disabled = !(tower.upgradable and LevelManager.this.ResourceM.Resources >= getTowerUpgradeCost(tower))
+
+func updatePlacementButtons(a):
+	if (LevelManager.this.GridM.state == LevelManager.this.GridM.State.Placing):
+		for tower in towerPlacementButtons.keys():
+			towerPlacementButtons[tower].disabled = LevelManager.this.ResourceM.Resources >= getTowerPlacementCost(tower)
+
 func _process(_delta: float) -> void:
 	if not LevelManager.this.WaveM.WaveDelayTimer.is_stopped():
 		startWaveLabel.text = str(LevelManager.this.WaveM.WaveDelayTimer.time_left+1).pad_decimals(0) 
@@ -18,9 +32,12 @@ func _process(_delta: float) -> void:
 @onready var rotateClockwiseButton: Button = $TowerRotationPanel/RotateClockwiseButton
 @onready var rotateCounterClockwiseButton: Button = $TowerRotationPanel/RotateCounterClockwiseButton
 
+
 @onready var towerConfigurationPanel: Panel = $TowerConfigurationPanel
 @onready var upgradeButton: Button = $TowerConfigurationPanel/UpgradeButton
+@onready var upgradeCostLabel: Label = $TowerConfigurationPanel/UpgradeCostLabel
 @onready var destroyButton: Button = $TowerConfigurationPanel/DestroyButton
+@onready var destroyCompensationLabel: Label = $TowerConfigurationPanel/DestroyCompensationLabel
 @onready var towerConfigurationMenus = {
 	"Emitter": $TowerConfigurationPanel/Emitter,
 	"Mirror": $TowerConfigurationPanel/Mirror,
@@ -31,14 +48,37 @@ func _process(_delta: float) -> void:
 @onready var emitterIntensityLabel: Label = $TowerConfigurationPanel/Emitter/IntensityValueLabel
 @onready var emitterDistanceLabel: Label = $TowerConfigurationPanel/Emitter/DistanceValueLabel
 @onready var emitterColorDropDown: OptionButton = $TowerConfigurationPanel/Emitter/ColorDropDown
+
+@onready var mirrorLevelLabel: Label = $TowerConfigurationPanel/Mirror/LevelLabel
 @onready var mirrorIntensityPenaltyLabel: Label = $TowerConfigurationPanel/Mirror/IntensityPenaltyValueLabel
+
+@onready var filterLevelLabel: Label = $TowerConfigurationPanel/Filter/LevelLabel
 @onready var filterIntensityPenaltyLabel: Label = $TowerConfigurationPanel/Filter/IntensityPenaltyValueLabel
 @onready var filterColorDropDown: OptionButton = $TowerConfigurationPanel/Filter/ColorDropDown
+
+@onready var lensLevelLabel: Label = $TowerConfigurationPanel/Lens/LevelLabel
 @onready var lensIntensityPenaltyLabel: Label = $TowerConfigurationPanel/Lens/IntensityPenaltyValueLabel
 @onready var lensCoefficientSlider: Slider = $TowerConfigurationPanel/Lens/CoefficientSlider
+
+@onready var prismLevelLabel: Label = $TowerConfigurationPanel/Prism/LevelLabel
 @onready var prismIntensityPenaltyLabel: Label = $TowerConfigurationPanel/Prism/IntensityPenaltyValueLabel
 
+
 @onready var towerPlacementPanel = $TowerPlacementPanel
+@onready var towerPlacementButtons = {
+	"Emitter": $TowerPlacementPanel/VBoxContainer/PlaceEmitterButton,
+	"Mirror": $TowerPlacementPanel/VBoxContainer/PlaceMirrorButton,
+	"Filter": $TowerPlacementPanel/VBoxContainer/PlaceFilterButton,
+	"Lens": $TowerPlacementPanel/VBoxContainer/PlaceLensButton,
+	"Prism": $TowerPlacementPanel/VBoxContainer/PlacePrismButton
+}
+@onready var towerPlacementCostLabels = {
+	"Emitter": $TowerPlacementPanel/VBoxContainer/PlaceEmitterButton/Cost,
+	"Mirror": $TowerPlacementPanel/VBoxContainer/PlaceMirrorButton/Cost,
+	"Filter": $TowerPlacementPanel/VBoxContainer/PlaceFilterButton/Cost,
+	"Lens": $TowerPlacementPanel/VBoxContainer/PlaceLensButton/Cost,
+	"Prism": $TowerPlacementPanel/VBoxContainer/PlacePrismButton/Cost
+}
 
 @onready var currencyLabel: Label = $TopPanel/Currency/Label
 @onready var healthLabel: Label = $TopPanel/Health/Label
@@ -55,19 +95,37 @@ func _process(_delta: float) -> void:
 
 #__________ Tower Configuration __________
 
-func resetTowerPanel():
-	towerConfigurationPanel.global_position = Vector2(0, 720)
-	towerRotationPanel.global_position = Vector2(0, 720)
-	for menu in towerConfigurationMenus.values(): menu.visible = false
+func getTowerPlacementCost(towerKey):
+	var gridm = LevelManager.this.GridM
+	var towersPlaced = max(0, gridm.towerCounts[towerKey] - gridm.initialTowerCounts[towerKey])
+	return gridm.initialTowerPlacementCosts[towerKey] + towersPlaced * gridm.towerPlacementCostIncrement[towerKey]
 
-func showTowerConfigurationPanel(tower):
-	towerConfigurationPanel.global_position = Vector2(1030, 0)
-	towerRotationPanel.global_position = camera.unproject_position(LevelManager.this.GridM.map_to_local(tower.cellCoords[0])) + Vector2(-towerRotationPanel.size.x / 2, towerRotationPanel.size.y / 2)
-	
+func getTowerUpgradeCost(tower):
+	var gridm = LevelManager.this.GridM
+	var towerKey = tower.getTowerKey()
+	return gridm.initialTowerUpgradeCosts[towerKey] + (tower.level - 1) * gridm.TowerUpgradeCostsIncrement[towerKey]
+
+func getTowerDestroyCompensation(tower):
+	var gridm = LevelManager.this.GridM
+	var towerKey = tower.getTowerKey()
+	var towerValue = gridm.initialTowerPlacementCosts[towerKey]
+	for i in range(tower.level - 1): towerValue += gridm.initialTowerUpgradeCosts[towerKey] + i * gridm.TowerUpgradeCostsIncrement[towerKey]
+	return floor(towerValue * gridm.towerDestroyCashbackCoefficient) 
+
+func updateTowerConfigurationInfo():
+	var tower = LevelManager.this.GridM.configuratedTower
 	rotateClockwiseButton.disabled = !tower.rotatable
 	rotateCounterClockwiseButton.disabled = !tower.rotatable
-	upgradeButton.disabled = !tower.upgradable
+	
+	upgradeButton.disabled = !(tower.upgradable and LevelManager.this.ResourceM.Resources >= getTowerUpgradeCost(tower))
+	if tower.upgradable: 
+		upgradeCostLabel.text = "-%.0f$" % getTowerUpgradeCost(tower)
+	else: 
+		upgradeCostLabel.text = "MAX"
+	
 	destroyButton.disabled = !tower.destroyable
+	if tower.destroyable: destroyCompensationLabel.text = "+%.0f$" % getTowerDestroyCompensation(tower); destroyCompensationLabel.visible = true
+	else: destroyCompensationLabel.visible = false
 
 	towerConfigurationMenus[tower.getTowerKey()].visible = true
 	match (tower.getTowerKey()):
@@ -80,41 +138,67 @@ func showTowerConfigurationPanel(tower):
 				if tower.availableColors.has((i as ColorRYB)):
 					emitterColorDropDown.add_item(ColorRYB.keys()[i as ColorRYB], i)
 			emitterColorDropDown.selected = emitterColorDropDown.get_item_index(tower.color)
+			emitterColorDropDown.disabled = !tower.configurable
 		"Mirror":
-			mirrorIntensityPenaltyLabel.text = "%.0f" % ((tower as Mirror).intensity_penalty * 100) + "%"
+			tower = (tower as Mirror)
+			mirrorLevelLabel.text = "Ур.%.0f" % tower.level
+			mirrorIntensityPenaltyLabel.text = "%.0f" % (tower.intensity_penalty * 100) + "%"
 		"Filter":
 			tower = (tower as Filter)
+			filterLevelLabel.text = "Ур.%.0f" % tower.level
 			filterIntensityPenaltyLabel.text = "%.0f" % (tower.intensity_penalty * 100) + "%"
 			filterColorDropDown.clear()
 			for i in range(7):
 				if tower.availableColors.has((i as ColorRYB)):
 					filterColorDropDown.add_item(ColorRYB.keys()[i as ColorRYB], i)
 			filterColorDropDown.selected = filterColorDropDown.get_item_index(tower.color)
+			filterColorDropDown.disabled = !tower.configurable
 		"Lens":
 			tower = (tower as Lens)
+			lensLevelLabel.text = "Ур.%.0f" % tower.level
 			lensIntensityPenaltyLabel.text = "%.0f" % (tower.intensity_penalty * 100) + "%"
 			lensCoefficientSlider.value = tower.modification_coefficient
+			lensCoefficientSlider.editable = tower.configurable
 		"Prism":
-			prismIntensityPenaltyLabel.text = "%.0f" % ((tower as Prism).intensity_penalty * 100) + "%"
+			tower = (tower as Prism)
+			prismLevelLabel.text = "Ур.%.0f" % tower.level
+			prismIntensityPenaltyLabel.text = "%.0f" % (tower.intensity_penalty * 100) + "%"
 
+func resetTowerPanel():
+	towerRotationPanel.global_position = Vector2(0, 720)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(towerConfigurationPanel, "position", Vector2(1280, towerConfigurationPanel.position.y), 0.1)
+	await tween.finished
+	
+	for menu in towerConfigurationMenus.values(): menu.visible = false
+
+func showTowerConfigurationPanel():
+	var tower = LevelManager.this.GridM.configuratedTower
+	towerRotationPanel.global_position = camera.unproject_position(LevelManager.this.GridM.map_to_local(tower.cellCoords[0])) + Vector2(-towerRotationPanel.size.x / 2, towerRotationPanel.size.y / 2)
+	
+	updateTowerConfigurationInfo()
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(towerConfigurationPanel, "position", Vector2(1030, towerConfigurationPanel.position.y), 0.1)
+	await tween.finished
+
+func _on_upgrade_button_pressed() -> void:
+	var tower = LevelManager.this.GridM.configuratedTower
+	LevelManager.this.ResourceM.LoseResources(getTowerUpgradeCost(tower))
+	tower.level += 1
+	updateTowerConfigurationInfo()
+
+func _on_destroy_button_pressed() -> void:
+	LevelManager.this.ResourceM.GainResources(getTowerDestroyCompensation(LevelManager.this.GridM.configuratedTower))
+	LevelManager.this.GridM.destroyActiveTower()
+	resetTowerPanel()
 
 func _on_rotate_clockwise_button_pressed() -> void:
 	LevelManager.this.GridM.configuratedTower.rotateTower(true)
 
 func _on_rotate_counter_clockwise_button_pressed() -> void:
 	LevelManager.this.GridM.configuratedTower.rotateTower(false)
-
-func _on_configure_button_pressed() -> void:
-	LevelManager.this.GridM.configuratedTower.configureTower()
-
-func _on_destroy_button_pressed() -> void:
-	LevelManager.this.GridM.set_cell_item(LevelManager.this.GridM.configuratedTower.cellCoords[0], LevelManager.this.GridM.mesh_library.find_item_by_name("TowerTile"))
-	for pos in LevelManager.this.GridM.configuratedTower.cellCoords:
-		LevelManager.this.GridM.towers.erase(pos)
-	LevelManager.this.GridM.configuratedTower.destroyTower()
-	
-	LevelManager.this.GridM.state = LevelManager.this.GridM.State.None
-	resetTowerPanel()
 
 func _on_emitter_color_dropdown_item_selected(index: int) -> void:
 	(LevelManager.this.GridM.configuratedTower as Emitter).color = emitterColorDropDown.get_item_id(index) as ColorRYB
@@ -127,26 +211,35 @@ func _on_lens_coefficient_slider_value_changed(value: float) -> void:
 
 #__________ Tower Placement __________
 
+func updateTowerPlacementInfo():
+	for tower in towerPlacementButtons.keys():
+		towerPlacementButtons[tower].disabled = !(LevelManager.this.ResourceM.Resources >= getTowerPlacementCost(tower))
+	
+	for tower in towerPlacementCostLabels.keys():
+		towerPlacementCostLabels[tower].text = "%.0f$" % getTowerPlacementCost(tower)
+
 func showTowerPlacementPanel():
-	towerPlacementPanel.position.x = 1030.0
+	updateTowerPlacementInfo()
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(towerPlacementPanel, "position", Vector2(1030, towerPlacementPanel.position.y), 0.1)
+	await tween.finished
 
 func hideTowerPlacementPanel():
-	towerPlacementPanel.position.x = 1030.0 + 250.0
+	updateTowerPlacementInfo()
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(towerPlacementPanel, "position", Vector2(1280, towerPlacementPanel.position.y), 0.1)
+	await tween.finished
 
 func _on_place_tower_button_pressed(button: Button) -> void:
+	LevelManager.this.ResourceM.LoseResources(getTowerPlacementCost(button.get_meta("TowerType")))
 	var gridmap = LevelManager.this.GridM
 	
 	gridmap.placeTower(button.get_meta("TowerType"), gridmap.active_cell_coords)
 	gridmap.resetHighlight()
 	gridmap.state = gridmap.State.None
 	hideTowerPlacementPanel()
-	
-	#if gridmap.state == gridmap.State.None:
-		#gridmap.state = gridmap.State.Placing
-		#gridmap.placingTowerKey = button.get_meta("TowerType")
-	#elif gridmap.state == gridmap.State.Placing:
-		#gridmap.state = gridmap.State.None
-		#gridmap.resetHighlight()
 
 #__________ Pause Menu __________
 
@@ -204,7 +297,7 @@ func _update_hp() -> void:
 	healthLabel.text = str(LevelManager.this.ResourceM.HP)
 
 func _update_currency() -> void:
-	currencyLabel.text = str(LevelManager.this.ResourceM.Resources)
+	currencyLabel.text = str(LevelManager.this.ResourceM.Resources) + "$"
 
 #__________ Waves __________
 

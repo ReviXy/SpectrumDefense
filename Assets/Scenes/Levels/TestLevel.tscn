@@ -213,13 +213,15 @@ configurable = false
 destroyable = false
 
 [node name="Filter" parent="GridManager" instance=ExtResource("16_eumoi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.7, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.7, -2.99995)
 mesh = SubResource("CylinderMesh_q6iuf")
 color = 2
+configurable = false
 
 [node name="Lens" parent="GridManager" instance=ExtResource("18_i01aw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.7, 1)
 mesh = SubResource("BoxMesh_vofs5")
+configurable = false
 
 [node name="Mirror" parent="GridManager" instance=ExtResource("20_ng7bl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.7, 5)

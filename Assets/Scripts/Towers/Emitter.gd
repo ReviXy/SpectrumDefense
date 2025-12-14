@@ -26,6 +26,8 @@ func getTowerKey() -> String:
 	return "Emitter"
 
 func _ready() -> void:
+	upgradable = false
+	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	var lasers = (mainCollider as Area3D).get_overlapping_areas()

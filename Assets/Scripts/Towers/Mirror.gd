@@ -6,14 +6,27 @@ class_name Mirror extends BaseTower
 @onready var leftCollider = $LeftCollider
 @onready var rightCollider = $RightCollider
 
-var intensity_penalty: float = 0.1
+var intensity_penalty: float:
+	set(new_intensity_penalty):
+		intensity_penalty = new_intensity_penalty
+		for laser in laser_dictionary.keys():
+			laser.set_update_flag()
+
 var laser_dictionary = {}
 
 func getTowerKey() -> String:
 	return "Mirror"
 
 func _ready() -> void:
+	upgrades = {
+		1: func(): intensity_penalty = 0.15,
+		2: func(): intensity_penalty = 0.1,
+		3: func(): intensity_penalty = 0.05
+	}
+	upgrades[1].call()
+	max_level = upgrades.keys().max()
 	configurable = false
+	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	var colliders = [mainCollider, leftCollider, rightCollider]

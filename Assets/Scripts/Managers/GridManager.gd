@@ -2,6 +2,40 @@
 extends GridMap
 class_name GridManager
 
+@export var initialTowerPlacementCosts = {
+	"Emitter": 50,
+	"Mirror": 5,
+	"Filter": 10,
+	"Lens": 30,
+	"Prism": 50
+}
+
+@export var towerPlacementCostIncrement = {
+	"Emitter": 30,
+	"Mirror": 2,
+	"Filter": 5,
+	"Lens": 10,
+	"Prism": 20
+}
+
+@export var initialTowerUpgradeCosts = {
+	"Emitter": 0,
+	"Mirror": 10,
+	"Filter": 30,
+	"Lens": 30,
+	"Prism": 30
+}
+
+@export var TowerUpgradeCostsIncrement = {
+	"Emitter": 0,
+	"Mirror": 5,
+	"Filter": 10,
+	"Lens": 20,
+	"Prism": 20
+}
+
+@export var towerDestroyCashbackCoefficient = 0.75
+
 @onready var tileHighlight := $TileHighlight
 @onready var camera := get_viewport().get_camera_3d()
 
@@ -10,7 +44,15 @@ var state: State = State.None
 var configuratedTower: BaseTower
 var towers := {}
 
-#var placingTowerKey: String
+var initialTowerCounts
+var towerCounts = {
+	"Emitter": 0,
+	"Mirror": 0,
+	"Filter": 0,
+	"Lens": 0,
+	"Prism": 0
+}
+
 var towerPrefabDictionary = {
 	"Emitter": preload("res://Assets/Scenes/Towers/Emitter.tscn"),
 	"Mirror": preload("res://Assets/Scenes/Towers/Mirror.tscn"),
@@ -40,6 +82,8 @@ func _ready() -> void:
 		if tower is BaseTower:
 			towers[local_to_map(to_local(tower.global_position))] = tower
 			tower.cellCoords = [local_to_map(to_local(tower.global_position))]
+			towerCounts[tower.getTowerKey()] += 1
+	initialTowerCounts = towerCounts.duplicate()
 
 var update_cooldown = 0.0
 func _process(delta: float) -> void: # Editor mode only
@@ -80,6 +124,7 @@ func getTileUnderMouse(mousePosition):
 		return null
 
 func placeTower(placingTowerKey, cell_coords):
+	towerCounts[placingTowerKey] += 1
 	set_cell_item(cell_coords, mesh_library.find_item_by_name(placingTowerKey))
 	var newTower = towerPrefabDictionary[placingTowerKey].instantiate()
 	add_child(newTower)
@@ -87,30 +132,24 @@ func placeTower(placingTowerKey, cell_coords):
 	newTower.cellCoords = [cell_coords]
 	towers[cell_coords] = newTower
 
+func destroyActiveTower():
+	towerCounts[configuratedTower.getTowerKey()] -= 1
+	set_cell_item(configuratedTower.cellCoords[0], mesh_library.find_item_by_name("TowerTile"))
+	for pos in configuratedTower.cellCoords:
+		towers.erase(pos)
+	configuratedTower.destroyTower()
+	state = State.None
+
 var active_cell_coords = null
 func _unhandled_input(event):
 	if Engine.is_editor_hint(): return 
 	match state:
-		#State.None:
-			## Click on existing tower
-			## Open Configuration menu
-			#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-				#var cell_coords = getTileUnderMouse(event)
-				#if cell_coords and towerPrefabDictionary.has(mesh_library.get_item_name(get_cell_item(cell_coords))):
-					#state = State.Configuration
-					#configuratedTower = towers[cell_coords]
-					#LevelManager.this.UIM.showTowerPanel(configuratedTower)
-		
 		State.None:
 			# Tile Highlight
 			if event is InputEventMouse or event is InputEventKey:
 				var cell_coords = getTileUnderMouse(get_viewport().get_mouse_position())
 				if cell_coords != null:
 					tileHighlight.get_surface_override_material(0).albedo_color = Color(0.3, 0.3, 0.3, 0.5)
-					#if mesh_library.get_item_name(get_cell_item(cell_coords)) == "TowerTile":
-						#tileHighlight.get_surface_override_material(0).albedo_color = Color(0.3, 0.3, 0.3, 0.5)
-					#else:
-						#tileHighlight.get_surface_override_material(0).albedo_color = Color(1, 0, 0, 0.5)
 					tileHighlight.global_position = map_to_local(cell_coords)
 				else:
 					resetHighlight()
@@ -127,13 +166,14 @@ func _unhandled_input(event):
 				if active_cell_coords and towerPrefabDictionary.has(mesh_library.get_item_name(get_cell_item(active_cell_coords))):
 					state = State.Configuration
 					configuratedTower = towers[active_cell_coords]
-					LevelManager.this.UIM.showTowerConfigurationPanel(towers[active_cell_coords])
+					LevelManager.this.UIM.showTowerConfigurationPanel()
 					tileHighlight.get_surface_override_material(0).albedo_color = Color(0, 1, 0, 0.5)
 		
 		State.Configuration:
 			# Close tower configuration menu
 			if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 				state = State.None
+				configuratedTower = null
 				LevelManager.this.UIM.resetTowerPanel()
 		State.Placing:
 			# Close tower configuration menu

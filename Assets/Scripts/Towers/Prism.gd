@@ -5,16 +5,27 @@ const ColorRYB = ColorRYB_Operations.ColorRYB
 
 @onready var mainCollider = $MainCollider
 
-var intensity_penalty: float = 0.1
+var intensity_penalty: float:
+	set(new_intensity_penalty):
+		intensity_penalty = new_intensity_penalty
+		process_input_lasers(input_lasers)
+
 var input_lasers: Array[Laser] = []
-var last_input_lasers: Array[Laser] = []
 var output_lasers: Array[Laser] = []
 
 func getTowerKey() -> String:
 	return "Prism"
 
 func _ready() -> void:
+	upgrades = {
+		1: func(): intensity_penalty = 0.2,
+		2: func(): intensity_penalty = 0.1,
+		3: func(): intensity_penalty = 0
+	}
+	upgrades[1].call()
+	max_level = upgrades.keys().max()
 	configurable = false
+	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	var lasers = (mainCollider as Area3D).get_overlapping_areas()

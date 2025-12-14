@@ -14,14 +14,27 @@ const ColorRYB = preload("res://Assets/Scripts/ColorRYB.gd").ColorRYB
 
 @export var availableColors: Array[ColorRYB] = [0 as ColorRYB, 1 as ColorRYB, 2 as ColorRYB, 3 as ColorRYB, 4 as ColorRYB, 5 as ColorRYB, 6 as ColorRYB]
 
-var intensity_penalty: float = 0.1
+var intensity_penalty: float:
+	set(new_intensity_penalty):
+		intensity_penalty = new_intensity_penalty
+		for laser in laser_dictionary.keys():
+			laser.set_update_flag()
+
 var laser_dictionary = {}
 
 func getTowerKey() -> String:
 	return "Filter"
 
 func _ready() -> void:
+	upgrades = {
+		1: func(): intensity_penalty = 0.4,
+		2: func(): intensity_penalty = 0.3,
+		3: func(): intensity_penalty = 0.2
+	}
+	upgrades[1].call()
+	max_level = upgrades.keys().max()
 	rotatable = false
+	
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	color = color # Yes. Because this is godot

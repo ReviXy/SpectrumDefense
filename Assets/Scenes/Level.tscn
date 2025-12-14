@@ -228,15 +228,30 @@ offset_right = 250.0
 grow_horizontal = 0
 grow_vertical = 2
 
+[node name="Title" type="Label" parent="LevelUI/TowerPlacementPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.5
+offset_top = 10.0
+offset_right = 89.5
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Установка башни"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelUI/TowerPlacementPanel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -96.0
-offset_top = 10.0
-offset_right = 96.0
-offset_bottom = 100.0
+offset_top = 50.0
+offset_right = 54.0
+offset_bottom = 290.0
 grow_horizontal = 2
 theme_override_constants/separation = 10
 
@@ -244,36 +259,81 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
-text = "Поставить излучатель"
+text = "Излучатель"
 metadata/TowerType = "Emitter"
+
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceEmitterButton"]
+layout_mode = 0
+offset_left = 155.0
+offset_right = 195.0
+offset_bottom = 40.0
+text = "10$"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlaceMirrorButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
-text = "Поставить зеркало"
+text = "Зеркало"
 metadata/TowerType = "Mirror"
+
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceMirrorButton"]
+layout_mode = 0
+offset_left = 155.0
+offset_right = 195.0
+offset_bottom = 40.0
+text = "10$"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlaceFilterButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
-text = "Поставить фильтр"
+text = "Фильтр"
 metadata/TowerType = "Filter"
+
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceFilterButton"]
+layout_mode = 0
+offset_left = 155.0
+offset_right = 195.0
+offset_bottom = 40.0
+text = "10$"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlaceLensButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
-text = "Поставить линзу"
+text = "Линза"
 metadata/TowerType = "Lens"
+
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceLensButton"]
+layout_mode = 0
+offset_left = 155.0
+offset_right = 195.0
+offset_bottom = 40.0
+text = "10$"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlacePrismButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
-text = "Поставить призму"
+text = "Призма"
 metadata/TowerType = "Prism"
+
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlacePrismButton"]
+layout_mode = 0
+offset_left = 155.0
+offset_right = 195.0
+offset_bottom = 40.0
+text = "10$"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PauseButton" type="Button" parent="LevelUI"]
 offset_left = 10.0
@@ -633,6 +693,16 @@ theme_override_font_sizes/font_size = 25
 text = "Зеркало"
 vertical_alignment = 1
 
+[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 30.0
+offset_right = 240.0
+offset_bottom = 55.0
+text = "Ур.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror"]
 layout_mode = 0
 offset_left = 25.0
@@ -678,6 +748,16 @@ offset_bottom = 60.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
 text = "Фильтр"
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 30.0
+offset_right = 240.0
+offset_bottom = 55.0
+text = "Ур.1"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter"]
@@ -750,6 +830,16 @@ theme_override_font_sizes/font_size = 25
 text = "Линза"
 vertical_alignment = 1
 
+[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 30.0
+offset_right = 240.0
+offset_bottom = 55.0
+text = "Ур.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens"]
 layout_mode = 0
 offset_left = 25.0
@@ -819,6 +909,16 @@ theme_override_font_sizes/font_size = 25
 text = "Призма"
 vertical_alignment = 1
 
+[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 30.0
+offset_right = 240.0
+offset_bottom = 55.0
+text = "Ур.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism"]
 layout_mode = 0
 offset_left = 25.0
@@ -857,6 +957,26 @@ focus_mode = 0
 icon = ExtResource("6_r5kyp")
 expand_icon = true
 
+[node name="UpgradeCostLabel" type="Label" parent="LevelUI/TowerConfigurationPanel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 625.0
+offset_right = 70.0
+offset_bottom = 648.0
+text = "-10$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DestroyCompensationLabel" type="Label" parent="LevelUI/TowerConfigurationPanel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 625.0
+offset_right = 230.0
+offset_bottom = 648.0
+text = "+10$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="button_down" from="LevelUI/TopPanel/StartWave" to="LevelUI" method="_on_start_wave_button_down"]
 [connection signal="button_up" from="LevelUI/TopPanel/StartWave" to="LevelUI" method="_on_start_wave_button_up"]
 [connection signal="toggled" from="LevelUI/TopPanel/FastForward" to="LevelUI" method="_on_fast_forward_toggled"]
@@ -880,4 +1000,5 @@ expand_icon = true
 [connection signal="item_selected" from="LevelUI/TowerConfigurationPanel/Emitter/ColorDropDown" to="LevelUI" method="_on_emitter_color_dropdown_item_selected"]
 [connection signal="item_selected" from="LevelUI/TowerConfigurationPanel/Filter/ColorDropDown" to="LevelUI" method="_on_filter_color_dropdown_item_selected"]
 [connection signal="value_changed" from="LevelUI/TowerConfigurationPanel/Lens/CoefficientSlider" to="LevelUI" method="_on_lens_coefficient_slider_value_changed"]
+[connection signal="pressed" from="LevelUI/TowerConfigurationPanel/UpgradeButton" to="LevelUI" method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="LevelUI/TowerConfigurationPanel/DestroyButton" to="LevelUI" method="_on_destroy_button_pressed"]
