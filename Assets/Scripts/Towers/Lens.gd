@@ -36,7 +36,6 @@ func _ready() -> void:
 	}
 	upgrades[1].call()
 	max_level = upgrades.keys().max()
-	configurable = false
 	
 	await get_tree().physics_frame
 	await get_tree().physics_frame

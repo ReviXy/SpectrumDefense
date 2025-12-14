@@ -18,9 +18,8 @@ func updateUpgradeButton(a):
 		upgradeButton.disabled = !(tower.upgradable and LevelManager.this.ResourceM.Resources >= getTowerUpgradeCost(tower))
 
 func updatePlacementButtons(a):
-	if (LevelManager.this.GridM.state == LevelManager.this.GridM.State.Placing):
-		for tower in towerPlacementButtons.keys():
-			towerPlacementButtons[tower].disabled = LevelManager.this.ResourceM.Resources >= getTowerPlacementCost(tower)
+	for tower in towerPlacementButtons.keys():
+		towerPlacementButtons[tower].disabled = !(LevelManager.this.ResourceM.Resources >= getTowerPlacementCost(tower))
 
 func _process(_delta: float) -> void:
 	if not LevelManager.this.WaveM.WaveDelayTimer.is_stopped():
