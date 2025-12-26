@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c1tbn8gxymmf7" path="res://Assets/Sprites/Coin.png" id="7_xnpqu"]
 [ext_resource type="Texture2D" uid="uid://8f8oqyk25hcp" path="res://Assets/Sprites/Lifes.png" id="8_uhh13"]
 [ext_resource type="Texture2D" uid="uid://banh43vc7nu10" path="res://Assets/Sprites/Pause.png" id="9_4ymob"]
-[ext_resource type="Texture2D" uid="uid://cblitmodxsdvn" path="res://Assets/Models/StartButton.png" id="9_6jwxn"]
+[ext_resource type="Texture2D" uid="uid://cblitmodxsdvn" path="res://Assets/Sprites/StartButton.png" id="9_6jwxn"]
 [ext_resource type="Texture2D" uid="uid://c435lah81gsut" path="res://Assets/Sprites/Upgrade.png" id="11_qxdb1"]
 
 [sub_resource type="Environment" id="Environment_numvf"]
@@ -174,7 +174,7 @@ layout_mode = 0
 offset_left = 30.0
 offset_right = 60.0
 offset_bottom = 25.0
-text = "100"
+text = "100$"
 
 [node name="FastForward" type="Button" parent="LevelUI/TopPanel"]
 layout_mode = 1

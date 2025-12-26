@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6pucg2t3wfnf"]
+[gd_scene load_steps=12 format=3 uid="uid://c6pucg2t3wfnf"]
 
 [ext_resource type="Script" uid="uid://nv7u5lxiaa8y" path="res://Assets/Scripts/Enemies/DashEntity.gd" id="1_5n70v"]
 [ext_resource type="Shader" uid="uid://cvtm237ygpufq" path="res://Assets/Shaders/enemy_shader.gdshader" id="2_0ohao"]
 [ext_resource type="AnimationLibrary" uid="uid://bsm87ocimnggh" path="res://Assets/AnimLibraries/BaseEntityAnims.res" id="2_x4ay6"]
+[ext_resource type="Script" uid="uid://k5qpt7g4ih6n" path="res://Assets/Scripts/Effects/DamageNumberPool.gd" id="4_phblu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phblu"]
 resource_local_to_scene = true
@@ -10,7 +11,6 @@ render_priority = 0
 shader = ExtResource("2_0ohao")
 shader_parameter/base_color = Color(1, 1, 1, 1)
 shader_parameter/part_color = Color(1, 1, 1, 1)
-shader_parameter/fade_factor = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_x4ay6"]
 size = Vector3(1, 1, 0.5)
@@ -18,6 +18,24 @@ size = Vector3(1, 1, 0.5)
 [sub_resource type="PrismMesh" id="PrismMesh_i3tbn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ohao"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gqucd"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uj8uq"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6aivh"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [node name="PathFollow3D" type="PathFollow3D"]
 loop = false
@@ -59,3 +77,32 @@ one_shot = true
 [node name="DurationTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[node name="EnemyUI" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_gqucd")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(256, 256)
+script = ExtResource("4_phblu")
+
+[node name="HealthBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -10.0
+offset_right = 75.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_uj8uq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6aivh")
+value = 100.0
+show_percentage = false

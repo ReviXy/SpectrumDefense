@@ -177,6 +177,7 @@ script = ExtResource("1_p5wma")
 
 [node name="ResourceManager" type="Node3D" parent="."]
 script = ExtResource("2_3i3hp")
+Resources = 30
 
 [node name="WaveManager" type="Node3D" parent="."]
 script = ExtResource("2_7x1ww")
@@ -216,7 +217,6 @@ destroyable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.7, -2.99995)
 mesh = SubResource("CylinderMesh_q6iuf")
 color = 2
-configurable = false
 
 [node name="Lens" parent="GridManager" instance=ExtResource("18_i01aw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.7, 1)

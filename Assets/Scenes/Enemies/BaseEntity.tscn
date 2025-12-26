@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://43kchsu37yop"]
+[gd_scene load_steps=14 format=3 uid="uid://43kchsu37yop"]
 
 [ext_resource type="Script" uid="uid://dty531yx5pnj2" path="res://Assets/Scripts/Enemies/BaseEntity.gd" id="1_i3tbn"]
 [ext_resource type="Shader" uid="uid://cvtm237ygpufq" path="res://Assets/Shaders/enemy_shader.gdshader" id="2_d7ytc"]
 [ext_resource type="AnimationLibrary" uid="uid://bsm87ocimnggh" path="res://Assets/AnimLibraries/BaseEntityAnims.res" id="2_yaghk"]
+[ext_resource type="Script" uid="uid://k5qpt7g4ih6n" path="res://Assets/Scripts/Effects/DamageNumberPool.gd" id="4_0gabb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kg630"]
 resource_local_to_scene = true
@@ -37,6 +38,24 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6p6g4"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_lnuxm"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kenej"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg630"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
 [node name="PathFollow3D" type="PathFollow3D"]
 loop = false
 script = ExtResource("1_i3tbn")
@@ -67,3 +86,32 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_6p6g4")
+
+[node name="EnemyUI" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_lnuxm")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(256, 256)
+script = ExtResource("4_0gabb")
+
+[node name="HealthBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -10.0
+offset_right = 75.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_kenej")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kg630")
+value = 100.0
+show_percentage = false

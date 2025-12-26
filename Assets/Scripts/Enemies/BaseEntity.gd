@@ -17,6 +17,9 @@ var Attachments: Dictionary = {}
 @onready var MainMeshInstance: MeshInstance3D = find_child("MainMesh")
 @onready var APlayer: AnimationPlayer = find_child("AnimationPlayer")
 
+@onready var healthBar: ProgressBar = $SubViewport/HealthBar
+@onready var damageNumberPool: DamageNumberPool = $SubViewport
+
 func on_spawn():
 	pass
 
@@ -68,8 +71,11 @@ func TakeDamage(damage: float, color: ColorRYB):
 	for a:EnemyAttachment in Attachments.values():
 		proceed = proceed and a.pre_damage(damage,color,preSum,mult,postSum)
 	if proceed:
-		var damageTaken = max(((damage+preSum.value)*mult.value+postSum.value)*(2.0 if color == EnemyWeakColor else (0.25 if color == EnemyStrongColor else 1.0)),0.0)
+		var damageCoefficient = (2.0 if color == EnemyWeakColor else (0.25 if color == EnemyStrongColor else 1.0))
+		var damageTaken = max(((damage+preSum.value)*mult.value+postSum.value)*damageCoefficient,0.0)
 		HP -= damageTaken
+		if healthBar != null: healthBar.value = HP / MaxHP * 100
+		if damageNumberPool != null: damageNumberPool.show_damage(damageTaken, damageCoefficient, color)
 		post_damage(damageTaken,color)
 		for a:EnemyAttachment in Attachments.values():
 			a.post_damage(damageTaken,color)
@@ -78,6 +84,7 @@ func TakeDamage(damage: float, color: ColorRYB):
 
 func RestoreHP(Healing: float):
 	HP = min(MaxHP,HP+Healing)
+	if healthBar != null: healthBar.value = HP / MaxHP * 100
 
 func _physics_process(delta: float) -> void:
 	if (HP <= 0):

@@ -38,9 +38,11 @@ func pre_damage(_baseDamage:float, _color:ColorRYB_Operations.ColorRYB, _preSum:
 			break
 	if i == -1:
 		update_graphic()
-		#All shields are suppressed or there are no shieds yet, let the damage pass.
+		#All shields are suppressed or there are no shields yet, let the damage pass.
 		return true
-	Shields[i].currentHP -= max(_baseDamage*(2.0 if _color == Shields[i].WeakColor else (0.25 if _color == Shields[i].StrongColor else 1.0)),0.0)
+	var damageCoefficient = (2.0 if _color == Shields[i].WeakColor else (0.25 if _color == Shields[i].StrongColor else 1.0))
+	Shields[i].currentHP -= max(_baseDamage*damageCoefficient,0.0)
+	Parent.damageNumberPool.show_damage(_baseDamage, damageCoefficient, _color)
 	if (Shields[i].currentHP <= 0):
 		Shields[i].OnDestroy.emit()
 		OnDestroyAny.emit()
