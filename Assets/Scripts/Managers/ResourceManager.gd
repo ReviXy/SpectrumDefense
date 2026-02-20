@@ -45,7 +45,7 @@ func GainResources(resource: int):
 
 func LoseResources(resource: int):
 	if (resource <= Resources):
-		Resources = max(0, min(Resources - resource,HP))
+		Resources = max(0, min(Resources - resource, Resources))
 		resources_lost.emit(resource)
 		return true
 	else:
