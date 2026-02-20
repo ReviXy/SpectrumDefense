@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=54 format=3 uid="uid://dyy33slfjlbhq"]
+[gd_resource type="MeshLibrary" format=3 uid="uid://dyy33slfjlbhq"]
 
 [ext_resource type="Texture2D" uid="uid://isnqm6vg1jkm" path="res://Assets/Models/Tiles_palette.png" id="1_vpf72"]
 [ext_resource type="Texture2D" uid="uid://c8v1xbcygceyd" path="res://Assets/Models/Tiles_palette_1.png" id="2_fob1f"]

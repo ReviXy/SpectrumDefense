@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://baec2mk7u3hey"]
+[gd_scene format=3 uid="uid://baec2mk7u3hey"]
 
 [ext_resource type="Script" uid="uid://bbfa11fv22u08" path="res://Assets/Scripts/UI/MainMenuUI.gd" id="1_hywc3"]
 
@@ -7,7 +7,7 @@ font_size = 50
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="MainMenuUI" type="Control"]
+[node name="MainMenuUI" type="Control" unique_id=1462502650]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hywc3")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=2018015237]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Tiltle" type="Label" parent="Panel"]
+[node name="Tiltle" type="Label" parent="Panel" unique_id=1452201059]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -34,10 +34,10 @@ offset_top = 100.0
 offset_right = 177.5
 offset_bottom = 155.0
 grow_horizontal = 2
-text = "Spectrum Defence"
+text = "Spectrum Defense"
 label_settings = SubResource("LabelSettings_fp48a")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1759593898]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 13
@@ -51,21 +51,21 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="Panel/VBoxContainer" unique_id=1750987144]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Играть"
 
-[node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="Panel/VBoxContainer" unique_id=1987156892]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Настройки"
 
-[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer" unique_id=1840517688]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0

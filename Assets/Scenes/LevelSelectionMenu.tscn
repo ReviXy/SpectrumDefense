@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5xcm4um4f1t1"]
+[gd_scene format=3 uid="uid://c5xcm4um4f1t1"]
 
 [ext_resource type="Script" uid="uid://b14l60tg8niyb" path="res://Assets/Scripts/UI/LevelSelectionUI.gd" id="1_mn6i2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_58oa2"]
 font_size = 40
 
-[node name="LevelSelectionMenu" type="Control"]
+[node name="LevelSelectionMenu" type="Control" unique_id=237425963]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mn6i2")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1155472711]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=1133555322]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -35,7 +35,7 @@ grow_horizontal = 2
 text = "Выбор уровня"
 label_settings = SubResource("LabelSettings_58oa2")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1262589973]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 14
@@ -47,42 +47,45 @@ grow_vertical = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Level1Button" type="Button" parent="Panel/HBoxContainer"]
+[node name="Level1Button" type="Button" parent="Panel/HBoxContainer" unique_id=555188614]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
 text = "1"
 
-[node name="Level2Button" type="Button" parent="Panel/HBoxContainer"]
+[node name="Level2Button" type="Button" parent="Panel/HBoxContainer" unique_id=1840039956]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
 text = "2"
 
-[node name="Level3Button" type="Button" parent="Panel/HBoxContainer"]
+[node name="Level3Button" type="Button" parent="Panel/HBoxContainer" unique_id=2086111341]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
+disabled = true
 text = "3"
 
-[node name="Level4Button" type="Button" parent="Panel/HBoxContainer"]
+[node name="Level4Button" type="Button" parent="Panel/HBoxContainer" unique_id=774237479]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
+disabled = true
 text = "4"
 
-[node name="Level5Button" type="Button" parent="Panel/HBoxContainer"]
+[node name="Level5Button" type="Button" parent="Panel/HBoxContainer" unique_id=1534122721]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
+disabled = true
 text = "5"
 
-[node name="TestLevelButton" type="Button" parent="Panel"]
+[node name="TestLevelButton" type="Button" parent="Panel" unique_id=1420169804]
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
 anchors_preset = 5
@@ -95,9 +98,10 @@ offset_bottom = 550.0
 grow_horizontal = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 30
+disabled = true
 text = "Тестовый уровень"
 
-[node name="BackToMenuButton" type="Button" parent="Panel"]
+[node name="BackToMenuButton" type="Button" parent="Panel" unique_id=794306215]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
