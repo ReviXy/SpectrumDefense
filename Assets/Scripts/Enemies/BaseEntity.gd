@@ -19,6 +19,7 @@ var Attachments: Dictionary = {}
 
 @onready var healthBar: ProgressBar = $SubViewport/HealthBar
 @onready var damageNumberPool: DamageNumberPool = $SubViewport
+@onready var resourceNumber: ResourceNumber = $SubViewport/ResourceNumber
 
 func on_spawn():
 	pass
@@ -39,6 +40,10 @@ func pre_death():
 	pass
 
 func on_death():
+	if resourceNumber != null: 
+		resourceNumber.show_resource_gain(ResourcesGain, 
+		Vector2(damageNumberPool.size.x / 2 - resourceNumber.size.x / 2, 
+		damageNumberPool.size.y / 2 - resourceNumber.size.y / 2 - 40))
 	pass
 
 func on_end_reached():

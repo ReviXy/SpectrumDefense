@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6pucg2t3wfnf"]
+[gd_scene format=3 uid="uid://c6pucg2t3wfnf"]
 
 [ext_resource type="Script" uid="uid://nv7u5lxiaa8y" path="res://Assets/Scripts/Enemies/DashEntity.gd" id="1_5n70v"]
 [ext_resource type="Shader" uid="uid://cvtm237ygpufq" path="res://Assets/Shaders/enemy_shader.gdshader" id="2_0ohao"]
 [ext_resource type="AnimationLibrary" uid="uid://bsm87ocimnggh" path="res://Assets/AnimLibraries/BaseEntityAnims.res" id="2_x4ay6"]
 [ext_resource type="Script" uid="uid://k5qpt7g4ih6n" path="res://Assets/Scripts/Effects/DamageNumberPool.gd" id="4_phblu"]
+[ext_resource type="PackedScene" uid="uid://bokuma3cuj3i7" path="res://Assets/Scenes/Statuses/ResourceNumber.tscn" id="5_gqucd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phblu"]
 resource_local_to_scene = true
@@ -37,7 +38,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
-[node name="PathFollow3D" type="PathFollow3D"]
+[node name="PathFollow3D" type="PathFollow3D" unique_id=1370150409]
 loop = false
 script = ExtResource("1_5n70v")
 DashSpeedMult = 3.0
@@ -46,50 +47,48 @@ DashCooldown = 2.0
 BaseSpeed = 5.0
 ResourcesGain = 1
 
-[node name="MainMesh" type="MeshInstance3D" parent="."]
+[node name="MainMesh" type="MeshInstance3D" parent="." unique_id=1060628862]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.25)
 material_override = SubResource("ShaderMaterial_phblu")
 mesh = SubResource("BoxMesh_x4ay6")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=347284638]
 transform = Transform3D(1, 0, 0, 0, -2.1855694e-08, 1, 0, -0.5, -4.371139e-08, 0, 0.5, -0.25)
 mesh = SubResource("PrismMesh_i3tbn")
 skeleton = NodePath("../Area3D")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"BaseEntityAnims": ExtResource("2_x4ay6")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=503983188]
+libraries/BaseEntityAnims = ExtResource("2_x4ay6")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=204161913]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1842710332]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_0ohao")
 
-[node name="CooldownTimer" type="Timer" parent="."]
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1242590927]
 process_callback = 0
 one_shot = true
 
-[node name="DurationTimer" type="Timer" parent="."]
+[node name="DurationTimer" type="Timer" parent="." unique_id=30777207]
 process_callback = 0
 one_shot = true
 
-[node name="EnemyUI" type="Sprite3D" parent="."]
+[node name="EnemyUI" type="Sprite3D" parent="." unique_id=885536920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_gqucd")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1891759167]
 disable_3d = true
 transparent_bg = true
 size = Vector2i(256, 256)
 script = ExtResource("4_phblu")
 
-[node name="HealthBar" type="ProgressBar" parent="SubViewport"]
+[node name="HealthBar" type="ProgressBar" parent="SubViewport" unique_id=1407879976]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -106,3 +105,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_uj8uq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6aivh")
 value = 100.0
 show_percentage = false
+
+[node name="ResourceNumber" parent="SubViewport" unique_id=127282553 instance=ExtResource("5_gqucd")]
+visible = false

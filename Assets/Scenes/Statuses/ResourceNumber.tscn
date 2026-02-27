@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bokuma3cuj3i7"]
+
+[ext_resource type="Script" uid="uid://blfg0vqv670bo" path="res://Assets/Scripts/Effects/ResourceNumber.gd" id="1_thq4t"]
+
+[node name="ResourceNumber" type="Label" unique_id=127282553]
+z_index = 5
+offset_right = 80.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.7882353, 0.7372549, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 60
+text = "+10$"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_thq4t")

@@ -28,5 +28,6 @@ func spawn_shield():
 	ShieldNode.Shields.back().OnDestroy.connect(func(): cooldown_timer.start(ShieldCooldown))
 
 func on_death():
+	super() # Чтобы циферки награды вылетали
 	cooldown_timer.stop()
 	pause_timer.stop()

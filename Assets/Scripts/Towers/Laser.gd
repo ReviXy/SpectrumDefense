@@ -11,7 +11,6 @@ const ColorRYB = ColorRYB_Operations.ColorRYB
 @onready var beam_particles_material = beam_particles.material_override
 
 var tween: Tween
-#var beam_radius: float = 0.03
 
 var color: ColorRYB = ColorRYB.Red:
 	set(new_color):

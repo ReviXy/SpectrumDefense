@@ -1,15 +1,12 @@
 extends Label
 
 @export var lifetime: float = 1.0
-@export var float_speed: float = 50.0
 @export var fade_time: float = 0.3
 
 var velocity: Vector2 = Vector2.ZERO
 var gravity: float = 50.0
 var time: float = 0.0
 var start_position: Vector2
-
-@onready var tween: Tween
 
 func _ready():
 	set_process(false)

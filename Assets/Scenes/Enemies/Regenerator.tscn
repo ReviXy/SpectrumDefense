@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmraycytajhkk"]
+[gd_scene format=3 uid="uid://bmraycytajhkk"]
 
 [ext_resource type="Script" uid="uid://crwhq6y0kmgr7" path="res://Assets/Scripts/Enemies/Regenerator.gd" id="1_eac0g"]
 [ext_resource type="ArrayMesh" uid="uid://db1h04au2ak3n" path="res://Assets/Models/Ico_Sphere.res" id="2_3rc7y"]
 [ext_resource type="Shader" uid="uid://cvtm237ygpufq" path="res://Assets/Shaders/enemy_shader.gdshader" id="2_l12oc"]
 [ext_resource type="AnimationLibrary" uid="uid://bsm87ocimnggh" path="res://Assets/AnimLibraries/BaseEntityAnims.res" id="3_b7j2o"]
 [ext_resource type="Script" uid="uid://k5qpt7g4ih6n" path="res://Assets/Scripts/Effects/DamageNumberPool.gd" id="5_huo4w"]
+[ext_resource type="PackedScene" uid="uid://bokuma3cuj3i7" path="res://Assets/Scenes/Statuses/ResourceNumber.tscn" id="6_ct1mr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_huo4w"]
 resource_local_to_scene = true
@@ -53,7 +54,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
-[node name="PathFollow3D" type="PathFollow3D"]
+[node name="PathFollow3D" type="PathFollow3D" unique_id=1175819513]
 loop = false
 script = ExtResource("1_eac0g")
 RegenAmount = 10.0
@@ -61,42 +62,40 @@ RegenCooldown = 1.0
 BaseSpeed = 5.0
 ResourcesGain = 1
 
-[node name="MainMesh" type="MeshInstance3D" parent="."]
+[node name="MainMesh" type="MeshInstance3D" parent="." unique_id=126803116]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 material_override = SubResource("ShaderMaterial_huo4w")
 mesh = ExtResource("2_3rc7y")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_l12oc"),
-&"BaseEntityAnims": ExtResource("3_b7j2o")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1872815428]
+libraries/ = SubResource("AnimationLibrary_l12oc")
+libraries/BaseEntityAnims = ExtResource("3_b7j2o")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1052835475]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=450949691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_b7j2o")
 
-[node name="CooldownTimer" type="Timer" parent="."]
+[node name="CooldownTimer" type="Timer" parent="." unique_id=257296033]
 process_callback = 0
 one_shot = true
 
-[node name="EnemyUI" type="Sprite3D" parent="."]
+[node name="EnemyUI" type="Sprite3D" parent="." unique_id=291699112]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_l12oc")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1982557940]
 disable_3d = true
 transparent_bg = true
 size = Vector2i(256, 256)
 script = ExtResource("5_huo4w")
 
-[node name="HealthBar" type="ProgressBar" parent="SubViewport"]
+[node name="HealthBar" type="ProgressBar" parent="SubViewport" unique_id=988641174]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -113,3 +112,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_huo4w")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ct1mr")
 value = 100.0
 show_percentage = false
+
+[node name="ResourceNumber" parent="SubViewport" unique_id=127282553 instance=ExtResource("6_ct1mr")]
+visible = false
