@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://vs72j4mljes5"]
+[gd_scene format=3 uid="uid://vs72j4mljes5"]
 
 [ext_resource type="Script" uid="uid://bgog3l3jt8cfc" path="res://Assets/Scripts/Managers/LevelSelector.gd" id="1_j6vvw"]
 [ext_resource type="Script" uid="uid://b0pt1ly3v1iry" path="res://Assets/Scripts/Managers/LevelCamera.gd" id="2_6jwxn"]
@@ -34,10 +34,10 @@ bg_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jwxn"]
 bg_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=68990736]
 script = ExtResource("1_j6vvw")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1349587027]
 transform = Transform3D(0.7071067, 0.49999997, -0.5, 0, 0.7071068, 0.70710677, 0.7071067, -0.49999997, 0.5, -20, 25, 20)
 projection = 1
 current = true
@@ -45,15 +45,15 @@ size = 30.0
 near = 1.0
 script = ExtResource("2_6jwxn")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1665401526]
 environment = SubResource("Environment_numvf")
 camera_attributes = SubResource("CameraAttributesPractical_2rron")
 
-[node name="LevelUI" type="CanvasLayer" parent="."]
+[node name="LevelUI" type="CanvasLayer" parent="." unique_id=376499721]
 process_mode = 1
 script = ExtResource("3_qxdb1")
 
-[node name="TopPanel" type="Panel" parent="LevelUI"]
+[node name="TopPanel" type="Panel" parent="LevelUI" unique_id=1036944676]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -62,7 +62,7 @@ offset_right = 125.0
 offset_bottom = 140.0
 grow_horizontal = 2
 
-[node name="StartWave" type="Button" parent="LevelUI/TopPanel"]
+[node name="StartWave" type="Button" parent="LevelUI/TopPanel" unique_id=491863141]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -76,7 +76,7 @@ focus_mode = 0
 shortcut = SubResource("Shortcut_qxdb1")
 icon = ExtResource("9_6jwxn")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/TopPanel/StartWave"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/TopPanel/StartWave" unique_id=982675850]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -87,26 +87,26 @@ offset_right = 59.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="WaveLabel" type="Label" parent="LevelUI/TopPanel/StartWave/HBoxContainer"]
+[node name="WaveLabel" type="Label" parent="LevelUI/TopPanel/StartWave/HBoxContainer" unique_id=1720238405]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "1"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Slash" type="Label" parent="LevelUI/TopPanel/StartWave/HBoxContainer"]
+[node name="Slash" type="Label" parent="LevelUI/TopPanel/StartWave/HBoxContainer" unique_id=721498395]
 custom_minimum_size = Vector2(6, 0)
 layout_mode = 2
 text = "/"
 horizontal_alignment = 1
 
-[node name="MaxWaveLabel" type="Label" parent="LevelUI/TopPanel/StartWave/HBoxContainer"]
+[node name="MaxWaveLabel" type="Label" parent="LevelUI/TopPanel/StartWave/HBoxContainer" unique_id=2039801224]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "1"
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="LevelUI/TopPanel/StartWave"]
+[node name="Label" type="Label" parent="LevelUI/TopPanel/StartWave" unique_id=632209310]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,10 +123,10 @@ text = "start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartWaveHoldTimer" type="Timer" parent="LevelUI/TopPanel/StartWave"]
+[node name="StartWaveHoldTimer" type="Timer" parent="LevelUI/TopPanel/StartWave" unique_id=1574669819]
 one_shot = true
 
-[node name="Health" type="Control" parent="LevelUI/TopPanel"]
+[node name="Health" type="Control" parent="LevelUI/TopPanel" unique_id=648486801]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -137,21 +137,21 @@ offset_right = -55.0
 offset_bottom = 55.0
 grow_horizontal = 2
 
-[node name="TextureRect" type="TextureRect" parent="LevelUI/TopPanel/Health"]
+[node name="TextureRect" type="TextureRect" parent="LevelUI/TopPanel/Health" unique_id=1218999349]
 layout_mode = 0
 offset_right = 25.0
 offset_bottom = 25.0
 texture = ExtResource("8_uhh13")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="LevelUI/TopPanel/Health"]
+[node name="Label" type="Label" parent="LevelUI/TopPanel/Health" unique_id=1413625659]
 layout_mode = 0
 offset_left = 30.0
 offset_right = 55.0
 offset_bottom = 25.0
 text = "10"
 
-[node name="Currency" type="Control" parent="LevelUI/TopPanel"]
+[node name="Currency" type="Control" parent="LevelUI/TopPanel" unique_id=1132227355]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -162,21 +162,21 @@ offset_right = 120.0
 offset_bottom = 55.0
 grow_horizontal = 2
 
-[node name="TextureRect" type="TextureRect" parent="LevelUI/TopPanel/Currency"]
+[node name="TextureRect" type="TextureRect" parent="LevelUI/TopPanel/Currency" unique_id=898556636]
 layout_mode = 0
 offset_right = 25.0
 offset_bottom = 25.0
 texture = ExtResource("7_xnpqu")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="LevelUI/TopPanel/Currency"]
+[node name="Label" type="Label" parent="LevelUI/TopPanel/Currency" unique_id=937003568]
 layout_mode = 0
 offset_left = 30.0
 offset_right = 60.0
 offset_bottom = 25.0
 text = "100$"
 
-[node name="FastForward" type="Button" parent="LevelUI/TopPanel"]
+[node name="FastForward" type="Button" parent="LevelUI/TopPanel" unique_id=616491435]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -193,13 +193,13 @@ text = "x2"
 icon = ExtResource("7_b6myp")
 expand_icon = true
 
-[node name="TowerRotationPanel" type="Panel" parent="LevelUI"]
+[node name="TowerRotationPanel" type="Panel" parent="LevelUI" unique_id=880400473]
 offset_left = 1280.0
 offset_top = 720.0
 offset_right = 1355.0
 offset_bottom = 760.0
 
-[node name="RotateCounterClockwiseButton" type="Button" parent="LevelUI/TowerRotationPanel"]
+[node name="RotateCounterClockwiseButton" type="Button" parent="LevelUI/TowerRotationPanel" unique_id=2047375421]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
@@ -209,7 +209,7 @@ focus_mode = 0
 icon = ExtResource("7_ggqha")
 expand_icon = true
 
-[node name="RotateClockwiseButton" type="Button" parent="LevelUI/TowerRotationPanel"]
+[node name="RotateClockwiseButton" type="Button" parent="LevelUI/TowerRotationPanel" unique_id=457619908]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 5.0
@@ -219,7 +219,7 @@ focus_mode = 0
 icon = ExtResource("4_ggqha")
 expand_icon = true
 
-[node name="TowerPlacementPanel" type="Panel" parent="LevelUI"]
+[node name="TowerPlacementPanel" type="Panel" parent="LevelUI" unique_id=1412672001]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -228,7 +228,7 @@ offset_right = 250.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="LevelUI/TowerPlacementPanel"]
+[node name="Title" type="Label" parent="LevelUI/TowerPlacementPanel" unique_id=1755862964]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -243,7 +243,7 @@ text = "Установка башни"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI/TowerPlacementPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI/TowerPlacementPanel" unique_id=484454195]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -255,14 +255,14 @@ offset_bottom = 290.0
 grow_horizontal = 2
 theme_override_constants/separation = 10
 
-[node name="PlaceEmitterButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
+[node name="PlaceEmitterButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer" unique_id=590162615]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 text = "Излучатель"
 metadata/TowerType = "Emitter"
 
-[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceEmitterButton"]
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceEmitterButton" unique_id=950354796]
 layout_mode = 0
 offset_left = 155.0
 offset_right = 195.0
@@ -271,14 +271,14 @@ text = "10$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlaceMirrorButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
+[node name="PlaceMirrorButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer" unique_id=504418838]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 text = "Зеркало"
 metadata/TowerType = "Mirror"
 
-[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceMirrorButton"]
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceMirrorButton" unique_id=723649177]
 layout_mode = 0
 offset_left = 155.0
 offset_right = 195.0
@@ -287,14 +287,14 @@ text = "10$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlaceFilterButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
+[node name="PlaceFilterButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer" unique_id=65327015]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 text = "Фильтр"
 metadata/TowerType = "Filter"
 
-[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceFilterButton"]
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceFilterButton" unique_id=1745420055]
 layout_mode = 0
 offset_left = 155.0
 offset_right = 195.0
@@ -303,14 +303,14 @@ text = "10$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlaceLensButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
+[node name="PlaceLensButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer" unique_id=383287996]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 text = "Линза"
 metadata/TowerType = "Lens"
 
-[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceLensButton"]
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlaceLensButton" unique_id=387878135]
 layout_mode = 0
 offset_left = 155.0
 offset_right = 195.0
@@ -319,14 +319,14 @@ text = "10$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlacePrismButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer"]
+[node name="PlacePrismButton" type="Button" parent="LevelUI/TowerPlacementPanel/VBoxContainer" unique_id=1840459939]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 text = "Призма"
 metadata/TowerType = "Prism"
 
-[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlacePrismButton"]
+[node name="Cost" type="Label" parent="LevelUI/TowerPlacementPanel/VBoxContainer/PlacePrismButton" unique_id=1608535990]
 layout_mode = 0
 offset_left = 155.0
 offset_right = 195.0
@@ -335,7 +335,7 @@ text = "10$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PauseButton" type="Button" parent="LevelUI"]
+[node name="PauseButton" type="Button" parent="LevelUI" unique_id=802562982]
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 50.0
@@ -345,7 +345,7 @@ icon = ExtResource("9_4ymob")
 icon_alignment = 1
 expand_icon = true
 
-[node name="PauseMenu" type="Panel" parent="LevelUI"]
+[node name="PauseMenu" type="Panel" parent="LevelUI" unique_id=1332759839]
 process_mode = 2
 visible = false
 anchors_preset = 15
@@ -354,7 +354,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="LevelUI/PauseMenu"]
+[node name="Panel" type="Panel" parent="LevelUI/PauseMenu" unique_id=834915955]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -369,7 +369,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_j6vvw")
 
-[node name="Label" type="Label" parent="LevelUI/PauseMenu/Panel"]
+[node name="Label" type="Label" parent="LevelUI/PauseMenu/Panel" unique_id=899015481]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -382,7 +382,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "Пауза"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI/PauseMenu/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI/PauseMenu/Panel" unique_id=1009992825]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -399,35 +399,35 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="ContinueButton" type="Button" parent="LevelUI/PauseMenu/Panel/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="LevelUI/PauseMenu/Panel/VBoxContainer" unique_id=778941738]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Продолжить"
 
-[node name="OptionsButton" type="Button" parent="LevelUI/PauseMenu/Panel/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="LevelUI/PauseMenu/Panel/VBoxContainer" unique_id=1384938098]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Настройки"
 
-[node name="RestartButton" type="Button" parent="LevelUI/PauseMenu/Panel/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="LevelUI/PauseMenu/Panel/VBoxContainer" unique_id=1784394897]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Перезапустить миссию"
 
-[node name="LevelSelectionButton" type="Button" parent="LevelUI/PauseMenu/Panel/VBoxContainer"]
+[node name="LevelSelectionButton" type="Button" parent="LevelUI/PauseMenu/Panel/VBoxContainer" unique_id=1100566590]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Выбор уровня"
 
-[node name="MissionWin" type="Panel" parent="LevelUI"]
+[node name="MissionWin" type="Panel" parent="LevelUI" unique_id=1345995921]
 process_mode = 2
 visible = false
 anchors_preset = 15
@@ -436,7 +436,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="LevelUI/MissionWin"]
+[node name="Panel" type="Panel" parent="LevelUI/MissionWin" unique_id=10202719]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -451,7 +451,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jwxn")
 
-[node name="Label" type="Label" parent="LevelUI/MissionWin/Panel"]
+[node name="Label" type="Label" parent="LevelUI/MissionWin/Panel" unique_id=1554932251]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -467,7 +467,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "Миссия завершена"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/MissionWin/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/MissionWin/Panel" unique_id=1229664516]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -480,28 +480,28 @@ grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="LevelSelectionButton" type="Button" parent="LevelUI/MissionWin/Panel/HBoxContainer"]
+[node name="LevelSelectionButton" type="Button" parent="LevelUI/MissionWin/Panel/HBoxContainer" unique_id=763406693]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Выбор уровня"
 
-[node name="RestartButton" type="Button" parent="LevelUI/MissionWin/Panel/HBoxContainer"]
+[node name="RestartButton" type="Button" parent="LevelUI/MissionWin/Panel/HBoxContainer" unique_id=1277125398]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Перезапустить миссию"
 
-[node name="NextLevelButton" type="Button" parent="LevelUI/MissionWin/Panel/HBoxContainer"]
+[node name="NextLevelButton" type="Button" parent="LevelUI/MissionWin/Panel/HBoxContainer" unique_id=1450364059]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Следующая миссия"
 
-[node name="MissionLose" type="Panel" parent="LevelUI"]
+[node name="MissionLose" type="Panel" parent="LevelUI" unique_id=1361971694]
 process_mode = 2
 visible = false
 anchors_preset = 15
@@ -510,7 +510,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="LevelUI/MissionLose"]
+[node name="Panel" type="Panel" parent="LevelUI/MissionLose" unique_id=2010379924]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -525,7 +525,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jwxn")
 
-[node name="Label" type="Label" parent="LevelUI/MissionLose/Panel"]
+[node name="Label" type="Label" parent="LevelUI/MissionLose/Panel" unique_id=1730859928]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -538,7 +538,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "Миссия провалена"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI/MissionLose/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI/MissionLose/Panel" unique_id=1378368046]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -552,21 +552,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="RestartButton" type="Button" parent="LevelUI/MissionLose/Panel/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="LevelUI/MissionLose/Panel/VBoxContainer" unique_id=423017980]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Перезапустить миссию"
 
-[node name="LevelSelectionButton" type="Button" parent="LevelUI/MissionLose/Panel/VBoxContainer"]
+[node name="LevelSelectionButton" type="Button" parent="LevelUI/MissionLose/Panel/VBoxContainer" unique_id=1742105743]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Выбор уровня"
 
-[node name="TowerConfigurationPanel" type="Panel" parent="LevelUI"]
+[node name="TowerConfigurationPanel" type="Panel" parent="LevelUI" unique_id=225504117]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -576,13 +576,13 @@ offset_right = 500.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Emitter" type="Control" parent="LevelUI/TowerConfigurationPanel"]
+[node name="Emitter" type="Control" parent="LevelUI/TowerConfigurationPanel" unique_id=459051442]
 visible = false
 anchors_preset = 0
 offset_right = 250.0
 offset_bottom = 600.0
 
-[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Emitter"]
+[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Emitter" unique_id=1548651788]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
@@ -591,7 +591,7 @@ offset_bottom = 60.0
 texture = ExtResource("5_b6myp")
 expand_mode = 1
 
-[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter"]
+[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter" unique_id=1263323546]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -605,7 +605,7 @@ theme_override_font_sizes/font_size = 25
 text = "Эмиттер"
 vertical_alignment = 1
 
-[node name="IntensityLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter"]
+[node name="IntensityLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter" unique_id=1414469586]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 75.0
@@ -614,7 +614,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "Интенсивность:"
 
-[node name="IntensityValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter"]
+[node name="IntensityValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter" unique_id=783848954]
 layout_mode = 0
 offset_left = 175.0
 offset_top = 75.0
@@ -623,7 +623,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "0"
 
-[node name="DistanceLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter"]
+[node name="DistanceLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter" unique_id=472215251]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 100.0
@@ -632,7 +632,7 @@ offset_bottom = 125.0
 theme_override_font_sizes/font_size = 15
 text = "Дистанция:"
 
-[node name="DistanceValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter"]
+[node name="DistanceValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter" unique_id=806855860]
 layout_mode = 0
 offset_left = 175.0
 offset_top = 100.0
@@ -641,7 +641,7 @@ offset_bottom = 125.0
 theme_override_font_sizes/font_size = 15
 text = "0"
 
-[node name="ColorLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter"]
+[node name="ColorLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter" unique_id=1378651072]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 150.0
@@ -650,7 +650,7 @@ offset_bottom = 175.0
 theme_override_font_sizes/font_size = 15
 text = "Цвет:"
 
-[node name="ColorDropDown" type="OptionButton" parent="LevelUI/TowerConfigurationPanel/Emitter"]
+[node name="ColorDropDown" type="OptionButton" parent="LevelUI/TowerConfigurationPanel/Emitter" unique_id=1766245851]
 layout_mode = 0
 offset_left = 150.0
 offset_top = 150.0
@@ -664,13 +664,13 @@ popup/item_1/id = 1
 popup/item_2/text = "Blue"
 popup/item_2/id = 2
 
-[node name="Mirror" type="Control" parent="LevelUI/TowerConfigurationPanel"]
+[node name="Mirror" type="Control" parent="LevelUI/TowerConfigurationPanel" unique_id=132763349]
 visible = false
 anchors_preset = 0
 offset_right = 250.0
 offset_bottom = 600.0
 
-[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Mirror"]
+[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Mirror" unique_id=66889992]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
@@ -679,7 +679,7 @@ offset_bottom = 60.0
 texture = ExtResource("5_b6myp")
 expand_mode = 1
 
-[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror"]
+[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror" unique_id=589483997]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -693,7 +693,7 @@ theme_override_font_sizes/font_size = 25
 text = "Зеркало"
 vertical_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror"]
+[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror" unique_id=1612829289]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 30.0
@@ -703,7 +703,7 @@ text = "Ур.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror"]
+[node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror" unique_id=1899238163]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 75.0
@@ -712,7 +712,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "Штраф интенсивности:"
 
-[node name="IntensityPenaltyValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror"]
+[node name="IntensityPenaltyValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Mirror" unique_id=1912302826]
 layout_mode = 0
 offset_left = 210.0
 offset_top = 75.0
@@ -721,13 +721,13 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "0"
 
-[node name="Filter" type="Control" parent="LevelUI/TowerConfigurationPanel"]
+[node name="Filter" type="Control" parent="LevelUI/TowerConfigurationPanel" unique_id=1863223951]
 visible = false
 anchors_preset = 0
 offset_right = 250.0
 offset_bottom = 600.0
 
-[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Filter"]
+[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Filter" unique_id=1521163960]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
@@ -736,7 +736,7 @@ offset_bottom = 60.0
 texture = ExtResource("5_b6myp")
 expand_mode = 1
 
-[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter"]
+[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter" unique_id=1587763354]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -750,7 +750,7 @@ theme_override_font_sizes/font_size = 25
 text = "Фильтр"
 vertical_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter"]
+[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter" unique_id=1847618338]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 30.0
@@ -760,7 +760,7 @@ text = "Ур.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter"]
+[node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter" unique_id=2054093106]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 75.0
@@ -769,7 +769,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "Штраф интенсивности:"
 
-[node name="IntensityPenaltyValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter"]
+[node name="IntensityPenaltyValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter" unique_id=2030710505]
 layout_mode = 0
 offset_left = 210.0
 offset_top = 75.0
@@ -778,7 +778,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "0"
 
-[node name="ColorLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter"]
+[node name="ColorLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Filter" unique_id=192162366]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 125.0
@@ -787,7 +787,7 @@ offset_bottom = 150.0
 theme_override_font_sizes/font_size = 15
 text = "Цвет:"
 
-[node name="ColorDropDown" type="OptionButton" parent="LevelUI/TowerConfigurationPanel/Filter"]
+[node name="ColorDropDown" type="OptionButton" parent="LevelUI/TowerConfigurationPanel/Filter" unique_id=1191838841]
 layout_mode = 0
 offset_left = 150.0
 offset_top = 125.0
@@ -801,13 +801,13 @@ popup/item_1/id = 1
 popup/item_2/text = "Blue"
 popup/item_2/id = 2
 
-[node name="Lens" type="Control" parent="LevelUI/TowerConfigurationPanel"]
+[node name="Lens" type="Control" parent="LevelUI/TowerConfigurationPanel" unique_id=627560532]
 visible = false
 anchors_preset = 0
 offset_right = 250.0
 offset_bottom = 600.0
 
-[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Lens"]
+[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=2022976151]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
@@ -816,7 +816,7 @@ offset_bottom = 60.0
 texture = ExtResource("5_b6myp")
 expand_mode = 1
 
-[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens"]
+[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=1394677163]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -830,7 +830,7 @@ theme_override_font_sizes/font_size = 25
 text = "Линза"
 vertical_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens"]
+[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=737094019]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 30.0
@@ -840,7 +840,7 @@ text = "Ур.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens"]
+[node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=1573068047]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 75.0
@@ -849,7 +849,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "Штраф интенсивности:"
 
-[node name="IntensityPenaltyValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens"]
+[node name="IntensityPenaltyValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=215084826]
 layout_mode = 0
 offset_left = 210.0
 offset_top = 75.0
@@ -858,7 +858,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "0"
 
-[node name="CoefficientLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens"]
+[node name="CoefficientLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=1356327707]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 125.0
@@ -867,7 +867,7 @@ offset_bottom = 150.0
 theme_override_font_sizes/font_size = 15
 text = "Коэффициент:"
 
-[node name="CoefficientSlider" type="HSlider" parent="LevelUI/TowerConfigurationPanel/Lens"]
+[node name="CoefficientSlider" type="HSlider" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=102471724]
 layout_mode = 0
 offset_left = 140.0
 offset_top = 125.0
@@ -880,13 +880,13 @@ value = 0.1
 tick_count = 10
 ticks_on_borders = true
 
-[node name="Prism" type="Control" parent="LevelUI/TowerConfigurationPanel"]
+[node name="Prism" type="Control" parent="LevelUI/TowerConfigurationPanel" unique_id=493796058]
 visible = false
 anchors_preset = 0
 offset_right = 250.0
 offset_bottom = 600.0
 
-[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Prism"]
+[node name="TowerIcon" type="TextureRect" parent="LevelUI/TowerConfigurationPanel/Prism" unique_id=406638788]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
@@ -895,7 +895,7 @@ offset_bottom = 60.0
 texture = ExtResource("5_b6myp")
 expand_mode = 1
 
-[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism"]
+[node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism" unique_id=1103747723]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -909,7 +909,7 @@ theme_override_font_sizes/font_size = 25
 text = "Призма"
 vertical_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism"]
+[node name="LevelLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism" unique_id=1887606200]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 30.0
@@ -919,7 +919,7 @@ text = "Ур.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism"]
+[node name="IntensityPenaltyLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism" unique_id=232832793]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 75.0
@@ -928,7 +928,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "Штраф интенсивности:"
 
-[node name="IntensityPenaltyValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism"]
+[node name="IntensityPenaltyValueLabel" type="Label" parent="LevelUI/TowerConfigurationPanel/Prism" unique_id=384311140]
 layout_mode = 0
 offset_left = 210.0
 offset_top = 75.0
@@ -937,7 +937,7 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 15
 text = "0"
 
-[node name="UpgradeButton" type="Button" parent="LevelUI/TowerConfigurationPanel"]
+[node name="UpgradeButton" type="Button" parent="LevelUI/TowerConfigurationPanel" unique_id=968293482]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 650.0
@@ -947,7 +947,7 @@ focus_mode = 0
 icon = ExtResource("11_qxdb1")
 expand_icon = true
 
-[node name="DestroyButton" type="Button" parent="LevelUI/TowerConfigurationPanel"]
+[node name="DestroyButton" type="Button" parent="LevelUI/TowerConfigurationPanel" unique_id=1722452709]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 650.0
@@ -957,7 +957,7 @@ focus_mode = 0
 icon = ExtResource("6_r5kyp")
 expand_icon = true
 
-[node name="UpgradeCostLabel" type="Label" parent="LevelUI/TowerConfigurationPanel"]
+[node name="UpgradeCostLabel" type="Label" parent="LevelUI/TowerConfigurationPanel" unique_id=695622512]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 625.0
@@ -967,7 +967,7 @@ text = "-10$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DestroyCompensationLabel" type="Label" parent="LevelUI/TowerConfigurationPanel"]
+[node name="DestroyCompensationLabel" type="Label" parent="LevelUI/TowerConfigurationPanel" unique_id=2045483768]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 625.0
