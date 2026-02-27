@@ -24,7 +24,7 @@ func _process(delta):
 		input_vector.z -= 1
 
 	input_vector = input_vector.normalized().rotated(Vector3.UP,rotation.y)
-	position += input_vector * move_speed * delta * size/30
+	position += input_vector * move_speed * delta * size/30/Engine.time_scale
 
 
 func _input(event):

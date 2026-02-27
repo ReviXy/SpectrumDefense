@@ -80,7 +80,7 @@ func TakeDamage(damage: float, color: ColorRYB):
 		var damageTaken = max(((damage+preSum.value)*mult.value+postSum.value)*damageCoefficient,0.0)
 		HP -= damageTaken
 		if healthBar != null: healthBar.value = HP / MaxHP * 100
-		if damageNumberPool != null: damageNumberPool.show_damage(damageTaken, damageCoefficient, color)
+		if damageNumberPool != null and damageTaken > 0: damageNumberPool.show_damage(damageTaken, damageCoefficient, color)
 		post_damage(damageTaken,color)
 		for a:EnemyAttachment in Attachments.values():
 			a.post_damage(damageTaken,color)

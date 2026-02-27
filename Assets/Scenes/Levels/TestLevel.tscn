@@ -183,9 +183,7 @@ Resources = 9999
 [node name="WaveManager" type="Node3D" parent="." unique_id=87501908]
 script = ExtResource("2_7x1ww")
 waves = Array[ExtResource("4_3e7vo")]([SubResource("Resource_svaum"), SubResource("Resource_3n5l5"), SubResource("Resource_wie7u"), SubResource("Resource_owcc2"), SubResource("Resource_f54oi"), SubResource("Resource_ukere")])
-
-[node name="WaveDelayTimer" type="Timer" parent="WaveManager" unique_id=960449025]
-one_shot = true
+wave = null
 
 [node name="Path3D" type="Path3D" parent="WaveManager" unique_id=1742580848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

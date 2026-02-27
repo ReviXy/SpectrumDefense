@@ -25,7 +25,6 @@ PathNode = NodePath("Path3D4")
 Enemy = ExtResource("6_lxe5l")
 EnemyCount = 10
 DeployDelay = 1.0
-PreDeployDelay = 0.5
 EnemyColor = 2
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
@@ -50,7 +49,6 @@ PathNode = NodePath("Path3D3")
 Enemy = ExtResource("6_lxe5l")
 EnemyCount = 10
 DeployDelay = 1.0
-PreDeployDelay = 0.5
 EnemyColor = 1
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
@@ -75,7 +73,6 @@ PathNode = NodePath("Path3D2")
 Enemy = ExtResource("6_lxe5l")
 EnemyCount = 10
 DeployDelay = 1.0
-PreDeployDelay = 0.5
 EnemyColor = 1
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
@@ -170,9 +167,6 @@ HP = 50
 [node name="WaveManager" type="Node3D" parent="." unique_id=1628736384]
 script = ExtResource("3_7n34x")
 waves = Array[ExtResource("4_0yuvv")]([SubResource("Resource_llo7b"), SubResource("Resource_btxu5"), SubResource("Resource_c7hv0"), SubResource("Resource_1po0s")])
-
-[node name="WaveDelayTimer" type="Timer" parent="WaveManager" unique_id=426046230]
-one_shot = true
 
 [node name="Path3D" type="Path3D" parent="WaveManager" unique_id=139652685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1)

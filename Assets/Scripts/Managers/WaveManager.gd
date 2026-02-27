@@ -3,7 +3,6 @@ class_name WaveManager
 
 @export var waves: Array[WaveData]
 @export var wave: int = 0
-@onready var WaveDelayTimer: Timer = $WaveDelayTimer
 var EntityCount: int = 0
 var PendingDeployments: int = 0
 var autoLaunch: bool = false
@@ -13,7 +12,7 @@ const INDICATOR_SCENE: PackedScene = preload("res://Assets/Scenes/WaveIndicator.
 
 func _ready() -> void:
 	await LevelManager.this.get_parent_node_3d().ready
-	WaveDelayTimer.timeout.connect(func():
+	LevelManager.this.UIM.startWaveTimer.timeout.connect(func():
 		LaunchNextWave()
 		LevelManager.this.UIM.startWaveLabel.text = "")
 	LevelManager.this.UIM.maxWaveLabel.text = str(len(waves))
@@ -67,7 +66,7 @@ func EnemyGone():
 				LaunchNextWave()
 			else:
 				DisplayIndicators()
-				WaveDelayTimer.start(waves[wave].Pre_wave_delay)
+				LevelManager.this.UIM.startWaveTimer.start(waves[wave].Pre_wave_delay)
 				
 
 func DisplayIndicators():

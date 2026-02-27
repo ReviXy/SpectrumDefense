@@ -22,8 +22,8 @@ func updatePlacementButtons(a):
 		towerPlacementButtons[tower].disabled = !(LevelManager.this.ResourceM.Resources >= getTowerPlacementCost(tower))
 
 func _process(_delta: float) -> void:
-	if not LevelManager.this.WaveM.WaveDelayTimer.is_stopped():
-		startWaveLabel.text = str(LevelManager.this.WaveM.WaveDelayTimer.time_left+1).pad_decimals(0) 
+	if not startWaveTimer.is_stopped():
+		startWaveLabel.text = str(startWaveTimer.time_left+1).pad_decimals(0) 
 
 @onready var camera: Camera3D = get_viewport().get_camera_3d()
 
@@ -89,6 +89,7 @@ func _process(_delta: float) -> void:
 @onready var startWaveButton = $TopPanel/StartWave
 @onready var startWaveLabel = $TopPanel/StartWave/Label
 @onready var startWaveHoldTimer = $TopPanel/StartWave/StartWaveHoldTimer
+@onready var startWaveTimer = $TopPanel/StartWave/StartWaveTimer
 @onready var waveLabel = $TopPanel/StartWave/HBoxContainer/WaveLabel
 @onready var maxWaveLabel = $TopPanel/StartWave/HBoxContainer/MaxWaveLabel
 
@@ -305,7 +306,7 @@ func _on_start_wave_button_down() -> void:
 		startWaveLabel.text = "auto"
 		LevelManager.this.WaveM.autoLaunch = true
 		LevelManager.this.WaveM.LaunchNextWave()
-		LevelManager.this.WaveM.WaveDelayTimer.stop())
+		startWaveTimer.stop())
 	startWaveHoldTimer.start(1)
 
 func _on_start_wave_button_up() -> void:
@@ -314,7 +315,7 @@ func _on_start_wave_button_up() -> void:
 		startWaveLabel.text = ""
 		LevelManager.this.WaveM.autoLaunch = false
 		LevelManager.this.WaveM.LaunchNextWave()
-		LevelManager.this.WaveM.WaveDelayTimer.stop()
+		startWaveTimer.stop()
 
 func _on_fast_forward_toggled(toggled_on: bool) -> void:
 	if toggled_on:

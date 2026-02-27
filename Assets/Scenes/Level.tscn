@@ -126,6 +126,10 @@ vertical_alignment = 1
 [node name="StartWaveHoldTimer" type="Timer" parent="LevelUI/TopPanel/StartWave" unique_id=1574669819]
 one_shot = true
 
+[node name="StartWaveTimer" type="Timer" parent="LevelUI/TopPanel/StartWave" unique_id=2138125461]
+one_shot = true
+ignore_time_scale = true
+
 [node name="Health" type="Control" parent="LevelUI/TopPanel" unique_id=648486801]
 layout_mode = 1
 anchors_preset = 5

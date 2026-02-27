@@ -178,9 +178,6 @@ HP = 10
 script = ExtResource("3_cqx4t")
 waves = Array[ExtResource("4_oe4uc")]([SubResource("Resource_qaad7"), SubResource("Resource_8kg8i"), SubResource("Resource_ntdl1"), SubResource("Resource_yh4vv"), SubResource("Resource_oe4uc"), SubResource("Resource_owbbi"), SubResource("Resource_pklxb")])
 
-[node name="WaveDelayTimer" type="Timer" parent="WaveManager" unique_id=354695137]
-one_shot = true
-
 [node name="Path3D" type="Path3D" parent="WaveManager" unique_id=184138398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
 curve = SubResource("Curve3D_nqbn4")
