@@ -30,6 +30,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_svaum"]
 script = ExtResource("4_3e7vo")
+Pre_wave_delay = 5.0
 Deployments = Array[ExtResource("5_qckgf")]([SubResource("Resource_oena1")])
 WaveReward = 10
 metadata/_custom_type_script = "uid://ds3m5it8756mk"

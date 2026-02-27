@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cgjjtraeno1vj"]
+
+[ext_resource type="Script" uid="uid://m7kctfq1bx1s" path="res://Assets/Scenes/WaveIndicator.gd" id="1_as0iu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_as0iu"]
+resource_local_to_scene = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_jok2b"]
+size = Vector3(1, 1, 0.1)
+
+[node name="WaveIndicator" type="PathFollow3D" unique_id=1415301438]
+script = ExtResource("1_as0iu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=701567933]
+transform = Transform3D(-0.5, -7.54979e-08, 3.300118e-15, 0, -2.1855694e-08, -0.5, 7.54979e-08, -0.5, 2.1855694e-08, 0, 0, 0.05)
+material_override = SubResource("StandardMaterial3D_as0iu")
+transparency = 0.1
+mesh = SubResource("PrismMesh_jok2b")
