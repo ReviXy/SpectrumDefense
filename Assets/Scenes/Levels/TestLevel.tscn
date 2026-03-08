@@ -210,7 +210,6 @@ color = 1
 distance = 50.0
 intensity = 100.0
 configurable = false
-destroyable = false
 
 [node name="Filter" parent="GridManager" unique_id=25324681 instance=ExtResource("16_eumoi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.7, -2.99995)

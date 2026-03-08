@@ -121,7 +121,7 @@ func updateTowerConfigurationInfo():
 	if tower.upgradable: 
 		upgradeCostLabel.text = "-%.0f$" % getTowerUpgradeCost(tower)
 	else: 
-		upgradeCostLabel.text = "MAX"
+		upgradeCostLabel.text = "Макс."
 	
 	destroyButton.disabled = !tower.destroyable
 	if tower.destroyable: destroyCompensationLabel.text = "+%.0f$" % getTowerDestroyCompensation(tower); destroyCompensationLabel.visible = true
@@ -136,7 +136,7 @@ func updateTowerConfigurationInfo():
 			emitterColorDropDown.clear()
 			for i in range(7):
 				if tower.availableColors.has((i as ColorRYB)):
-					emitterColorDropDown.add_item(ColorRYB.keys()[i as ColorRYB], i)
+					emitterColorDropDown.add_item(ColorRYB_Operations.ToString(i as ColorRYB), i)
 			emitterColorDropDown.selected = emitterColorDropDown.get_item_index(tower.color)
 			emitterColorDropDown.disabled = !tower.configurable
 		"Mirror":
@@ -150,7 +150,7 @@ func updateTowerConfigurationInfo():
 			filterColorDropDown.clear()
 			for i in range(7):
 				if tower.availableColors.has((i as ColorRYB)):
-					filterColorDropDown.add_item(ColorRYB.keys()[i as ColorRYB], i)
+					filterColorDropDown.add_item(ColorRYB_Operations.ToString(i as ColorRYB), i)
 			filterColorDropDown.selected = filterColorDropDown.get_item_index(tower.color)
 			filterColorDropDown.disabled = !tower.configurable
 		"Lens":
@@ -303,7 +303,7 @@ func _update_currency() -> void:
 
 func _on_start_wave_button_down() -> void:
 	startWaveHoldTimer.timeout.connect(func():
-		startWaveLabel.text = "auto"
+		startWaveLabel.text = "Авто"
 		LevelManager.this.WaveM.autoLaunch = true
 		LevelManager.this.WaveM.LaunchNextWave()
 		startWaveTimer.stop())

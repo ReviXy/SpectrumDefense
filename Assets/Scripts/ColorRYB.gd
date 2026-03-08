@@ -20,7 +20,7 @@ const colorArrays = [
 	[1.0, 1.0, 1.0]
 ]
 
-const colorVisualizeation = [
+const colorVisualization = [
 	Color.RED,
 	Color.YELLOW,
 	Color.BLUE,
@@ -30,11 +30,24 @@ const colorVisualizeation = [
 	Color.WHITE
 ]
 
+const colorStrings = [
+	"Красный",
+	"Жёлтый",
+	"Синий",
+	"Оранжевый",
+	"Зелёный",
+	"Фиолетовый",
+	"Белый"
+]
+
 static func ToColor(color: ColorRYB) -> Color:
-	return colorVisualizeation[color]
+	return colorVisualization[color]
 
 static func FromColor(color: Color) -> ColorRYB:
-	return colorVisualizeation.find(color)
+	return colorVisualization.find(color)
+
+static func ToString(color: ColorRYB) -> String:
+	return colorStrings[color];
 
 static func Add(colors):
 	var arrs = colors.map(func(c): return colorArrays[c])
