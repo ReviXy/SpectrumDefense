@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b00kvppomeafp"]
+
+[ext_resource type="PackedScene" uid="uid://7lml41laf5yx" path="res://Assets/Models/Tiles.glb" id="1_dfv6h"]
+
+[node name="Node3D" type="Node3D" unique_id=871386207]
+
+[node name="Tiles" parent="." unique_id=978155176 instance=ExtResource("1_dfv6h")]

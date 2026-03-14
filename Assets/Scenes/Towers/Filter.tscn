@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ceuqnjujx745q"]
+[gd_scene format=3 uid="uid://ceuqnjujx745q"]
 
 [ext_resource type="Script" uid="uid://ff5hsmg5uhvj" path="res://Assets/Scripts/Towers/Filter.gd" id="1_ex6m2"]
 
@@ -7,6 +7,9 @@ top_radius = 1.0
 bottom_radius = 1.0
 height = 1.4
 radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex6m2"]
+albedo_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ex6m2"]
 height = 1.4
@@ -20,19 +23,20 @@ radial_segments = 8
 resource_local_to_scene = true
 albedo_color = Color(1, 0, 0, 1)
 
-[node name="Filter" type="MeshInstance3D"]
+[node name="Filter" type="MeshInstance3D" unique_id=673273825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 mesh = SubResource("CylinderMesh_q6iuf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ex6m2")
 script = ExtResource("1_ex6m2")
 
-[node name="MainCollider" type="Area3D" parent="."]
+[node name="MainCollider" type="Area3D" parent="." unique_id=1216257865]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCollider" unique_id=364348774]
 shape = SubResource("CylinderShape3D_ex6m2")
 
-[node name="Indicator" type="MeshInstance3D" parent="."]
+[node name="Indicator" type="MeshInstance3D" parent="." unique_id=95090033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 mesh = SubResource("CylinderMesh_ex6m2")
 surface_material_override/0 = SubResource("StandardMaterial3D_q6iuf")

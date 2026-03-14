@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwybytmjbpudw"
-path.s3tc="res://.godot/imported/Tiles_old_palette.png-aa5de9aaa5dc516109ee7a75d7c3c05f.s3tc.ctex"
+uid="uid://dcbvpxbd64vnn"
+path.s3tc="res://.godot/imported/Tiles_TileSprites.png-eee83eeeda472c426ef46cfba7421208.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "1f6127001f1acf1da47390e6a9ba164b"
+"md5": "7387e5ef90f1b20688170a32f91a11a1"
 }
 
 [deps]
 
-source_file="res://Assets/Models/Tiles_old_palette.png"
-dest_files=["res://.godot/imported/Tiles_old_palette.png-aa5de9aaa5dc516109ee7a75d7c3c05f.s3tc.ctex"]
+source_file="res://Assets/Models/Sprites/Tiles_TileSprites.png"
+dest_files=["res://.godot/imported/Tiles_TileSprites.png-eee83eeeda472c426ef46cfba7421208.s3tc.ctex"]
 
 [params]
 

@@ -51,20 +51,21 @@ func update():
 	
 	var beam_length = distance
 	var beam_end_position = Vector3(0, distance, 0)
-	
+
 	if (collider == null):
 		if (last_colliding_object != null):
 			last_colliding_object.end_laser_collision(self)
 			last_colliding_object = null
 	else:
-		var new_colliding_object = collider.get_parent() as BaseTower
-		if (last_colliding_object == new_colliding_object):
-			last_colliding_object.continue_laser_collision(self, collider)
-		else:
-			if(last_colliding_object != null):
-				last_colliding_object.end_laser_collision(self)
-			new_colliding_object.begin_laser_collision(self, collider)
-			last_colliding_object = new_colliding_object
+		if !(collider is GridMap):
+			var new_colliding_object = collider.get_parent() as BaseTower
+			if (last_colliding_object == new_colliding_object):
+				last_colliding_object.continue_laser_collision(self, collider)
+			else:
+				if(last_colliding_object != null):
+					last_colliding_object.end_laser_collision(self)
+				new_colliding_object.begin_laser_collision(self, collider)
+				last_colliding_object = new_colliding_object
 			
 		beam_length = to_local(get_collision_point()).length()
 		beam_end_position = to_local(get_collision_point())

@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://baen2od8dsk2a"]
+[gd_scene format=3 uid="uid://baen2od8dsk2a"]
 
 [ext_resource type="Script" uid="uid://bk2ot5e5qc5m7" path="res://Assets/Scripts/Towers/Prism.gd" id="1_62fsh"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_tmmb0"]
 size = Vector3(1.212, 1.05, 1.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62fsh"]
+albedo_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_62fsh"]
 data = PackedVector3Array(0, 0.525, 0.7, 0.606, -0.525, 0.7, -0.606, -0.525, 0.7, 0, 0.525, -0.7, -0.606, -0.525, -0.7, 0.606, -0.525, -0.7, 0, 0.525, 0.7, 0, 0.525, -0.7, 0.606, -0.525, 0.7, 0, 0.525, -0.7, 0.606, -0.525, -0.7, 0.606, -0.525, 0.7, 0, 0.525, -0.7, 0, 0.525, 0.7, -0.606, -0.525, -0.7, 0, 0.525, 0.7, -0.606, -0.525, 0.7, -0.606, -0.525, -0.7, -0.606, -0.525, 0.7, 0.606, -0.525, 0.7, -0.606, -0.525, -0.7, 0.606, -0.525, 0.7, 0.606, -0.525, -0.7, -0.606, -0.525, -0.7)
@@ -12,22 +15,23 @@ data = PackedVector3Array(0, 0.525, 0.7, 0.606, -0.525, 0.7, -0.606, -0.525, 0.7
 size = Vector3(0.4, 0.7, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmmb0"]
-albedo_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
+albedo_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
 
-[node name="Prism" type="MeshInstance3D"]
+[node name="Prism" type="MeshInstance3D" unique_id=1419345679]
 transform = Transform3D(-4.3711385e-08, 0.99999994, -4.371139e-08, 0, -4.3711385e-08, -1, -0.99999994, -4.3711385e-08, 1.9106855e-15, 0.15, 0.7, 0)
 mesh = SubResource("PrismMesh_tmmb0")
+surface_material_override/0 = SubResource("StandardMaterial3D_62fsh")
 script = ExtResource("1_62fsh")
 
-[node name="MainCollider" type="Area3D" parent="."]
+[node name="MainCollider" type="Area3D" parent="." unique_id=165838704]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainCollider" unique_id=410488158]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, -8.351872e-23, 0, 3.5527137e-15, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_62fsh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1523650297]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.05, -0.7)
 mesh = SubResource("PrismMesh_62fsh")
 skeleton = NodePath("")

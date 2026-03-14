@@ -69,7 +69,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): 
 		for tower in get_children():
 			if tower is BaseTower:
-				towers[local_to_map(to_local(tower.global_position))] = tower
+				towers[local_to_map(to_local(tower.global_position - Vector3(0,1,0)))] = tower
 		return
 
 	state = State.None
@@ -80,8 +80,8 @@ func _ready() -> void:
 	
 	for tower in get_children():
 		if tower is BaseTower:
-			towers[local_to_map(to_local(tower.global_position))] = tower
-			tower.cellCoords = [local_to_map(to_local(tower.global_position))]
+			towers[local_to_map(to_local(tower.global_position - Vector3(0,1,0)))] = tower
+			tower.cellCoords = [local_to_map(to_local(tower.global_position - Vector3(0,1,0)))]
 			towerCounts[tower.getTowerKey()] += 1
 	initialTowerCounts = towerCounts.duplicate()
 
@@ -90,11 +90,12 @@ func _process(delta: float) -> void: # Editor mode only
 	if !Engine.is_editor_hint(): return 
 	if update_cooldown > 0: update_cooldown -= delta; return
 	update_cooldown = 0.2
-	
+
 	for cell in towers.keys():
+		#if !towers[cell]: towers.erase(cell)
 		if mesh_library.get_item_name(get_cell_item(cell)) != (towers[cell] as BaseTower).get_script().get_global_name():
 			var tower = towers[cell] as BaseTower
-			towers.erase(local_to_map(to_local(tower.global_position)))
+			towers.erase(local_to_map(to_local(tower.global_position - Vector3(0,2,0))))
 			tower.queue_free()
 	
 	for cell in get_used_cells():
@@ -148,7 +149,7 @@ func _unhandled_input(event):
 			# Tile Highlight
 			if event is InputEventMouse or event is InputEventKey:
 				var cell_coords = getTileUnderMouse(get_viewport().get_mouse_position())
-				if cell_coords != null:
+				if cell_coords != null and (mesh_library.get_item_name(get_cell_item(cell_coords)) == "TowerTile" or towerPrefabDictionary.has(mesh_library.get_item_name(get_cell_item(cell_coords)))):
 					tileHighlight.get_surface_override_material(0).albedo_color = Color(0.3, 0.3, 0.3, 0.5)
 					tileHighlight.global_position = map_to_local(cell_coords)
 				else:
