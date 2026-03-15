@@ -95,7 +95,7 @@ func _process(delta: float) -> void: # Editor mode only
 		#if !towers[cell]: towers.erase(cell)
 		if mesh_library.get_item_name(get_cell_item(cell)) != (towers[cell] as BaseTower).get_script().get_global_name():
 			var tower = towers[cell] as BaseTower
-			towers.erase(local_to_map(to_local(tower.global_position - Vector3(0,2,0))))
+			towers.erase(local_to_map(to_local(tower.global_position - Vector3(0,1,0))))
 			tower.queue_free()
 	
 	for cell in get_used_cells():
