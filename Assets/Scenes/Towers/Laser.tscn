@@ -2,23 +2,36 @@
 
 [ext_resource type="Script" uid="uid://42v837fkdqcg" path="res://Assets/Scripts/Towers/Laser.gd" id="1_78jbl"]
 [ext_resource type="PackedScene" uid="uid://cro04y024dvii" path="res://Assets/Shaders/end_particles.tscn" id="2_0wpyy"]
-[ext_resource type="PackedScene" uid="uid://chv7fu7pnloo8" path="res://Assets/Shaders/beam_particles.tscn" id="3_yq50c"]
+[ext_resource type="Shader" uid="uid://2v0uou76ja4a" path="res://Assets/Scenes/Towers/Laser.gdshader" id="2_yq50c"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7vjml"]
 resource_local_to_scene = true
 flip_faces = true
-top_radius = 0.06
-bottom_radius = 0.06
-height = 0.01
+top_radius = 0.15
+bottom_radius = 0.15
+height = 1.0
 radial_segments = 8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vjml"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0wpyy"]
+noise_type = 2
+seed = 1
+frequency = 0.015
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0wpyy"]
+noise = SubResource("FastNoiseLite_0wpyy")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5dis"]
 resource_local_to_scene = true
-transparency = 1
-albedo_color = Color(1, 0, 0, 1)
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 10.0
+render_priority = 0
+shader = ExtResource("2_yq50c")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_0wpyy")
+shader_parameter/laser_color = Color(1, 0, 0, 1)
+shader_parameter/noise_speed = 2.0
+shader_parameter/texture_scale = 1.0
+shader_parameter/pulse_speed = 5.0
+shader_parameter/pulse_amplitude = 0.01
+shader_parameter/pulse_offset = 0.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kk7t0"]
 resource_local_to_scene = true
@@ -26,19 +39,6 @@ height = 0.01
 radius = 0.06
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78jbl"]
-resource_local_to_scene = true
-transparency = 1
-albedo_color = Color(1, 0, 0, 0.5019608)
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 10.0
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wpyy"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(1, 0, 0, 0.5019608)
@@ -60,7 +60,7 @@ script = ExtResource("1_78jbl")
 
 [node name="BeamMesh" type="MeshInstance3D" parent="." unique_id=533073899]
 mesh = SubResource("CylinderMesh_7vjml")
-surface_material_override/0 = SubResource("StandardMaterial3D_7vjml")
+surface_material_override/0 = SubResource("ShaderMaterial_j5dis")
 
 [node name="AreaOfEffect" type="Area3D" parent="." unique_id=1528615399]
 collision_layer = 8
@@ -72,8 +72,3 @@ shape = SubResource("CylinderShape3D_kk7t0")
 [node name="EndParticles" parent="." unique_id=1753396030 instance=ExtResource("2_0wpyy")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_78jbl")
-
-[node name="BeamParticles" parent="." unique_id=1524295959 instance=ExtResource("3_yq50c")]
-transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_0wpyy")

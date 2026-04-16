@@ -5,6 +5,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://bsm87ocimnggh" path="res://Assets/AnimLibraries/BaseEntityAnims.res" id="2_yaghk"]
 [ext_resource type="Script" uid="uid://k5qpt7g4ih6n" path="res://Assets/Scripts/Effects/DamageNumberPool.gd" id="4_0gabb"]
 [ext_resource type="PackedScene" uid="uid://bokuma3cuj3i7" path="res://Assets/Scenes/Statuses/ResourceNumber.tscn" id="5_lnuxm"]
+[ext_resource type="PackedScene" uid="uid://cwh4t234j7vlx" path="res://Assets/Shaders/hit_particles.tscn" id="6_kenej"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kg630"]
 resource_local_to_scene = true
@@ -117,3 +118,7 @@ show_percentage = false
 
 [node name="ResourceNumber" parent="SubViewport" unique_id=127282553 instance=ExtResource("5_lnuxm")]
 visible = false
+
+[node name="HitParticles" parent="." unique_id=1309947980 instance=ExtResource("6_kenej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+emitting = false

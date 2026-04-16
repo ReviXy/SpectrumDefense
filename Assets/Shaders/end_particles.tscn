@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cro04y024dvii"]
+[gd_scene format=3 uid="uid://cro04y024dvii"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_end8h"]
 resource_local_to_scene = true
@@ -14,7 +14,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Curve" id="Curve_end8h"]
-_data = [Vector2(0, 0.49999994), 0.0, 0.0, 0, 0, Vector2(0.24901181, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.50200987), 0.0, 0.0, 0, 0, Vector2(0.24550897, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_qjot6"]
@@ -22,17 +22,19 @@ curve = SubResource("Curve_end8h")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7kv8b"]
 spread = 80.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_qjot6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_wjfwt"]
-size = Vector2(0.05, 0.05)
+size = Vector2(0.1, 0.1)
 
-[node name="EndParticles" type="GPUParticles3D"]
+[node name="EndParticles" type="GPUParticles3D" unique_id=1942721719]
 material_override = SubResource("StandardMaterial3D_end8h")
+cast_shadow = 0
 amount = 25
 lifetime = 0.5
+visibility_aabb = AABB(-1, -1, -1, 2, 2, 2)
 process_material = SubResource("ParticleProcessMaterial_7kv8b")
 draw_pass_1 = SubResource("QuadMesh_wjfwt")

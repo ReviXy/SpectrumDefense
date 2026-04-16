@@ -24,9 +24,9 @@ const colorVisualization = [
 	Color.RED,
 	Color.YELLOW,
 	Color.BLUE,
-	Color.ORANGE_RED,
+	Color.DARK_ORANGE,
 	Color.GREEN,
-	Color.WEB_PURPLE,
+	Color.PURPLE,
 	Color.WHITE
 ]
 

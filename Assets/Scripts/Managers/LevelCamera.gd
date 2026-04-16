@@ -27,8 +27,8 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_SPACE):
 		input_vector.y += 1
 
-	#input_vector = input_vector.normalized().rotated(Vector3.UP,rotation.y)
-	input_vector = global_basis * input_vector.normalized()
+	input_vector = input_vector.normalized().rotated(Vector3.UP,rotation.y)
+	#input_vector = global_basis * input_vector.normalized()
 	pos += input_vector * move_speed * delta * max(dist,5)/25/Engine.time_scale
 	if (input_vector.length() == 0 and not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
 		pos = lerp(pos, round(pos),0.05)

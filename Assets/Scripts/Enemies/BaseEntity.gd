@@ -20,6 +20,7 @@ var Attachments: Dictionary = {}
 @onready var healthBar: ProgressBar = $SubViewport/HealthBar
 @onready var damageNumberPool: DamageNumberPool = $SubViewport
 @onready var resourceNumber: ResourceNumber = $SubViewport/ResourceNumber
+@onready var hitParticle: GPUParticles3D = $HitParticles
 
 func on_spawn():
 	pass
@@ -51,6 +52,9 @@ func on_end_reached():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if hitParticle:
+		hitParticle.process_material.color = ColorRYB_Operations.ToColor(EnemyWeakColor)
+	
 	if MainMeshInstance:
 		if MainMeshInstance.material_override:
 			var shader_material: ShaderMaterial = MainMeshInstance.material_override
@@ -76,6 +80,7 @@ func TakeDamage(damage: float, color: ColorRYB):
 	for a:EnemyAttachment in Attachments.values():
 		proceed = proceed and a.pre_damage(damage,color,preSum,mult,postSum)
 	if proceed:
+		beingHit = true;
 		var damageCoefficient = (2.0 if color == EnemyWeakColor else (0.25 if color == EnemyStrongColor else 1.0))
 		var damageTaken = max(((damage+preSum.value)*mult.value+postSum.value)*damageCoefficient,0.0)
 		HP -= damageTaken
@@ -91,6 +96,7 @@ func RestoreHP(Healing: float):
 	HP = min(MaxHP,HP+Healing)
 	if healthBar != null: healthBar.value = HP / MaxHP * 100
 
+var beingHit = false;
 func _physics_process(delta: float) -> void:
 	if (HP <= 0):
 		DeathCheck()
@@ -109,6 +115,15 @@ func _physics_process(delta: float) -> void:
 	if progress_ratio == 1:
 		ReachedExit()
 		queue_free()
+	
+	if hitParticle:
+		if (beingHit):
+			if (!hitParticle.emitting):
+				hitParticle.emitting = true;
+		else:
+			if (hitParticle.emitting):
+				hitParticle.emitting = false;
+		beingHit = false;
 
 func ReachedExit():
 	on_end_reached()
