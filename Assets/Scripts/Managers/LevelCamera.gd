@@ -27,9 +27,12 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_SPACE):
 		input_vector.y += 1
 
-	input_vector = input_vector.normalized().rotated(Vector3.UP,rotation.y)
-	#input_vector = global_basis * input_vector.normalized()
-	pos += input_vector * move_speed * delta * max(dist,5)/25/Engine.time_scale
+	if projection == Camera3D.PROJECTION_ORTHOGONAL:
+		input_vector = input_vector.normalized().rotated(Vector3.UP,rotation.y)
+	else:
+		input_vector = global_basis * input_vector.normalized()
+	pos += input_vector * move_speed * delta * max(dist,10)/25/Engine.time_scale
+
 	if (input_vector.length() == 0 and not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
 		pos = lerp(pos, round(pos),0.05)
 	position = pos + global_basis.z.normalized()*dist
@@ -40,12 +43,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 			pos -= global_basis * (input_vector).rotated(Vector3.RIGHT,PI) * move_speed * max(dist,5)/25
 		elif Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+			if projection == Camera3D.PROJECTION_PERSPECTIVE:
+				input_vector *= -1
 			rotation.x = clampf(rotation.x-input_vector.y*PI,-1.57,1.57)
 			rotation.y -= input_vector.x*PI
 	if event is InputEventMouseButton:
 		match event.button_index:
 			MOUSE_BUTTON_WHEEL_UP:
 				dist = max(dist-1,0)
+				if dist == 0:
+					projection = Camera3D.PROJECTION_PERSPECTIVE
 			MOUSE_BUTTON_WHEEL_DOWN:
 				dist+=1
+				projection = Camera3D.PROJECTION_ORTHOGONAL
 		size = max(dist,2)
