@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn2ciudf1u16y"]
+[gd_scene format=3 uid="uid://bn2ciudf1u16y"]
 
 [ext_resource type="Script" uid="uid://5lv2cyxu8f1k" path="res://Assets/Scripts/Managers/SettingsManager.gd" id="1_1mpwi"]
+[ext_resource type="Shader" uid="uid://bwl88u2sdr6yn" path="res://Assets/Shaders/Background.gdshader" id="2_eeobc"]
+[ext_resource type="Texture2D" uid="uid://brq444eu2paq8" path="res://Assets/Sprites/tile.png" id="3_18tom"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_grrhg"]
+shader = ExtResource("2_eeobc")
+shader_parameter/u_texture = ExtResource("3_18tom")
+shader_parameter/u_texture_scale = 0.75
+shader_parameter/u_proportion = 0.2000000095
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uge0d"]
 
 [sub_resource type="Theme" id="Theme_1mpwi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3bbr"]
 bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=1967035341]
 process_mode = 3
 z_index = 1
 layout_mode = 3
@@ -19,11 +29,18 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_1mpwi")
 
-[node name="SettingsMenu" type="CanvasLayer" parent="."]
+[node name="SettingsMenu" type="CanvasLayer" parent="." unique_id=536608041]
 layer = 5
 visible = false
 
-[node name="Panel" type="Panel" parent="SettingsMenu"]
+[node name="TextureRect2" type="TextureRect" parent="SettingsMenu" unique_id=90528969]
+visible = false
+material = SubResource("ShaderMaterial_grrhg")
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = SubResource("PlaceholderTexture2D_uge0d")
+
+[node name="Panel" type="Panel" parent="SettingsMenu" unique_id=1016256564]
 top_level = true
 z_index = -1
 anchors_preset = 15
@@ -34,7 +51,7 @@ grow_vertical = 2
 theme = SubResource("Theme_1mpwi")
 theme_override_styles/panel = SubResource("StyleBoxFlat_f3bbr")
 
-[node name="Label" type="Label" parent="SettingsMenu"]
+[node name="Label" type="Label" parent="SettingsMenu" unique_id=1863982861]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -46,7 +63,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "Настройки"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu" unique_id=319716714]
 custom_minimum_size = Vector2(0, 350)
 anchors_preset = 14
 anchor_top = 0.5
@@ -60,16 +77,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsMenu/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsMenu/VBoxContainer" unique_id=1456976991]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer" unique_id=1708752073]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Громкость музыки"
 
-[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/HBoxContainer" unique_id=1417338836]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -79,16 +96,16 @@ step = 0.1
 tick_count = 10
 ticks_on_borders = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsMenu/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsMenu/VBoxContainer" unique_id=1614770535]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer2" unique_id=1534701096]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Громкость звуков"
 
-[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/HBoxContainer2"]
+[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/HBoxContainer2" unique_id=337038360]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -98,34 +115,34 @@ step = 0.1
 tick_count = 10
 ticks_on_borders = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="SettingsMenu/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="SettingsMenu/VBoxContainer" unique_id=265323169]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer3" unique_id=972913975]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Разрешение"
 
-[node name="OptionButton" type="OptionButton" parent="SettingsMenu/VBoxContainer/HBoxContainer3"]
+[node name="OptionButton" type="OptionButton" parent="SettingsMenu/VBoxContainer/HBoxContainer3" unique_id=1315005766]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="SettingsMenu/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="SettingsMenu/VBoxContainer" unique_id=979684878]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer4" unique_id=853815390]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Полноэкранный режим"
 
-[node name="CheckBox" type="CheckBox" parent="SettingsMenu/VBoxContainer/HBoxContainer4"]
+[node name="CheckBox" type="CheckBox" parent="SettingsMenu/VBoxContainer/HBoxContainer4" unique_id=1879184554]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="SaveAndQuitButton" type="Button" parent="SettingsMenu"]
+[node name="SaveAndQuitButton" type="Button" parent="SettingsMenu" unique_id=1244024460]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

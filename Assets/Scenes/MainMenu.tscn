@@ -1,11 +1,39 @@
 [gd_scene format=3 uid="uid://baec2mk7u3hey"]
 
 [ext_resource type="Script" uid="uid://bbfa11fv22u08" path="res://Assets/Scripts/UI/MainMenuUI.gd" id="1_hywc3"]
+[ext_resource type="Shader" uid="uid://ykkxqkjyu15u" path="res://Assets/Shaders/MainMenu.gdshader" id="2_ldl0q"]
+[ext_resource type="Texture2D" uid="uid://bmquqopwsewqo" path="res://Assets/Sprites/TowerTile.png" id="3_x778w"]
+[ext_resource type="Shader" uid="uid://bwl88u2sdr6yn" path="res://Assets/Shaders/Background.gdshader" id="5_47kk4"]
+[ext_resource type="FontFile" uid="uid://c2irq1buiuico" path="res://Assets/Sprites/ZenDots-Regular.ttf" id="5_cwbci"]
+[ext_resource type="Texture2D" uid="uid://brq444eu2paq8" path="res://Assets/Sprites/tile.png" id="6_o1tui"]
+[ext_resource type="Texture2D" uid="uid://n557l1xcnag8" path="res://Assets/Sprites/Color=Black.png" id="7_47kk4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0f51"]
+shader = ExtResource("2_ldl0q")
+shader_parameter/u_texture = ExtResource("3_x778w")
+shader_parameter/u_speed = Vector2(0.5, 0.25)
+shader_parameter/u_texture_scale = 2.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_q5p6k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqyh1"]
+shader = ExtResource("5_47kk4")
+shader_parameter/u_texture = ExtResource("6_o1tui")
+shader_parameter/u_texture_scale = 0.75
+shader_parameter/u_proportion = 0.2000000095
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ho3wo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fp48a"]
-font_size = 50
+font = ExtResource("5_cwbci")
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+outline_size = 17
+outline_color = Color(0.28, 0.28, 0.28, 1)
 shadow_size = 5
-shadow_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.9, 0.9, 0.9, 0.26666668)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47kk4"]
 
 [node name="MainMenuUI" type="Control" unique_id=1462502650]
 layout_mode = 3
@@ -16,26 +44,48 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hywc3")
 
-[node name="Panel" type="Panel" parent="." unique_id=2018015237]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="." unique_id=942753811]
+material = SubResource("ShaderMaterial_m0f51")
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = SubResource("PlaceholderTexture2D_q5p6k")
 
-[node name="Tiltle" type="Label" parent="Panel" unique_id=1452201059]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1678081341]
+visible = false
+material = SubResource("ShaderMaterial_eqyh1")
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = SubResource("PlaceholderTexture2D_ho3wo")
+
+[node name="Tiltle" type="Label" parent="." unique_id=1452201059]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -177.5
+offset_left = -291.0
 offset_top = 100.0
-offset_right = 177.5
-offset_bottom = 155.0
+offset_right = 291.0
+offset_bottom = 161.0
 grow_horizontal = 2
+pivot_offset = Vector2(291, 0)
+theme_override_font_sizes/font_size = 30
 text = "Spectrum Defense"
 label_settings = SubResource("LabelSettings_fp48a")
+
+[node name="Panel" type="Panel" parent="." unique_id=2018015237]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 250.0
+offset_right = 200.0
+offset_bottom = 650.0
+grow_horizontal = 2
+pivot_offset = Vector2(200, 0)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_47kk4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1759593898]
 custom_minimum_size = Vector2(200, 0)
@@ -44,10 +94,11 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_right = 48.0
+offset_left = -100.0
+offset_right = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(100, 0)
 theme_override_constants/separation = 10
 alignment = 1
 
@@ -55,22 +106,39 @@ alignment = 1
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 20
-text = "Играть"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_cwbci")
+theme_override_font_sizes/font_size = 40
+text = "Play"
+icon = ExtResource("7_47kk4")
+flat = true
+icon_alignment = 1
 
 [node name="OptionsButton" type="Button" parent="Panel/VBoxContainer" unique_id=1987156892]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 20
-text = "Настройки"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_cwbci")
+theme_override_font_sizes/font_size = 40
+text = "Options"
+icon = ExtResource("7_47kk4")
+flat = true
+icon_alignment = 1
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer" unique_id=1840517688]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 20
-text = "Выйти"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_cwbci")
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+icon = ExtResource("7_47kk4")
+flat = true
+icon_alignment = 1
 
 [connection signal="pressed" from="Panel/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
