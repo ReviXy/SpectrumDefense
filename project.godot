@@ -29,7 +29,8 @@ DebugLabel="*res://Assets/Scenes/DebugLabel.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor]
 
@@ -54,3 +55,8 @@ LaunchWave={
 3d_physics/layer_2="Enemies"
 3d_physics/layer_3="Towers"
 3d_physics/layer_4="Laser"
+
+[rendering]
+
+environment/ssao/quality=3
+environment/ssil/quality=3
