@@ -19,6 +19,10 @@ run/main_scene="uid://baec2mk7u3hey"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://c6lk5vcflwkis"
+
 [autoload]
 
 GlobalLevelManager="*res://Assets/Scripts/Managers/GlobalLevelManager.gd"
@@ -29,6 +33,8 @@ DebugLabel="*res://Assets/Scenes/DebugLabel.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/resizable=false
+window/size/maximize_disabled=true
 window/stretch/mode="viewport"
 
 [editor]

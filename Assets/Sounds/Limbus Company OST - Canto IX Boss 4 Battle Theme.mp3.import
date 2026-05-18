@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://duaqowoaa7wfr"
+path="res://.godot/imported/Limbus Company OST - Canto IX Boss 4 Battle Theme.mp3-bcb32dc2746d4a21b008cf420cd564b2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Limbus Company OST - Canto IX Boss 4 Battle Theme.mp3"
+dest_files=["res://.godot/imported/Limbus Company OST - Canto IX Boss 4 Battle Theme.mp3-bcb32dc2746d4a21b008cf420cd564b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

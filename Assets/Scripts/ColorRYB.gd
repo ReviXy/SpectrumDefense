@@ -31,13 +31,13 @@ const colorVisualization = [
 ]
 
 const colorStrings = [
-	"Красный",
-	"Жёлтый",
-	"Синий",
-	"Оранжевый",
-	"Зелёный",
-	"Фиолетовый",
-	"Белый"
+	"Red",
+	"Yellow",
+	"Blue",
+	"Orange",
+	"Green",
+	"Purple",
+	"White"
 ]
 
 static func ToColor(color: ColorRYB) -> Color:

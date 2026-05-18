@@ -4,7 +4,7 @@ const ColorRYB = preload("res://Assets/Scripts/ColorRYB.gd").ColorRYB
 func _ready() -> void:
 	await $"..".ready
 	get_node("TopPanel").mouse_entered.connect(func(): LevelManager.this.GridM.resetHighlight())
-	get_node("PauseButton").mouse_entered.connect(func(): LevelManager.this.GridM.resetHighlight())
+	get_node("Panel/PauseButton").mouse_entered.connect(func(): LevelManager.this.GridM.resetHighlight())
 	LevelManager.this.ResourceM.resources_gained.connect(updateUpgradeButton)
 	LevelManager.this.ResourceM.resources_lost.connect(updateUpgradeButton)
 	LevelManager.this.ResourceM.resources_gained.connect(updatePlacementButtons)
@@ -121,7 +121,7 @@ func updateTowerConfigurationInfo():
 	if tower.upgradable: 
 		upgradeCostLabel.text = "-%.0f$" % getTowerUpgradeCost(tower)
 	else: 
-		upgradeCostLabel.text = "Макс."
+		upgradeCostLabel.text = "MAX"
 	
 	destroyButton.disabled = !tower.destroyable
 	if tower.destroyable: destroyCompensationLabel.text = "+%.0f$" % getTowerDestroyCompensation(tower); destroyCompensationLabel.visible = true
@@ -141,11 +141,11 @@ func updateTowerConfigurationInfo():
 			emitterColorDropDown.disabled = !tower.configurable
 		"Mirror":
 			tower = (tower as Mirror)
-			mirrorLevelLabel.text = "Ур.%.0f" % tower.level
+			mirrorLevelLabel.text = "Lv.%.0f" % tower.level
 			mirrorIntensityPenaltyLabel.text = "%.0f" % (tower.intensity_penalty * 100) + "%"
 		"Filter":
 			tower = (tower as Filter)
-			filterLevelLabel.text = "Ур.%.0f" % tower.level
+			filterLevelLabel.text = "Lv.%.0f" % tower.level
 			filterIntensityPenaltyLabel.text = "%.0f" % (tower.intensity_penalty * 100) + "%"
 			filterColorDropDown.clear()
 			for i in range(7):
@@ -155,13 +155,13 @@ func updateTowerConfigurationInfo():
 			filterColorDropDown.disabled = !tower.configurable
 		"Lens":
 			tower = (tower as Lens)
-			lensLevelLabel.text = "Ур.%.0f" % tower.level
+			lensLevelLabel.text = "Lv.%.0f" % tower.level
 			lensIntensityPenaltyLabel.text = "%.0f" % (tower.intensity_penalty * 100) + "%"
 			lensCoefficientSlider.value = tower.modification_coefficient
 			lensCoefficientSlider.editable = tower.configurable
 		"Prism":
 			tower = (tower as Prism)
-			prismLevelLabel.text = "Ур.%.0f" % tower.level
+			prismLevelLabel.text = "Lv.%.0f" % tower.level
 			prismIntensityPenaltyLabel.text = "%.0f" % (tower.intensity_penalty * 100) + "%"
 
 func resetTowerPanel():
@@ -265,7 +265,7 @@ func _on_pause_button_pressed() -> void:
 func show_mission_win():
 	# TODO
 	# Check if next level exists. If not? Block or delete NextLevelButton
-	(get_node("MissionWin/Panel/HBoxContainer/NextLevelButton") as Button).disabled = true
+	(get_node("MissionWin/Panel/VBoxContainer/NextLevelButton") as Button).disabled = true
 	get_tree().paused = true
 	missionWin.visible = true
 	
@@ -303,7 +303,7 @@ func _update_currency() -> void:
 
 func _on_start_wave_button_down() -> void:
 	startWaveHoldTimer.timeout.connect(func():
-		startWaveLabel.text = "Авто"
+		startWaveLabel.text = "Auto"
 		LevelManager.this.WaveM.autoLaunch = true
 		LevelManager.this.WaveM.LaunchNextWave()
 		startWaveTimer.stop())

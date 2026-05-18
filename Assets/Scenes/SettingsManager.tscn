@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://5lv2cyxu8f1k" path="res://Assets/Scripts/Managers/SettingsManager.gd" id="1_1mpwi"]
 [ext_resource type="Shader" uid="uid://bwl88u2sdr6yn" path="res://Assets/Shaders/Background.gdshader" id="2_eeobc"]
 [ext_resource type="Texture2D" uid="uid://brq444eu2paq8" path="res://Assets/Sprites/tile.png" id="3_18tom"]
+[ext_resource type="FontFile" uid="uid://c2irq1buiuico" path="res://Assets/Sprites/ZenDots-Regular.ttf" id="4_grrhg"]
+[ext_resource type="Texture2D" uid="uid://claapsii4udcf" path="res://Assets/Sprites/Color=White.png" id="5_uge0d"]
+[ext_resource type="Shader" uid="uid://d6bewqi51i4n" path="res://Assets/Shaders/Border.gdshader" id="6_hfiwd"]
+[ext_resource type="Texture2D" uid="uid://bnolete6h344i" path="res://Assets/Sprites/border-stripped.png" id="7_2rym8"]
+[ext_resource type="Texture2D" uid="uid://cgk48k7od4jwo" path="res://Assets/Sprites/border-arrows.png" id="8_7qj80"]
+[ext_resource type="AudioStream" uid="uid://duaqowoaa7wfr" path="res://Assets/Sounds/Limbus Company OST - Canto IX Boss 4 Battle Theme.mp3" id="9_2rym8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_grrhg"]
 shader = ExtResource("2_eeobc")
@@ -12,10 +18,143 @@ shader_parameter/u_proportion = 0.2000000095
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uge0d"]
 
-[sub_resource type="Theme" id="Theme_1mpwi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svb2l"]
+resource_local_to_scene = true
+shader = ExtResource("6_hfiwd")
+shader_parameter/u_texture = ExtResource("7_2rym8")
+shader_parameter/u_texture_scale = 0.5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3bbr"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d2le3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drw4m"]
+resource_local_to_scene = true
+shader = ExtResource("6_hfiwd")
+shader_parameter/u_texture = ExtResource("8_7qj80")
+shader_parameter/u_texture_scale = 0.3
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wfiot"]
+
+[sub_resource type="DPITexture" id="DPITexture_grrhg"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_2rym8"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".75\"/></svg>
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rym8"]
+content_margin_left = 4.0
+content_margin_top = 10.0
+content_margin_right = 4.0
+content_margin_bottom = 10.0
+bg_color = Color(0.5877506, 0.58775055, 0.5877505, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.39181864, 0.39181867, 0.39181837, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qj80"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.39181864, 0.39181867, 0.39181837, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svb2l"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.39181864, 0.39181867, 0.39181837, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2le3"]
+bg_color = Color(0.7835235, 0.7835234, 0.7835235, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.39181864, 0.39181867, 0.39181837, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="ImageTexture" id="ImageTexture_hfiwd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drw4m"]
+bg_color = Color(0.6858353, 0.6858353, 0.68583506, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfiot"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_hfiwd"]
+default_font = ExtResource("4_grrhg")
+default_font_size = 25
+PopupMenu/colors/font_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_hover_color = Color(0, 0, 0, 1)
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_drw4m")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_wfiot")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grrhg"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uge0d"]
+bg_color = Color(0.6858353, 0.6858352, 0.6858354, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
 
 [node name="Control" type="Control" unique_id=1967035341]
 process_mode = 3
@@ -29,118 +168,36 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_1mpwi")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=585456403]
+stream = ExtResource("9_2rym8")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
 [node name="SettingsMenu" type="CanvasLayer" parent="." unique_id=536608041]
 layer = 5
 visible = false
 
-[node name="TextureRect2" type="TextureRect" parent="SettingsMenu" unique_id=90528969]
-visible = false
+[node name="Background" type="TextureRect" parent="SettingsMenu" unique_id=90528969]
 material = SubResource("ShaderMaterial_grrhg")
 offset_right = 1280.0
 offset_bottom = 720.0
 texture = SubResource("PlaceholderTexture2D_uge0d")
 
-[node name="Panel" type="Panel" parent="SettingsMenu" unique_id=1016256564]
-top_level = true
-z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_1mpwi")
-theme_override_styles/panel = SubResource("StyleBoxFlat_f3bbr")
-
-[node name="Label" type="Label" parent="SettingsMenu" unique_id=1863982861]
+[node name="SettingsLabel" type="Label" parent="SettingsMenu" unique_id=1863982861]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -110.0
-offset_top = 100.0
-offset_right = 110.0
-offset_bottom = 155.0
+offset_left = -175.0
+offset_top = 50.0
+offset_right = 175.0
+offset_bottom = 125.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
-text = "Настройки"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu" unique_id=319716714]
-custom_minimum_size = Vector2(0, 350)
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 100.0
-offset_top = -160.0
-offset_right = -100.0
-offset_bottom = 190.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 15
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsMenu/VBoxContainer" unique_id=1456976991]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer" unique_id=1708752073]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Громкость музыки"
-
-[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/HBoxContainer" unique_id=1417338836]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.1
-tick_count = 10
-ticks_on_borders = true
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsMenu/VBoxContainer" unique_id=1614770535]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer2" unique_id=1534701096]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Громкость звуков"
-
-[node name="HSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/HBoxContainer2" unique_id=337038360]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.1
-tick_count = 10
-ticks_on_borders = true
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="SettingsMenu/VBoxContainer" unique_id=265323169]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer3" unique_id=972913975]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Разрешение"
-
-[node name="OptionButton" type="OptionButton" parent="SettingsMenu/VBoxContainer/HBoxContainer3" unique_id=1315005766]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="SettingsMenu/VBoxContainer" unique_id=979684878]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="SettingsMenu/VBoxContainer/HBoxContainer4" unique_id=853815390]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Полноэкранный режим"
-
-[node name="CheckBox" type="CheckBox" parent="SettingsMenu/VBoxContainer/HBoxContainer4" unique_id=1879184554]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_grrhg")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SaveAndQuitButton" type="Button" parent="SettingsMenu" unique_id=1244024460]
 anchors_preset = 5
@@ -149,10 +206,162 @@ anchor_right = 0.5
 offset_left = -175.0
 offset_top = 600.0
 offset_right = 175.0
-offset_bottom = 660.0
+offset_bottom = 697.0
 grow_horizontal = 2
 focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.31184936, 0.31184965, 0.31185025, 1)
+theme_override_fonts/font = ExtResource("4_grrhg")
 theme_override_font_sizes/font_size = 30
-text = "Сохранить и выйти"
+text = "Quit"
+icon = ExtResource("5_uge0d")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBorder1" type="TextureRect" parent="SettingsMenu" unique_id=2085064471]
+material = SubResource("ShaderMaterial_svb2l")
+offset_top = 150.0
+offset_right = 1280.0
+offset_bottom = 164.0
+texture = SubResource("PlaceholderTexture2D_d2le3")
+
+[node name="HBorder2" type="TextureRect" parent="SettingsMenu" unique_id=885548361]
+material = SubResource("ShaderMaterial_svb2l")
+offset_top = 550.0
+offset_right = 1280.0
+offset_bottom = 564.0
+texture = SubResource("PlaceholderTexture2D_d2le3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsMenu" unique_id=847348265]
+offset_left = 154.0
+offset_top = 164.0
+offset_right = 1134.0
+offset_bottom = 550.0
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="SettingsMenu/HBoxContainer" unique_id=1388888761]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="SettingsMenu/HBoxContainer/VBoxContainer1" unique_id=1707607489]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="SettingsMenu/HBoxContainer/VBoxContainer1" unique_id=1081054645]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_grrhg")
+theme_override_font_sizes/font_size = 25
+text = "Music"
+vertical_alignment = 1
+
+[node name="SFXLabel" type="Label" parent="SettingsMenu/HBoxContainer/VBoxContainer1" unique_id=1459739566]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_grrhg")
+theme_override_font_sizes/font_size = 25
+text = "SFX"
+vertical_alignment = 1
+
+[node name="FullscreenLabel" type="Label" parent="SettingsMenu/HBoxContainer/VBoxContainer1" unique_id=1004673506]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_grrhg")
+theme_override_font_sizes/font_size = 25
+text = "Fullscreen"
+vertical_alignment = 1
+
+[node name="ResolutionLabel" type="Label" parent="SettingsMenu/HBoxContainer/VBoxContainer1" unique_id=1825229190]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_grrhg")
+theme_override_font_sizes/font_size = 25
+text = "Resolution"
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="SettingsMenu/HBoxContainer" unique_id=1296261951]
+layout_mode = 2
+
+[node name="VBorder" type="TextureRect" parent="SettingsMenu/HBoxContainer/Control" unique_id=626925317]
+material = SubResource("ShaderMaterial_drw4m")
+layout_mode = 0
+offset_right = 386.0
+offset_bottom = 18.0
+rotation = 1.5707964
+texture = SubResource("PlaceholderTexture2D_wfiot")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SettingsMenu/HBoxContainer" unique_id=1734053563]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="SettingsMenu/HBoxContainer/VBoxContainer2" unique_id=2123735982]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="SettingsMenu/HBoxContainer/VBoxContainer2" unique_id=1482622970]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("DPITexture_grrhg")
+theme_override_icons/grabber_highlight = SubResource("DPITexture_2rym8")
+theme_override_icons/grabber_disabled = SubResource("DPITexture_2rym8")
+theme_override_styles/slider = SubResource("StyleBoxFlat_2rym8")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_7qj80")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_7qj80")
+max_value = 1.0
+step = 0.1
+scrollable = false
+tick_count = 11
+ticks_on_borders = true
+
+[node name="SFXSlider" type="HSlider" parent="SettingsMenu/HBoxContainer/VBoxContainer2" unique_id=1293177961]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("DPITexture_grrhg")
+theme_override_icons/grabber_highlight = SubResource("DPITexture_2rym8")
+theme_override_icons/grabber_disabled = SubResource("DPITexture_2rym8")
+theme_override_styles/slider = SubResource("StyleBoxFlat_2rym8")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_7qj80")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_7qj80")
+max_value = 1.0
+step = 0.1
+scrollable = false
+tick_count = 11
+ticks_on_borders = true
+
+[node name="Control2" type="Control" parent="SettingsMenu/HBoxContainer/VBoxContainer2" unique_id=998336407]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="SettingsMenu/HBoxContainer/VBoxContainer2/Control2" unique_id=260132974]
+layout_mode = 0
+offset_right = 22.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+theme_override_styles/normal = SubResource("StyleBoxFlat_svb2l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_svb2l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d2le3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2le3")
+theme_override_icons/unchecked = SubResource("ImageTexture_hfiwd")
+
+[node name="ResolutionDropdown" type="OptionButton" parent="SettingsMenu/HBoxContainer/VBoxContainer2" unique_id=1962528120]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = SubResource("Theme_hfiwd")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_grrhg")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_grrhg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uge0d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uge0d")
+alignment = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
 
 [connection signal="pressed" from="SettingsMenu/SaveAndQuitButton" to="." method="_on_save_and_quit_button_pressed"]
