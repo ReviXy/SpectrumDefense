@@ -38,7 +38,7 @@ resource_local_to_scene = true
 height = 0.01
 radius = 0.06
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78jbl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq50c"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(1, 0, 0, 0.5019608)
@@ -71,4 +71,4 @@ shape = SubResource("CylinderShape3D_kk7t0")
 
 [node name="EndParticles" parent="." unique_id=1753396030 instance=ExtResource("2_0wpyy")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_78jbl")
+material_override = SubResource("StandardMaterial3D_yq50c")

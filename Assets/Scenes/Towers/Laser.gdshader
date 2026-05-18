@@ -42,9 +42,11 @@ void fragment() {
 	// UV.x остается статичным для обертывания вокруг цилиндра
 	vec2 uv = vec2(UV.x, UV.y + TIME * noise_speed);
 	
-	float noise_value = texture(noise_texture, uv).r * texture(noise_texture, uv).r;
+	float noise = texture(noise_texture, uv).r;
+	
+	float noise_value = noise * noise;
 	
 	ALBEDO = laser_color * noise_value;
 	ALPHA = min(max(noise_value, 0.1) + 0.5, 1.0);
-	//EMISSION = laser_color * 0.5;
+	EMISSION = laser_color * 5.0 * (noise + 0.5);
 }

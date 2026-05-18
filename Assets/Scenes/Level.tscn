@@ -22,8 +22,13 @@
 [ext_resource type="Texture2D" uid="uid://cwo1uh7eojwy2" path="res://Assets/Sprites/Upgrade.png" id="20_pgq7w"]
 
 [sub_resource type="Environment" id="Environment_numvf"]
+background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.02
+glow_enabled = true
+glow_strength = 1.5
+glow_bloom = 0.1
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2rron"]
 
@@ -57,6 +62,10 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rse6"]
+border_width_left = 5
+border_color = Color(0.39181864, 0.39181867, 0.39181837, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ymob"]
 resource_local_to_scene = true
@@ -97,10 +106,32 @@ corner_radius_bottom_left = 5
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6vvw"]
-bg_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.39181864, 0.39181867, 0.39181837, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jwxn"]
-bg_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.39181864, 0.39181867, 0.39181837, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ew8ib"]
+border_width_left = 5
+border_color = Color(0.39181864, 0.39181867, 0.39181837, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hclee"]
 shader = ExtResource("14_oh3os")
@@ -216,6 +247,11 @@ script = ExtResource("2_6jwxn")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1665401526]
 environment = SubResource("Environment_numvf")
 camera_attributes = SubResource("CameraAttributesPractical_2rron")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=355842753]
+transform = Transform3D(0.8660254, -0.43301272, 0.24999999, 0, 0.49999997, 0.86602545, -0.5, -0.75, 0.43301266, 0, 10, 0)
+light_energy = 0.5
+shadow_enabled = true
 
 [node name="LevelUI" type="CanvasLayer" parent="." unique_id=376499721]
 process_mode = 1
@@ -411,39 +447,44 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -5.0
 offset_right = 250.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0rse6")
 
 [node name="Background" type="TextureRect" parent="LevelUI/TowerPlacementPanel" unique_id=2109930405]
 material = SubResource("ShaderMaterial_4ymob")
 layout_mode = 0
-offset_right = 250.0
+offset_left = 5.0
+offset_right = 255.0
 offset_bottom = 720.0
 texture = SubResource("PlaceholderTexture2D_6pedk")
 
 [node name="HBorder1" type="TextureRect" parent="LevelUI/TowerPlacementPanel" unique_id=1720585703]
 material = SubResource("ShaderMaterial_oh3os")
 layout_mode = 0
+offset_left = 5.0
 offset_top = 50.0
-offset_right = 250.0
+offset_right = 255.0
 offset_bottom = 64.0
 texture = SubResource("PlaceholderTexture2D_pgq7w")
 
 [node name="HBorder2" type="TextureRect" parent="LevelUI/TowerPlacementPanel" unique_id=739333980]
 material = SubResource("ShaderMaterial_oh3os")
 layout_mode = 0
+offset_left = 5.0
 offset_top = 426.0
-offset_right = 250.0
+offset_right = 255.0
 offset_bottom = 440.0
 texture = SubResource("PlaceholderTexture2D_pgq7w")
 
 [node name="VBorder" type="TextureRect" parent="LevelUI/TowerPlacementPanel" unique_id=1687278429]
 material = SubResource("ShaderMaterial_pgq7w")
 layout_mode = 0
-offset_left = 185.0
+offset_left = 190.0
 offset_top = 64.0
-offset_right = 547.0
+offset_right = 552.0
 offset_bottom = 82.0
 rotation = 1.5707964
 texture = SubResource("PlaceholderTexture2D_hclee")
@@ -453,9 +494,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -125.0
+offset_left = -120.0
 offset_top = 10.0
-offset_right = 125.0
+offset_right = 130.0
 offset_bottom = 38.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("12_4ymob")
@@ -469,9 +510,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -110.0
+offset_left = -105.0
 offset_top = 75.0
-offset_right = 40.0
+offset_right = 45.0
 offset_bottom = 415.0
 grow_horizontal = 2
 theme_override_constants/separation = 10
@@ -641,16 +682,18 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -250.0
 offset_top = 100.0
-offset_right = 250.0
-offset_bottom = 600.0
+offset_right = 260.0
+offset_bottom = 610.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_j6vvw")
 
 [node name="Background" type="TextureRect" parent="LevelUI/PauseMenu/Panel" unique_id=4099153]
 material = SubResource("ShaderMaterial_4ymob")
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 500.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 505.0
+offset_bottom = 505.0
 texture = SubResource("PlaceholderTexture2D_6pedk")
 
 [node name="Label" type="Label" parent="LevelUI/PauseMenu/Panel" unique_id=899015481]
@@ -755,16 +798,18 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -350.0
 offset_top = 100.0
-offset_right = 350.0
-offset_bottom = 510.0
+offset_right = 360.0
+offset_bottom = 520.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jwxn")
 
 [node name="Background" type="TextureRect" parent="LevelUI/MissionWin/Panel" unique_id=1923417702]
 material = SubResource("ShaderMaterial_4ymob")
 layout_mode = 0
-offset_right = 700.0
-offset_bottom = 410.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 705.0
+offset_bottom = 415.0
 texture = SubResource("PlaceholderTexture2D_6pedk")
 
 [node name="Label" type="Label" parent="LevelUI/MissionWin/Panel" unique_id=1554932251]
@@ -855,16 +900,18 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -350.0
 offset_top = 100.0
-offset_right = 350.0
-offset_bottom = 510.0
+offset_right = 360.0
+offset_bottom = 520.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jwxn")
 
 [node name="Background" type="TextureRect" parent="LevelUI/MissionLose/Panel" unique_id=602714021]
 material = SubResource("ShaderMaterial_4ymob")
 layout_mode = 0
-offset_right = 700.0
-offset_bottom = 410.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 705.0
+offset_bottom = 415.0
 texture = SubResource("PlaceholderTexture2D_6pedk")
 
 [node name="Label" type="Label" parent="LevelUI/MissionLose/Panel" unique_id=1730859928]
@@ -930,31 +977,34 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 250.0
+offset_left = 245.0
 offset_right = 500.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ew8ib")
 
 [node name="Background" type="TextureRect" parent="LevelUI/TowerConfigurationPanel" unique_id=312981011]
 material = SubResource("ShaderMaterial_4ymob")
 layout_mode = 0
-offset_right = 250.0
+offset_left = 5.0
+offset_right = 255.0
 offset_bottom = 720.0
 texture = SubResource("PlaceholderTexture2D_6pedk")
 
 [node name="HBorder1" type="TextureRect" parent="LevelUI/TowerConfigurationPanel" unique_id=665553084]
 material = SubResource("ShaderMaterial_oh3os")
 layout_mode = 0
+offset_left = 5.0
 offset_top = 50.0
-offset_right = 250.0
+offset_right = 255.0
 offset_bottom = 64.0
 texture = SubResource("PlaceholderTexture2D_pgq7w")
 
 [node name="StatsLabel" type="Label" parent="LevelUI/TowerConfigurationPanel" unique_id=1027707129]
 layout_mode = 0
-offset_left = 5.0
+offset_left = 10.0
 offset_top = 64.0
-offset_right = 76.0
+offset_right = 81.0
 offset_bottom = 89.0
 theme_override_fonts/font = ExtResource("12_4ymob")
 theme_override_font_sizes/font_size = 20
@@ -964,8 +1014,9 @@ vertical_alignment = 1
 [node name="HUnderLine1" type="TextureRect" parent="LevelUI/TowerConfigurationPanel" unique_id=149900631]
 material = SubResource("ShaderMaterial_hclee")
 layout_mode = 0
+offset_left = 5.0
 offset_top = 90.0
-offset_right = 125.0
+offset_right = 130.0
 offset_bottom = 97.5
 texture = SubResource("PlaceholderTexture2D_sekeb")
 
@@ -983,14 +1034,16 @@ texture = SubResource("PlaceholderTexture2D_hclee")
 [node name="HBorder3" type="TextureRect" parent="LevelUI/TowerConfigurationPanel" unique_id=2017968071]
 material = SubResource("ShaderMaterial_oh3os")
 layout_mode = 0
+offset_left = 5.0
 offset_top = 580.0
-offset_right = 250.0
+offset_right = 255.0
 offset_bottom = 594.0
 texture = SubResource("PlaceholderTexture2D_pgq7w")
 
 [node name="Emitter" type="Control" parent="LevelUI/TowerConfigurationPanel" unique_id=459051442]
 anchors_preset = 0
-offset_right = 250.0
+offset_left = 5.0
+offset_right = 255.0
 offset_bottom = 600.0
 
 [node name="TowerName" type="Label" parent="LevelUI/TowerConfigurationPanel/Emitter" unique_id=1263323546]
@@ -1452,9 +1505,9 @@ vertical_alignment = 1
 
 [node name="UpgradeButton" type="Button" parent="LevelUI/TowerConfigurationPanel" unique_id=968293482]
 layout_mode = 0
-offset_left = 30.0
+offset_left = 35.0
 offset_top = 640.0
-offset_right = 90.0
+offset_right = 95.0
 offset_bottom = 700.0
 focus_mode = 0
 theme_override_colors/icon_pressed_color = Color(0.39181867, 0.39181864, 0.39181864, 1)
@@ -1465,9 +1518,9 @@ expand_icon = true
 
 [node name="DestroyButton" type="Button" parent="LevelUI/TowerConfigurationPanel" unique_id=1722452709]
 layout_mode = 0
-offset_left = 160.0
+offset_left = 165.0
 offset_top = 640.0
-offset_right = 220.0
+offset_right = 225.0
 offset_bottom = 700.0
 focus_mode = 0
 theme_override_colors/icon_pressed_color = Color(0.39181867, 0.39181864, 0.39181864, 1)
@@ -1478,9 +1531,9 @@ expand_icon = true
 
 [node name="UpgradeCostLabel" type="Label" parent="LevelUI/TowerConfigurationPanel" unique_id=695622512]
 layout_mode = 0
-offset_left = 30.0
+offset_left = 35.0
 offset_top = 619.0
-offset_right = 90.0
+offset_right = 95.0
 offset_bottom = 644.0
 theme_override_fonts/font = ExtResource("12_4ymob")
 theme_override_font_sizes/font_size = 20
@@ -1490,9 +1543,9 @@ vertical_alignment = 1
 
 [node name="DestroyCompensationLabel" type="Label" parent="LevelUI/TowerConfigurationPanel" unique_id=2045483768]
 layout_mode = 0
-offset_left = 160.0
+offset_left = 165.0
 offset_top = 619.0
-offset_right = 220.0
+offset_right = 225.0
 offset_bottom = 644.0
 theme_override_fonts/font = ExtResource("12_4ymob")
 theme_override_font_sizes/font_size = 20
