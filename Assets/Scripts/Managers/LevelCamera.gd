@@ -39,7 +39,7 @@ func _process(delta):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		var input_vector = Vector3(event.relative.x/vp.size.y, event.relative.y/vp.size.y, 0)
+		var input_vector = Vector3(event.relative.x/640.0, event.relative.y/720.0, 0)
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 			pos -= global_basis * (input_vector).rotated(Vector3.RIGHT,PI) * move_speed * max(dist,5)/25
 		elif Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
