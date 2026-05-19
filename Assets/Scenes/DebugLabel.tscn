@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://duqfv4rl2h6nu"]
+[gd_scene format=3 uid="uid://duqfv4rl2h6nu"]
 
 [ext_resource type="Script" uid="uid://c5jbp8r8mkyv3" path="res://Assets/Scripts/UI/DebugLabel.gd" id="1_srdyb"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=126816294]
 layer = 10
+visible = false
 script = ExtResource("1_srdyb")
 
-[node name="DebugLabel" type="Label" parent="."]
+[node name="DebugLabel" type="Label" parent="." unique_id=365428580]
 offset_top = 570.0
 offset_right = 150.0
 offset_bottom = 720.0

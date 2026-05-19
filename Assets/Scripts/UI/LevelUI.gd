@@ -263,9 +263,11 @@ func _on_pause_button_pressed() -> void:
 #__________ Mission end screens __________
 
 func show_mission_win():
-	# TODO
-	# Check if next level exists. If not? Block or delete NextLevelButton
-	(get_node("MissionWin/Panel/VBoxContainer/NextLevelButton") as Button).disabled = true
+	if GlobalLevelManager.levelID == GlobalLevelManager.accessLevel:
+		GlobalLevelManager.increase_access_level()
+	
+	var nextLevelButton = (get_node("MissionWin/Panel/VBoxContainer/NextLevelButton") as Button)
+	nextLevelButton.disabled = !GlobalLevelManager.is_level_accessible(GlobalLevelManager.levelID + 1)
 	get_tree().paused = true
 	missionWin.visible = true
 	
