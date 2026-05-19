@@ -4,9 +4,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_as0iu"]
 resource_local_to_scene = true
+emission_enabled = true
 
 [sub_resource type="PrismMesh" id="PrismMesh_jok2b"]
-size = Vector3(1, 1, 0.1)
+size = Vector3(1.5, 1.5, 0.1)
 
 [node name="WaveIndicator" type="PathFollow3D" unique_id=1415301438]
 script = ExtResource("1_as0iu")

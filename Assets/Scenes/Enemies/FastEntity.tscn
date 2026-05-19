@@ -93,7 +93,7 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_i7xyu"]
 curve = SubResource("Curve_lqctr")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ywpxj"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w0xvd"]
 resource_local_to_scene = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 0)
@@ -126,7 +126,6 @@ ResourcesGain = 1
 [node name="MainMesh" type="MeshInstance3D" parent="." unique_id=1440279682]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)
 material_override = SubResource("ShaderMaterial_j3glw")
-transparency = 1.0
 mesh = SubResource("PrismMesh_i3tbn")
 skeleton = NodePath("../Area3D")
 
@@ -175,4 +174,4 @@ show_percentage = false
 visible = false
 
 [node name="HitParticles" parent="." unique_id=1309947980 instance=ExtResource("6_w0xvd")]
-process_material = SubResource("ParticleProcessMaterial_ywpxj")
+process_material = SubResource("ParticleProcessMaterial_w0xvd")

@@ -17,6 +17,13 @@ shader_parameter/part_color = Color(1, 1, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_x4ay6"]
 size = Vector3(1, 1, 0.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uj8uq"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0ohao")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/part_color = Color(1, 1, 1, 1)
+
 [sub_resource type="PrismMesh" id="PrismMesh_i3tbn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ohao"]
@@ -115,6 +122,7 @@ skeleton = NodePath("")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=347284638]
 transform = Transform3D(1, 0, 0, 0, -2.1855694e-08, 1, 0, -0.5, -4.371139e-08, 0, 0.5, -0.25)
+material_override = SubResource("ShaderMaterial_uj8uq")
 mesh = SubResource("PrismMesh_i3tbn")
 skeleton = NodePath("../Area3D")
 

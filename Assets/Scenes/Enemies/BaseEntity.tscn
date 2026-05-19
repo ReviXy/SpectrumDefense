@@ -16,6 +16,13 @@ shader_parameter/part_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6p6g4"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kenej"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_d7ytc")
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/part_color = Color(1, 1, 1, 1)
+
 [sub_resource type="PrismMesh" id="PrismMesh_i3tbn"]
 
 [sub_resource type="Animation" id="Animation_d7ytc"]
@@ -58,6 +65,65 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Curve" id="Curve_iid80"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.502994, 0.17616451), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_g2n8x"]
+curve = SubResource("Curve_iid80")
+
+[sub_resource type="Gradient" id="Gradient_lqctr"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i7xyu"]
+gradient = SubResource("Gradient_lqctr")
+
+[sub_resource type="Curve" id="Curve_i7xyu"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 22.534874), 0.0, 0.0, 0, 0, Vector2(1, 75.7153), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iid80"]
+curve = SubResource("Curve_i7xyu")
+
+[sub_resource type="Curve" id="Curve_g2n8x"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_h6oen"]
+curve = SubResource("Curve_g2n8x")
+
+[sub_resource type="Curve" id="Curve_lqctr"]
+_data = [Vector2(0, 0.49893588), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i7xyu"]
+curve = SubResource("Curve_lqctr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kenej"]
+resource_local_to_scene = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.1
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 80.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 9.8, 0)
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_iid80")
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_i7xyu")
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_i7xyu")
+alpha_curve = SubResource("CurveTexture_g2n8x")
+emission_curve = SubResource("CurveTexture_h6oen")
+
 [node name="PathFollow3D" type="PathFollow3D" unique_id=1133995498]
 loop = false
 script = ExtResource("1_i3tbn")
@@ -72,6 +138,7 @@ skeleton = NodePath("")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2083312072]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.969, -0.5)
+material_override = SubResource("ShaderMaterial_kenej")
 mesh = SubResource("PrismMesh_i3tbn")
 skeleton = NodePath("../Area3D")
 
@@ -121,4 +188,4 @@ visible = false
 
 [node name="HitParticles" parent="." unique_id=1309947980 instance=ExtResource("6_kenej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-emitting = false
+process_material = SubResource("ParticleProcessMaterial_kenej")

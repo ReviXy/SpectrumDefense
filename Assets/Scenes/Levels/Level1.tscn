@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_qaad7"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_c07d4")])
 WaveReward = 10
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_8kg8i"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_beeig")])
 WaveReward = 10
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
@@ -61,7 +61,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_ntdl1"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_5xxe6"), SubResource("Resource_xivig")])
 WaveReward = 10
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
@@ -77,7 +77,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_yh4vv"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_i1mc3")])
 WaveReward = 10
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
@@ -93,7 +93,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_oe4uc"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_cqx4t")])
 WaveReward = 10
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
@@ -109,7 +109,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_owbbi"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_gkeqf")])
 WaveReward = 10
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
@@ -144,7 +144,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_pklxb"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_hgsli"), SubResource("Resource_0q386"), SubResource("Resource_r5067")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 

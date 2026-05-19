@@ -1,6 +1,7 @@
 extends PathFollow3D
 class_name BaseEntity
 const ColorRYB = ColorRYB_Operations.ColorRYB
+const SHADER = preload("res://Assets/Shaders/enemy_shader.gdshader")
 
 @export var BaseSpeed: float = 3
 @export var SpeedMult: float = 1
@@ -14,7 +15,6 @@ var EnemyStrongColor: ColorRYB:
 @export var Damage: int = 1
 @export var ResourcesGain: int = 0
 var Attachments: Dictionary = {}
-@onready var MainMeshInstance: MeshInstance3D = find_child("MainMesh")
 @onready var APlayer: AnimationPlayer = find_child("AnimationPlayer")
 
 @onready var healthBar: ProgressBar = $SubViewport/HealthBar
@@ -55,10 +55,15 @@ func _ready() -> void:
 	if hitParticle:
 		hitParticle.process_material.color = ColorRYB_Operations.ToColor(EnemyWeakColor)
 	
-	if MainMeshInstance:
-		if MainMeshInstance.material_override:
-			var shader_material: ShaderMaterial = MainMeshInstance.material_override
-			shader_material.set_shader_parameter("part_color",ColorRYB_Operations.ToColor(EnemyWeakColor))
+	var meshes = find_children("*","MeshInstance3D",true,false)
+	
+	for rmesh in meshes:
+		var mesh = rmesh as MeshInstance3D
+		if mesh.material_override is ShaderMaterial:
+			var material = mesh.material_override as ShaderMaterial
+			if material.shader == SHADER:
+				material.set_shader_parameter("part_color",ColorRYB_Operations.ToColor(EnemyWeakColor))
+			
 	if (LevelManager.this):
 		LevelManager.this.WaveM.EntityCount += 1
 		on_spawn()
