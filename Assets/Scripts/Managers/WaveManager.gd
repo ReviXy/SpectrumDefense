@@ -88,3 +88,4 @@ func DisplayIndicators():
 				path.add_child.call_deferred(indicator)
 				(indicator as PathFollow3D).progress = i*Interval + colI*3
 				(indicator.get_child(0) as MeshInstance3D).material_override.albedo_color = ColorRYB_Operations.ToColor(cols[colI])
+				(indicator.get_child(0) as MeshInstance3D).material_override.emission = ColorRYB_Operations.ToColor(cols[colI])

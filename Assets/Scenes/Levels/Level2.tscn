@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_llo7b"]
 script = ExtResource("4_0yuvv")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_llo7b")]([SubResource("Resource_7n34x"), SubResource("Resource_0yuvv")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
@@ -54,7 +54,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_btxu5"]
 script = ExtResource("4_0yuvv")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_llo7b")]([SubResource("Resource_lxe5l"), SubResource("Resource_dv2rg")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
@@ -78,7 +78,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_c7hv0"]
 script = ExtResource("4_0yuvv")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_llo7b")]([SubResource("Resource_4a4s4"), SubResource("Resource_ps40f")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
@@ -103,7 +103,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_1po0s"]
 script = ExtResource("4_0yuvv")
-Pre_wave_delay = 5.0
+Pre_wave_delay = 10.0
 Deployments = Array[ExtResource("5_llo7b")]([SubResource("Resource_qv1k8"), SubResource("Resource_2u6p1")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 

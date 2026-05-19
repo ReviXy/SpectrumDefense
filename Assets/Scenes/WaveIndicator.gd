@@ -10,9 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#Model.scale = Vector3.ONE*clampf(abs((progress_ratio-0.5)*5)-1.5,0.5,1)
-	Model.transparency = clampf(1-(abs((0.5-progress_ratio)*2.5)),0.25,0.75)
+	pass
 	
 	
 func _physics_process(delta: float) -> void:
-	progress += delta*50/Engine.time_scale
+	progress += delta*25/Engine.time_scale
