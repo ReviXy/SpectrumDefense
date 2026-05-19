@@ -145,12 +145,6 @@ point_count = 19
 transparency = 1
 albedo_color = Color(0, 1, 0, 0.47843137)
 
-[sub_resource type="BoxMesh" id="BoxMesh_rl6do"]
-size = Vector3(1.4, 1.4, 1.4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xvp3j"]
-size = Vector3(0.1, 1.4, 1.4)
-
 [node name="LevelManager" type="Node3D" unique_id=529117768]
 script = ExtResource("1_qxh4v")
 
@@ -201,8 +195,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_iw5u7")
 
 [node name="Emitter" parent="GridManager" unique_id=638892042 instance=ExtResource("9_4a4s4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.7, -17)
-mesh = SubResource("BoxMesh_rl6do")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 3, -17)
 color = 6
 intensity = 0.0
 availableColors = Array[int]([6])
@@ -212,40 +205,35 @@ upgradable = false
 destroyable = false
 
 [node name="Mirror" parent="GridManager" unique_id=849947987 instance=ExtResource("9_7n34x")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 11, 2.7, -17)
-mesh = SubResource("BoxMesh_xvp3j")
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 11, 3, -17)
 rotatable = false
 configurable = false
 upgradable = false
 destroyable = false
 
 [node name="Mirror2" parent="GridManager" unique_id=1038765091 instance=ExtResource("9_7n34x")]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 11, 2.7, 15)
-mesh = SubResource("BoxMesh_xvp3j")
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 11, 3, 15)
 rotatable = false
 configurable = false
 upgradable = false
 destroyable = false
 
 [node name="Mirror3" parent="GridManager" unique_id=413497265 instance=ExtResource("9_7n34x")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -13, 2.7, 15)
-mesh = SubResource("BoxMesh_xvp3j")
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -13, 3, 15)
 rotatable = false
 configurable = false
 upgradable = false
 destroyable = false
 
 [node name="Emitter2" parent="GridManager" unique_id=960117408 instance=ExtResource("9_4a4s4")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 2.7, -23)
-mesh = SubResource("BoxMesh_rl6do")
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 3, -23)
 intensity = 9.0
 availableColors = Array[int]([0, 1, 2])
 rotatable = false
 destroyable = false
 
 [node name="Emitter3" parent="GridManager" unique_id=545755729 instance=ExtResource("9_4a4s4")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 2.7, 21)
-mesh = SubResource("BoxMesh_rl6do")
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 3, 21)
 intensity = 9.0
 availableColors = Array[int]([0, 1, 2])
 rotatable = false

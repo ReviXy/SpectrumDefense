@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cswkb388p14do"]
+
+[ext_resource type="PackedScene" uid="uid://d2m1w1ni2ya1q" path="res://Assets/Models/Prism.glb" id="1_l7dh5"]
+
+[node name="Prism" unique_id=827268613 instance=ExtResource("1_l7dh5")]

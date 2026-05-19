@@ -161,9 +161,6 @@ point_count = 13
 transparency = 1
 albedo_color = Color(0, 1, 0, 0.47843137)
 
-[sub_resource type="BoxMesh" id="BoxMesh_rl6do"]
-size = Vector3(1.4, 1.4, 1.4)
-
 [node name="LevelManager" type="Node3D" unique_id=1548596489]
 script = ExtResource("1_i1mc3")
 
@@ -197,14 +194,12 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_iw5u7")
 
 [node name="Emitter" parent="GridManager" unique_id=1401245343 instance=ExtResource("14_tip0l")]
-transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 11, 2.7, 1)
-mesh = SubResource("BoxMesh_rl6do")
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 11, 3, 1)
 color = 1
 intensity = 12.0
 availableColors = Array[int]([0, 1, 2])
 
 [node name="Emitter2" parent="GridManager" unique_id=1024688457 instance=ExtResource("14_tip0l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.7, 9)
-mesh = SubResource("BoxMesh_rl6do")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 3, 9)
 intensity = 12.0
 availableColors = Array[int]([0, 1, 2])

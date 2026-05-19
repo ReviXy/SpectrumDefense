@@ -69,7 +69,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): 
 		for tower in get_children():
 			if tower is BaseTower:
-				towers[local_to_map(to_local(tower.global_position - Vector3(0,1,0)))] = tower
+				towers[local_to_map(to_local(tower.global_position - Vector3(0,1.1,0)))] = tower
 		return
 
 	state = State.None
@@ -80,8 +80,8 @@ func _ready() -> void:
 	
 	for tower in get_children():
 		if tower is BaseTower:
-			towers[local_to_map(to_local(tower.global_position - Vector3(0,1,0)))] = tower
-			tower.cellCoords = [local_to_map(to_local(tower.global_position - Vector3(0,1,0)))]
+			towers[local_to_map(to_local(tower.global_position - Vector3(0,1.1,0)))] = tower
+			tower.cellCoords = [local_to_map(to_local(tower.global_position - Vector3(0,1.1,0)))]
 			towerCounts[tower.getTowerKey()] += 1
 	initialTowerCounts = towerCounts.duplicate()
 
@@ -95,7 +95,7 @@ func _process(delta: float) -> void: # Editor mode only
 		#if !towers[cell]: towers.erase(cell)
 		if mesh_library.get_item_name(get_cell_item(cell)) != (towers[cell] as BaseTower).get_script().get_global_name():
 			var tower = towers[cell] as BaseTower
-			towers.erase(local_to_map(to_local(tower.global_position - Vector3(0,1,0))))
+			towers.erase(local_to_map(to_local(tower.global_position - Vector3(0,1.1,0))))
 			tower.queue_free()
 	
 	for cell in get_used_cells():
@@ -105,7 +105,7 @@ func _process(delta: float) -> void: # Editor mode only
 			add_child(newTower)
 			newTower.owner = get_tree().edited_scene_root
 			newTower.name = tileName
-			newTower.global_position = map_to_local(cell) + Vector3(0, 0.7, 0) #Y offset so tower doesnt sink into the ground
+			newTower.global_position = map_to_local(cell) + Vector3(0, 1.0, 0) #Y offset so tower doesnt sink into the ground
 			towers[cell] = newTower
 
 func getTileUnderMouse(mousePosition):
@@ -129,7 +129,7 @@ func placeTower(placingTowerKey, cell_coords):
 	set_cell_item(cell_coords, mesh_library.find_item_by_name(placingTowerKey))
 	var newTower = towerPrefabDictionary[placingTowerKey].instantiate()
 	add_child(newTower)
-	newTower.global_position = map_to_local(cell_coords) + Vector3(0, 0.7, 0) #Y offset so tower doesnt sink into the ground
+	newTower.global_position = map_to_local(cell_coords) + Vector3(0, 1.0, 0) #Y offset so tower doesnt sink into the ground
 	newTower.cellCoords = [cell_coords]
 	towers[cell_coords] = newTower
 

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b0nm0otmlp1le"]
+
+[ext_resource type="PackedScene" uid="uid://byg2idagetcux" path="res://Assets/Models/Filter.glb" id="1_37b2n"]
+
+[node name="Filter" unique_id=1262817734 instance=ExtResource("1_37b2n")]

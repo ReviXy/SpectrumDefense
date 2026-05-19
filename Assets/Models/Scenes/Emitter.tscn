@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://df03cakq5myux"]
+
+[ext_resource type="PackedScene" uid="uid://cv3qixxsr812e" path="res://Assets/Models/Emitter.glb" id="1_hxbbv"]
+
+[node name="Emitter" unique_id=95813319 instance=ExtResource("1_hxbbv")]

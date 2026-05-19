@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://o3lunhrg8i8i"]
+
+[ext_resource type="PackedScene" uid="uid://drubieh6d4fp4" path="res://Assets/Models/Mirror.glb" id="1_0tukn"]
+
+[node name="Mirror" unique_id=441724710 instance=ExtResource("1_0tukn")]

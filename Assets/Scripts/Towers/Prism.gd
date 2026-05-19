@@ -72,9 +72,10 @@ func process_input_lasers(lasers: Array[Laser]):
 			add_child(new_laser)
 			output_lasers = [new_laser]
 			new_laser.encountered_prisms = lasers[0].encountered_prisms + [self]
-			print(to_local(position))
-			new_laser.position = to_local(position) - Vector3(0, 0, -1)
-			#new_laser.look_at(new_laser.global_position + Vector3(1, 0, 0), Vector3.UP)
+
+			new_laser.position = Vector3(0.8, 0, 0)
+			new_laser.rotation_degrees = Vector3(0.0, 0.0, -90.0)
+			#new_laser.look_at(to_global(new_laser.position + Vector3(1, 0, 0)), Vector3.UP)
 			#new_laser.rotate_object_local(Vector3.UP, -PI / 2)
 			new_laser.set_params(colors[0], lasers[0].distance - lasers[0].global_position.distance_to(lasers[0].get_collision_point()), lasers[0].intensity * (1 - intensity_penalty))
 		
@@ -88,27 +89,24 @@ func process_input_lasers(lasers: Array[Laser]):
 				add_child(new_laser)
 				output_lasers.append(new_laser)
 				new_laser.encountered_prisms = lasers[0].encountered_prisms + [self]
-				new_laser.position = to_local(position) - Vector3(0, 0, -1)
-				new_laser.look_at(to_global(new_laser.position + Vector3(1, 1, 0)), Vector3.UP)
-				new_laser.rotate_object_local(Vector3.RIGHT, -PI / 2)
+				new_laser.position = Vector3(0, 0, 0)
+				new_laser.rotation_degrees = Vector3(0.0, 45.0, -90.0)
 				new_laser.set_params(ColorRYB.Red, new_distance / len(colors), new_intensity / len(colors))
 			if colors.has(ColorRYB.Yellow):
 				var new_laser: Laser = laser_prefab.instantiate()
 				add_child(new_laser)
 				output_lasers.append(new_laser)
 				new_laser.encountered_prisms = lasers[0].encountered_prisms + [self]
-				new_laser.position = to_local(position) - Vector3(0, 0, -1)
-				new_laser.look_at(to_global(new_laser.position + Vector3(0, 1, 0)), Vector3.UP)
-				new_laser.rotate_object_local(Vector3.RIGHT, -PI / 2)
+				new_laser.position = Vector3(0, 0, 0)
+				new_laser.rotation_degrees = Vector3(0.0, 0.0, -90.0)
 				new_laser.set_params(ColorRYB.Yellow, new_distance / len(colors), new_intensity / len(colors))
 			if colors.has(ColorRYB.Blue):
 				var new_laser: Laser = laser_prefab.instantiate()
 				add_child(new_laser)
 				output_lasers.append(new_laser)
 				new_laser.encountered_prisms = lasers[0].encountered_prisms + [self]
-				new_laser.position = to_local(position) - Vector3(0, 0, -1)
-				new_laser.look_at(to_global(new_laser.position + Vector3(-1, 1, 0)), Vector3.UP)
-				new_laser.rotate_object_local(Vector3.RIGHT, -PI / 2)
+				new_laser.position = Vector3(0, 0, 0)
+				new_laser.rotation_degrees = Vector3(0.0, -45.0, -90.0)
 				new_laser.set_params(ColorRYB.Blue, new_distance / len(colors), new_intensity / len(colors))
 			
 	elif (len(lasers) != 0):
@@ -126,7 +124,8 @@ func process_input_lasers(lasers: Array[Laser]):
 		add_child(new_laser)
 		output_lasers = [new_laser]
 		new_laser.encountered_prisms = new_encountered_prisms + [self]
-		new_laser.position = to_local(position) - Vector3(0, 0, -1)
+		new_laser.position = Vector3(0.8, 0, 0)
+		new_laser.rotation_degrees = Vector3(0.0, 0.0, -90.0)
 		#new_laser.look_at(new_laser.global_position + Vector3(1, 0, 0), Vector3.UP)
 		#new_laser.rotate_object_local(Vector3.RIGHT, -PI / 2)
 		new_laser.set_params(new_color, new_distance, new_intensity * (1 - intensity_penalty))
