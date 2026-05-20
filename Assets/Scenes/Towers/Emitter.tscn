@@ -59,4 +59,4 @@ collision_mask = 8
 shape = SubResource("ConcavePolygonShape3D_dp5dw")
 
 [node name="Laser" parent="." unique_id=993679663 instance=ExtResource("2_cu1tk")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1, 0, 0)
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.71, 0, 0)
