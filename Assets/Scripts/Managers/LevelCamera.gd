@@ -1,7 +1,9 @@
+@tool
 extends Camera3D
-
-var pos: Vector3 = Vector3.UP*3
-var dist = 25.0
+##Position of the camera's centre of rotation
+@export var pos: Vector3 = Vector3.UP*3
+##Distance from the camera's centre of rotation
+@export var dist = 25.0
 var move_speed = 20
 var zoom_speed = 0.5  # Скорость зума
 @onready var vp : Viewport = get_viewport()
@@ -11,31 +13,30 @@ const sin45 = sqrt(2)/2
 #func _ready() -> void:
 	#projection = Camera3D.PROJECTION_ORTHOGONAL
 
-func _process(delta):
-	var input_vector = Vector3.ZERO
+func _process(delta) -> void:
+	if not Engine.is_editor_hint():
+		var input_vector = Vector3.ZERO
 	
-	if Input.is_key_pressed(KEY_D):
-		input_vector.x += 1
-	if Input.is_key_pressed(KEY_A):
-		input_vector.x -= 1
-	if Input.is_key_pressed(KEY_S):
-		input_vector.z += 1
-	if Input.is_key_pressed(KEY_W):
-		input_vector.z -= 1	
-	if Input.is_key_pressed(KEY_SHIFT):
-		input_vector.y -= 1
-	if Input.is_key_pressed(KEY_SPACE):
-		input_vector.y += 1
+		if Input.is_key_pressed(KEY_D):
+			input_vector.x += 1
+		if Input.is_key_pressed(KEY_A):
+			input_vector.x -= 1
+		if Input.is_key_pressed(KEY_S):
+			input_vector.z += 1
+		if Input.is_key_pressed(KEY_W):
+			input_vector.z -= 1	
+		if Input.is_key_pressed(KEY_SHIFT):
+			input_vector.y -= 1
+		if Input.is_key_pressed(KEY_SPACE):
+			input_vector.y += 1
 
-	#if projection == Camera3D.PROJECTION_ORTHOGONAL:
-	input_vector = input_vector.normalized().rotated(Vector3.UP,rotation.y)
-	#else:
-		#input_vector = global_basis * input_vector.normalized()
-	pos += input_vector * move_speed * delta * max(dist,10)/25/Engine.time_scale
-
-	if (input_vector.length() == 0 and not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
-		pos = lerp(pos, round(pos),0.05)
-	position = pos + global_basis.z.normalized()*dist
+		input_vector = input_vector.normalized().rotated(Vector3.UP,rotation.y)
+		pos += input_vector * move_speed * delta * max(dist,10)/25/Engine.time_scale
+		if (input_vector.length() == 0 and not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
+			pos = lerp(pos, round(pos),0.05)
+		position = pos + global_basis.z.normalized()*dist
+	if Engine.is_editor_hint():
+		position = pos + global_basis.z.normalized()*dist
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://vs72j4mljes5"]
 
 [ext_resource type="Script" uid="uid://bgog3l3jt8cfc" path="res://Assets/Scripts/Managers/LevelSelector.gd" id="1_j6vvw"]
-[ext_resource type="Script" uid="uid://b0pt1ly3v1iry" path="res://Assets/Scripts/Managers/LevelCamera.gd" id="2_6jwxn"]
 [ext_resource type="Script" uid="uid://db1lnab1efs5d" path="res://Assets/Scripts/UI/LevelUI.gd" id="3_qxdb1"]
 [ext_resource type="Texture2D" uid="uid://wlu77osrcluu" path="res://Assets/Sprites/RotateClockwise.png" id="4_ggqha"]
 [ext_resource type="Texture2D" uid="uid://dq6n3hy5lhj2h" path="res://Assets/Sprites/Destroy.png" id="6_r5kyp"]
@@ -236,13 +235,6 @@ expand_margin_right = 4.0
 
 [node name="Node3D" type="Node3D" unique_id=68990736]
 script = ExtResource("1_j6vvw")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1349587027]
-transform = Transform3D(0.7071067, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.7071067, -0.49999997, 0.49999997, 25, 25, 25)
-current = true
-size = 25.0
-near = 1.0
-script = ExtResource("2_6jwxn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1665401526]
 environment = SubResource("Environment_numvf")
