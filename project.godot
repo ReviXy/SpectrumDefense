@@ -28,6 +28,7 @@ buses/default_bus_layout="uid://c6lk5vcflwkis"
 GlobalLevelManager="*res://Assets/Scripts/Managers/GlobalLevelManager.gd"
 SettingsManager="*res://Assets/Scenes/SettingsManager.tscn"
 DebugLabel="*res://Assets/Scenes/DebugLabel.tscn"
+MusicManager="*uid://dlnl6if5yiov6"
 
 [display]
 

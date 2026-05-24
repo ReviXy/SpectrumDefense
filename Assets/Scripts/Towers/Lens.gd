@@ -6,12 +6,12 @@ class_name Lens extends BaseTower
 @onready var leftCollider = $LeftCollider
 @onready var rightCollider = $RightCollider
 
-@export_range(0.1, 1.0, 0.1) var modification_coefficient: float = 0.5:
+@export_range(1.0, 3.0, 0.25) var modification_coefficient: float = 1.0:
 	set(new_modification_coefficient):
-		if (new_modification_coefficient > 1):
-			modification_coefficient = 1
-		elif (new_modification_coefficient < 0.1):
-			modification_coefficient = 0.1
+		if (new_modification_coefficient > 3.0):
+			modification_coefficient = 3.0
+		elif (new_modification_coefficient < 1.0):
+			modification_coefficient = 1.0
 		else: 
 			modification_coefficient = new_modification_coefficient
 		for laser in laser_dictionary.keys():
@@ -94,7 +94,7 @@ func continue_laser_collision(laser, collider = null):
 		#laser_dictionary[laser].look_at(laser_dictionary[laser].global_position + laser_direction, Vector3.UP)
 		laser_dictionary[laser].rotate_object_local(Vector3.RIGHT, -PI / 2)
 		
-		laser_dictionary[laser].set_params(laser.color, (laser.distance - laser.global_position.distance_to(laser.get_collision_point())) * modification_coefficient, laser.intensity * (1 - intensity_penalty) * (1 / modification_coefficient))
+		laser_dictionary[laser].set_params(laser.color, (laser.distance - laser.global_position.distance_to(laser.get_collision_point())) / modification_coefficient, laser.intensity * (1 - intensity_penalty) * modification_coefficient)
 	else:
 		if (laser_dictionary[laser]):
 			laser_dictionary[laser].queue_free()

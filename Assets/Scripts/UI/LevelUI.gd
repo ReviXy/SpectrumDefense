@@ -252,6 +252,7 @@ func _on_options_button_pressed() -> void:
 	SettingsManager.showSettingsMenu()
 
 func _on_main_menu_button_pressed() -> void:
+	MusicManager.enter_menu()
 	get_tree().paused = false
 	Engine.time_scale = 1.0
 	get_tree().change_scene_to_file("res://Assets/Scenes/MainMenu.tscn")
@@ -263,6 +264,10 @@ func _on_pause_button_pressed() -> void:
 #__________ Mission end screens __________
 
 func show_mission_win():
+	towerPlacementPanel.position = Vector2(1280, towerPlacementPanel.position.y)
+	towerRotationPanel.global_position = Vector2(0, 720)
+	towerConfigurationPanel.position = Vector2(1280, towerConfigurationPanel.position.y)
+	
 	if GlobalLevelManager.levelID == GlobalLevelManager.accessLevel:
 		GlobalLevelManager.increase_access_level()
 	
@@ -272,22 +277,29 @@ func show_mission_win():
 	missionWin.visible = true
 	
 func show_mission_lose():
+	towerPlacementPanel.position = Vector2(1280, towerPlacementPanel.position.y)
+	towerRotationPanel.global_position = Vector2(0, 720)
+	towerConfigurationPanel.position = Vector2(1280, towerConfigurationPanel.position.y)
+	
 	get_tree().paused = true
 	missionLose.visible = true
 
 #__________ Scene Manipulation __________
 
 func _on_restart_button_pressed() -> void:
+	MusicManager.enter_level()
 	get_tree().paused = false
 	Engine.time_scale = 1.0
 	get_tree().change_scene_to_file("res://Assets/Scenes/Level.tscn")
 
 func _on_level_selection_button_pressed() -> void:
+	MusicManager.enter_menu()
 	get_tree().paused = false
 	Engine.time_scale = 1.0
 	get_tree().change_scene_to_file("res://Assets/Scenes/LevelSelectionMenu.tscn")
 
 func _on_next_level_button_pressed() -> void:
+	MusicManager.enter_level()
 	GlobalLevelManager.levelID += 1
 	get_tree().paused = false
 	Engine.time_scale = 1.0

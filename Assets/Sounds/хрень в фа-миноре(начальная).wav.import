@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://84d2y3h7qeul"
+path="res://.godot/imported/хрень в фа-миноре(начальная).wav-ea95cc1eaced7ac79c97803bb1c7a041.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/хрень в фа-миноре(начальная).wav"
+dest_files=["res://.godot/imported/хрень в фа-миноре(начальная).wav-ea95cc1eaced7ac79c97803bb1c7a041.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

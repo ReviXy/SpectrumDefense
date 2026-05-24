@@ -68,5 +68,6 @@ func _on_level_button_pressed(button) -> void:
 	last_pressed_button = button
 
 func _on_start_button_pressed() -> void:
+	MusicManager.enter_level()
 	GlobalLevelManager.levelID = last_pressed_button.get_meta("level")
 	get_tree().change_scene_to_file("res://Assets/Scenes/Level.tscn")

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dlnl6if5yiov6"]
+
+[ext_resource type="Script" uid="uid://balwg0ev65ybn" path="res://Assets/Scripts/Managers/MusicManager.gd" id="1_g3u18"]
+[ext_resource type="AudioStream" uid="uid://84d2y3h7qeul" path="res://Assets/Sounds/хрень в фа-миноре(начальная).wav" id="2_eg6sw"]
+[ext_resource type="AudioStream" uid="uid://curl2ijb1o2um" path="res://Assets/Sounds/хрень в ми-миноре.wav" id="3_wkafq"]
+
+[node name="Control" type="Control" unique_id=305613303]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_g3u18")
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=588869768]
+process_mode = 3
+stream = ExtResource("2_eg6sw")
+bus = &"Music"
+
+[node name="LevelMusic" type="AudioStreamPlayer2D" parent="." unique_id=1300143718]
+process_mode = 3
+stream = ExtResource("3_wkafq")
+bus = &"Music"

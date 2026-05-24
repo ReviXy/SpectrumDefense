@@ -1073,6 +1073,7 @@ offset_bottom = 594.0
 texture = SubResource("PlaceholderTexture2D_pgq7w")
 
 [node name="Emitter" type="Control" parent="LevelUI/TowerConfigurationPanel" unique_id=459051442]
+visible = false
 anchors_preset = 0
 offset_left = 5.0
 offset_right = 255.0
@@ -1368,7 +1369,6 @@ popup/item_0/text = "Red"
 popup/item_0/id = 0
 
 [node name="Lens" type="Control" parent="LevelUI/TowerConfigurationPanel" unique_id=627560532]
-visible = false
 anchors_preset = 0
 offset_right = 250.0
 offset_bottom = 600.0
@@ -1457,7 +1457,7 @@ offset_right = 139.0
 offset_bottom = 295.0
 theme_override_fonts/font = ExtResource("12_4ymob")
 theme_override_font_sizes/font_size = 18
-text = "Coefficient"
+text = "Intensity Multiplier"
 
 [node name="CoefficientSlider" type="HSlider" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=1875296050]
 custom_minimum_size = Vector2(0, 50)
@@ -1472,13 +1472,35 @@ theme_override_icons/grabber_disabled = SubResource("DPITexture_pgq7w")
 theme_override_styles/slider = SubResource("StyleBoxFlat_hclee")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_sekeb")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_sekeb")
-min_value = 0.1
-max_value = 1.0
-step = 0.1
-value = 0.1
+min_value = 1.0
+max_value = 3.0
+step = 0.25
+value = 1.0
 scrollable = false
-tick_count = 10
+tick_count = 9
 ticks_on_borders = true
+
+[node name="Label" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=488318956]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 330.0
+offset_right = 48.0
+offset_bottom = 360.0
+theme_override_fonts/font = ExtResource("12_4ymob")
+text = "x1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="LevelUI/TowerConfigurationPanel/Lens" unique_id=650186771]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 330.0
+offset_right = 232.0
+offset_bottom = 360.0
+theme_override_fonts/font = ExtResource("12_4ymob")
+text = "x3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Prism" type="Control" parent="LevelUI/TowerConfigurationPanel" unique_id=493796058]
 visible = false
