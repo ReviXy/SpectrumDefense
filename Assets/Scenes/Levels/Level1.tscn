@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://0igd8g4yf8ww" path="res://Assets/Resources/Deployment.gd" id="5_gkeqf"]
 [ext_resource type="MeshLibrary" uid="uid://mas0k4r6dsww" path="res://Assets/Models/Tiles.tres" id="7_kmrm7"]
 [ext_resource type="PackedScene" uid="uid://43kchsu37yop" path="res://Assets/Scenes/Enemies/BaseEntity.tscn" id="9_pklxb"]
+[ext_resource type="PackedScene" uid="uid://dufqgw5ve83sk" path="res://Assets/Scenes/Camera3d.tscn" id="10_kmrm7"]
 [ext_resource type="Script" uid="uid://c8gtchiwo1c1e" path="res://Assets/Scripts/Managers/GridManager.gd" id="13_hcrex"]
 [ext_resource type="PackedScene" uid="uid://qq3kxv0itx6w" path="res://Assets/Scenes/Towers/Emitter.tscn" id="14_tip0l"]
 
@@ -208,3 +209,8 @@ availableColors = Array[int]([0, 1, 2])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 3, 9)
 intensity = 12.0
 availableColors = Array[int]([0, 1, 2])
+
+[node name="Camera3D" parent="." unique_id=638536597 instance=ExtResource("10_kmrm7")]
+transform = Transform3D(0.5735764, 0.57922786, -0.5792279, 0, 0.70710665, 0.7071067, 0.81915194, -0.40557975, 0.40557975, -22.82491, 25.98097, 21.181343)
+pos = Vector3(-4, 3, 8)
+dist = 32.5

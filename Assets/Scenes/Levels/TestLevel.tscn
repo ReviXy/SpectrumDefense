@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://3hbbyq0vhtle" path="res://Assets/Scenes/Enemies/StrongEntity.tscn" id="8_bq8rn"]
 [ext_resource type="PackedScene" uid="uid://c6pucg2t3wfnf" path="res://Assets/Scenes/Enemies/DashEntity.tscn" id="8_muap1"]
 [ext_resource type="Script" uid="uid://16e5jemtsbm2" path="res://Assets/Scripts/WrathOfHeavens.gd" id="11_qckgf"]
+[ext_resource type="PackedScene" uid="uid://dufqgw5ve83sk" path="res://Assets/Scenes/Camera3d.tscn" id="15_muap1"]
 
 [sub_resource type="Resource" id="Resource_oena1"]
 script = ExtResource("5_qckgf")
@@ -179,3 +180,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_iw5u7")
 
 [node name="WrathOfHeavens" type="Node3D" parent="." unique_id=1214717267]
 script = ExtResource("11_qckgf")
+
+[node name="Camera3D" parent="." unique_id=638536597 instance=ExtResource("15_muap1")]
+transform = Transform3D(-4.3711385e-08, -0.70710665, 0.7071067, 0, 0.70710665, 0.7071067, -0.9999999, 3.0908613e-08, -3.0908616e-08, 17.677671, 20.677671, -7.7271557e-07)
