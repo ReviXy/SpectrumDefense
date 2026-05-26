@@ -33,6 +33,14 @@ func _ready() -> void:
 	var lasers = (mainCollider as Area3D).get_overlapping_areas()
 	for l in lasers:
 		(l.get_parent() as Laser).set_update_flag()
+	
+	if (LevelManager.this.GridM and LevelManager.this.GridM.placedTower == self):
+		availableColors = LevelManager.this.GridM.placedEmitterColors
+		intensity = LevelManager.this.GridM.placedEmitterStats["intensity"]
+		distance = LevelManager.this.GridM.placedEmitterStats["distance"]
+		if (!availableColors.is_empty()):
+			color = availableColors[0]
+	
 	laser.set_params(color, distance, intensity)
 
 var is_rotating: bool = false

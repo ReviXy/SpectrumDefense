@@ -187,6 +187,11 @@ towerPlacementCostIncrement = {
 "Mirror": 0,
 "Prism": 20
 }
+placedEmitterColors = Array[int]([0, 1, 2])
+placedEmitterStats = {
+"distance": 1000,
+"intensity": 9
+}
 
 [node name="TileHighlight" type="MeshInstance3D" parent="GridManager" unique_id=1474875900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)

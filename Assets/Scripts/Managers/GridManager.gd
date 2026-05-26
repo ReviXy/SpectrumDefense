@@ -2,6 +2,8 @@
 extends GridMap
 class_name GridManager
 
+const ColorRYB = preload("res://Assets/Scripts/ColorRYB.gd").ColorRYB
+
 @export var initialTowerPlacementCosts = {
 	"Emitter": 50,
 	"Mirror": 5,
@@ -26,7 +28,7 @@ class_name GridManager
 	"Prism": 30
 }
 
-@export var TowerUpgradeCostsIncrement = {
+@export var towerUpgradeCostsIncrement = {
 	"Emitter": 0,
 	"Mirror": 5,
 	"Filter": 10,
@@ -35,6 +37,12 @@ class_name GridManager
 }
 
 @export var towerDestroyCashbackCoefficient = 0.75
+
+@export var placedEmitterColors: Array[ColorRYB] = [0 as ColorRYB, 1 as ColorRYB, 2 as ColorRYB, 3 as ColorRYB, 4 as ColorRYB, 5 as ColorRYB, 6 as ColorRYB]
+@export var placedEmitterStats = {
+	"intensity": 10,
+	"distance": 1000
+}
 
 @onready var tileHighlight := $TileHighlight
 @onready var camera := get_viewport().get_camera_3d()
@@ -124,6 +132,7 @@ func getTileUnderMouse(mousePosition):
 				return cell_coords
 		return null
 
+var placedTower: BaseTower
 func placeTower(placingTowerKey, cell_coords):
 	towerCounts[placingTowerKey] += 1
 	set_cell_item(cell_coords, mesh_library.find_item_by_name(placingTowerKey))
@@ -132,6 +141,7 @@ func placeTower(placingTowerKey, cell_coords):
 	newTower.global_position = map_to_local(cell_coords) + Vector3(0, 1.0, 0) #Y offset so tower doesnt sink into the ground
 	newTower.cellCoords = [cell_coords]
 	towers[cell_coords] = newTower
+	placedTower = newTower
 
 func destroyActiveTower():
 	towerCounts[configuratedTower.getTowerKey()] -= 1

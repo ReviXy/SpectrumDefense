@@ -103,13 +103,13 @@ func getTowerPlacementCost(towerKey):
 func getTowerUpgradeCost(tower):
 	var gridm = LevelManager.this.GridM
 	var towerKey = tower.getTowerKey()
-	return gridm.initialTowerUpgradeCosts[towerKey] + (tower.level - 1) * gridm.TowerUpgradeCostsIncrement[towerKey]
+	return gridm.initialTowerUpgradeCosts[towerKey] + (tower.level - 1) * gridm.towerUpgradeCostsIncrement[towerKey]
 
 func getTowerDestroyCompensation(tower):
 	var gridm = LevelManager.this.GridM
 	var towerKey = tower.getTowerKey()
 	var towerValue = gridm.initialTowerPlacementCosts[towerKey]
-	for i in range(tower.level - 1): towerValue += gridm.initialTowerUpgradeCosts[towerKey] + i * gridm.TowerUpgradeCostsIncrement[towerKey]
+	for i in range(tower.level - 1): towerValue += gridm.initialTowerUpgradeCosts[towerKey] + i * gridm.towerUpgradeCostsIncrement[towerKey]
 	return floor(towerValue * gridm.towerDestroyCashbackCoefficient) 
 
 func updateTowerConfigurationInfo():
