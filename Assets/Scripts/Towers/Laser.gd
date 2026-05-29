@@ -14,11 +14,11 @@ var color: ColorRYB = ColorRYB.Red:
 	set(new_color):
 		color = new_color
 		var temp = ColorRYB_Operations.ToColor(new_color)
+		if (end_particles_material != null):
+			end_particles_material.albedo_color = temp
+			end_particles_material.emission = temp
 
-		end_particles_material.albedo_color = temp
-		end_particles_material.emission = temp
-
-		(beam_material as ShaderMaterial).set_shader_parameter("laser_color", temp);
+			(beam_material as ShaderMaterial).set_shader_parameter("laser_color", temp);
 		
 
 @export var distance: float = 1
