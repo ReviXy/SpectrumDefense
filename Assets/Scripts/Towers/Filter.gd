@@ -8,7 +8,9 @@ const ColorRYB = preload("res://Assets/Scripts/ColorRYB.gd").ColorRYB
 @export var color: ColorRYB = ColorRYB.Red:
 	set(new_color):
 		color = new_color
-		if indicator_material: indicator_material.albedo_color = ColorRYB_Operations.ToColor(new_color)
+		if indicator_material: 
+			indicator_material.albedo_color = ColorRYB_Operations.ToColor(new_color)
+			indicator_material.emission = ColorRYB_Operations.ToColor(new_color)
 		for laser in laser_dictionary.keys():
 			laser.set_update_flag()
 

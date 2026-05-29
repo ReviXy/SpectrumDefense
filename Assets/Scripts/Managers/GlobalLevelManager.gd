@@ -10,7 +10,7 @@ func increase_access_level():
 	save_to_file()
 
 func is_level_accessible(id):
-	return id <= accessLevel and id < 3
+	return id <= accessLevel and id <= 5
 
 func _ready() -> void:
 	load_from_file()

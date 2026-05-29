@@ -61,3 +61,7 @@ LaunchWave={
 3d_physics/layer_2="Enemies"
 3d_physics/layer_3="Towers"
 3d_physics/layer_4="Laser"
+
+[rendering]
+
+environment/subsurface_scattering/subsurface_scattering_quality=3
