@@ -134,7 +134,8 @@ Value_Overrides = {
 "DashCooldown": 0.0,
 "DashDuration": 0.1,
 "DashSpeedMult": 60.0,
-"HP": 999999999.0
+"HP": 999999999.0,
+"MaxHP": 999999999.0
 }
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
@@ -273,8 +274,8 @@ towerPlacementCostIncrement = {
 }
 placedEmitterColors = Array[int]([0, 1, 2, 3, 4, 5])
 placedEmitterStats = {
-"distance": 1000,
-"intensity": 9
+"distance": 30,
+"intensity": 10
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 

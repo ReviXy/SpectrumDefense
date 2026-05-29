@@ -52,6 +52,7 @@ func on_end_reached():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	HP = MaxHP
 	if hitParticle:
 		hitParticle.process_material.color = ColorRYB_Operations.ToColor(EnemyWeakColor)
 	

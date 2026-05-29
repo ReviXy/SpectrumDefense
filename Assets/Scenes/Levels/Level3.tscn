@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://0igd8g4yf8ww" path="res://Assets/Resources/Deployment.gd" id="5_gkeqf"]
 [ext_resource type="MeshLibrary" uid="uid://mas0k4r6dsww" path="res://Assets/Models/Tiles.tres" id="7_kmrm7"]
 [ext_resource type="PackedScene" uid="uid://c6pucg2t3wfnf" path="res://Assets/Scenes/Enemies/DashEntity.tscn" id="7_xqx43"]
-[ext_resource type="PackedScene" uid="uid://3hbbyq0vhtle" path="res://Assets/Scenes/Enemies/StrongEntity.tscn" id="8_0uqbu"]
+[ext_resource type="PackedScene" uid="uid://dl6raglsem7bf" path="res://Assets/Scenes/Enemies/ShieldEntity.tscn" id="8_xqx43"]
 [ext_resource type="PackedScene" uid="uid://ceuqnjujx745q" path="res://Assets/Scenes/Towers/Filter.tscn" id="9_beeig"]
 [ext_resource type="PackedScene" uid="uid://43kchsu37yop" path="res://Assets/Scenes/Enemies/BaseEntity.tscn" id="9_pklxb"]
 [ext_resource type="Texture2D" uid="uid://bw7whbggxto53" path="res://Assets/Models/Filter_Plain.png" id="10_8kg8i"]
@@ -35,9 +35,9 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_llo7b"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 10.0
+Pre_wave_delay = 20.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_7n34x"), SubResource("Resource_0yuvv")])
-WaveReward = 10
+WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_kw8u2"]
@@ -60,9 +60,9 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_33pj5"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 10.0
+Pre_wave_delay = 20.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_kw8u2"), SubResource("Resource_hrwn6")])
-WaveReward = 10
+WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_e64to"]
@@ -85,9 +85,9 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_3kraw"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 10.0
+Pre_wave_delay = 20.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_e64to"), SubResource("Resource_4q0gq")])
-WaveReward = 10
+WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_l38r2"]
@@ -109,9 +109,9 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_nidn6"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 10.0
+Pre_wave_delay = 20.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_l38r2"), SubResource("Resource_4s1ed")])
-WaveReward = 10
+WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_bkwsl"]
@@ -132,9 +132,9 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_1then"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 10.0
+Pre_wave_delay = 20.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_bkwsl"), SubResource("Resource_y7hsp")])
-WaveReward = 10
+WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_dt3hx"]
@@ -149,7 +149,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 [sub_resource type="Resource" id="Resource_mu1bf"]
 script = ExtResource("5_gkeqf")
 PathNode = NodePath("Path3D")
-Enemy = ExtResource("8_0uqbu")
+Enemy = ExtResource("8_xqx43")
 EnemyCount = 5
 DeployDelay = 1.0
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
@@ -157,7 +157,7 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 [sub_resource type="Resource" id="Resource_sjuy7"]
 script = ExtResource("5_gkeqf")
 PathNode = NodePath("Path3D4")
-Enemy = ExtResource("8_0uqbu")
+Enemy = ExtResource("8_xqx43")
 EnemyCount = 5
 DeployDelay = 1.0
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
@@ -173,9 +173,9 @@ metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_u70gl"]
 script = ExtResource("4_oe4uc")
-Pre_wave_delay = 10.0
+Pre_wave_delay = 20.0
 Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_dt3hx"), SubResource("Resource_mu1bf"), SubResource("Resource_sjuy7"), SubResource("Resource_pfxca")])
-WaveReward = 10
+WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Curve3D" id="Curve3D_xqx43"]
@@ -310,16 +310,16 @@ data = {
 }
 script = ExtResource("13_hcrex")
 towerPlacementCostIncrement = {
-"Emitter": 100,
+"Emitter": 0,
 "Filter": 5,
 "Lens": 10,
 "Mirror": 0,
 "Prism": 20
 }
-placedEmitterColors = Array[int]([0, 1, 2])
+placedEmitterColors = Array[int]([3, 4, 5, 6])
 placedEmitterStats = {
 "distance": 1000,
-"intensity": 9
+"intensity": 35
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -352,6 +352,7 @@ color = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, 5)
 mesh = SubResource("ArrayMesh_puudx")
 color = 6
+intensity = 35.0
 availableColors = Array[int]([3, 4, 5, 6])
 rotatable = false
 destroyable = false
@@ -360,6 +361,7 @@ destroyable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 3, -7)
 mesh = SubResource("ArrayMesh_puudx")
 color = 6
+intensity = 35.0
 availableColors = Array[int]([3, 4, 5, 6])
 rotatable = false
 destroyable = false

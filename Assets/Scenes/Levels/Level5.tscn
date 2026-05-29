@@ -1,133 +1,142 @@
 [gd_scene format=4 uid="uid://jn5x1rny8cn2"]
 
-[ext_resource type="Script" uid="uid://ddyd0xgiwrfys" path="res://Assets/Scripts/Managers/LevelManager.gd" id="1_i1mc3"]
-[ext_resource type="Script" uid="uid://fe5igt3dfey2" path="res://Assets/Scripts/Managers/ResourceManager.gd" id="2_yh4vv"]
-[ext_resource type="Script" uid="uid://p5fa6xsppk3f" path="res://Assets/Scripts/Managers/WaveManager.gd" id="3_cqx4t"]
-[ext_resource type="Script" uid="uid://ds3m5it8756mk" path="res://Assets/Resources/WaveData.gd" id="4_oe4uc"]
-[ext_resource type="Script" uid="uid://0igd8g4yf8ww" path="res://Assets/Resources/Deployment.gd" id="5_gkeqf"]
-[ext_resource type="MeshLibrary" uid="uid://mas0k4r6dsww" path="res://Assets/Models/Tiles.tres" id="7_kmrm7"]
-[ext_resource type="PackedScene" uid="uid://3hbbyq0vhtle" path="res://Assets/Scenes/Enemies/StrongEntity.tscn" id="7_obxh0"]
-[ext_resource type="PackedScene" uid="uid://b8fsp0257cefq" path="res://Assets/Scenes/Enemies/FastEntity.tscn" id="8_00yqc"]
-[ext_resource type="PackedScene" uid="uid://43kchsu37yop" path="res://Assets/Scenes/Enemies/BaseEntity.tscn" id="9_pklxb"]
-[ext_resource type="PackedScene" uid="uid://bmraycytajhkk" path="res://Assets/Scenes/Enemies/Regenerator.tscn" id="9_u1yn4"]
-[ext_resource type="PackedScene" uid="uid://dufqgw5ve83sk" path="res://Assets/Scenes/Camera3d.tscn" id="10_kmrm7"]
-[ext_resource type="PackedScene" uid="uid://dl6raglsem7bf" path="res://Assets/Scenes/Enemies/ShieldEntity.tscn" id="10_t54gu"]
-[ext_resource type="PackedScene" uid="uid://baen2od8dsk2a" path="res://Assets/Scenes/Towers/Prism.tscn" id="12_ntdl1"]
-[ext_resource type="Script" uid="uid://c8gtchiwo1c1e" path="res://Assets/Scripts/Managers/GridManager.gd" id="13_hcrex"]
-[ext_resource type="Texture2D" uid="uid://ca8fqje0iuhff" path="res://Assets/Models/Prism_Plain.png" id="13_i1mc3"]
-[ext_resource type="Texture2D" uid="uid://dxc4irkk8u6if" path="res://Assets/Models/Emitter_Plain.png" id="13_ntdl1"]
-[ext_resource type="PackedScene" uid="uid://qq3kxv0itx6w" path="res://Assets/Scenes/Towers/Emitter.tscn" id="14_tip0l"]
-[ext_resource type="PackedScene" uid="uid://dmum1q1k3y2qk" path="res://Assets/Scenes/Towers/Mirror.tscn" id="15_cqx4t"]
-[ext_resource type="Texture2D" uid="uid://b38ntcs33b1y0" path="res://Assets/Models/Mirror_Plain.png" id="16_oe4uc"]
+[ext_resource type="Script" uid="uid://ddyd0xgiwrfys" path="res://Assets/Scripts/Managers/LevelManager.gd" id="1_6h74v"]
+[ext_resource type="Script" uid="uid://fe5igt3dfey2" path="res://Assets/Scripts/Managers/ResourceManager.gd" id="2_qxmfn"]
+[ext_resource type="Script" uid="uid://p5fa6xsppk3f" path="res://Assets/Scripts/Managers/WaveManager.gd" id="3_q1p60"]
+[ext_resource type="Script" uid="uid://ds3m5it8756mk" path="res://Assets/Resources/WaveData.gd" id="4_rtet1"]
+[ext_resource type="Script" uid="uid://0igd8g4yf8ww" path="res://Assets/Resources/Deployment.gd" id="5_vra3k"]
+[ext_resource type="PackedScene" uid="uid://43kchsu37yop" path="res://Assets/Scenes/Enemies/BaseEntity.tscn" id="6_u6ysk"]
+[ext_resource type="MeshLibrary" uid="uid://mas0k4r6dsww" path="res://Assets/Models/Tiles.tres" id="7_cy646"]
+[ext_resource type="PackedScene" uid="uid://3hbbyq0vhtle" path="res://Assets/Scenes/Enemies/StrongEntity.tscn" id="8_8kg8i"]
+[ext_resource type="PackedScene" uid="uid://b8fsp0257cefq" path="res://Assets/Scenes/Enemies/FastEntity.tscn" id="8_i1mc3"]
+[ext_resource type="Script" uid="uid://c8gtchiwo1c1e" path="res://Assets/Scripts/Managers/GridManager.gd" id="8_yv57f"]
+[ext_resource type="PackedScene" uid="uid://qq3kxv0itx6w" path="res://Assets/Scenes/Towers/Emitter.tscn" id="9_y8c3a"]
+[ext_resource type="PackedScene" uid="uid://bmraycytajhkk" path="res://Assets/Scenes/Enemies/Regenerator.tscn" id="9_yh4vv"]
+[ext_resource type="PackedScene" uid="uid://dl6raglsem7bf" path="res://Assets/Scenes/Enemies/ShieldEntity.tscn" id="10_cqx4t"]
+[ext_resource type="PackedScene" uid="uid://dufqgw5ve83sk" path="res://Assets/Scenes/Camera3d.tscn" id="10_hfrol"]
+[ext_resource type="Texture2D" uid="uid://dxc4irkk8u6if" path="res://Assets/Models/Emitter_Plain.png" id="14_i1mc3"]
+[ext_resource type="PackedScene" uid="uid://baen2od8dsk2a" path="res://Assets/Scenes/Towers/Prism.tscn" id="15_oe4uc"]
+[ext_resource type="Texture2D" uid="uid://ca8fqje0iuhff" path="res://Assets/Models/Prism_Plain.png" id="16_gkeqf"]
+[ext_resource type="PackedScene" uid="uid://dmum1q1k3y2qk" path="res://Assets/Scenes/Towers/Mirror.tscn" id="17_owbbi"]
+[ext_resource type="Texture2D" uid="uid://b38ntcs33b1y0" path="res://Assets/Models/Mirror_Plain.png" id="18_hgsli"]
 
 [sub_resource type="Resource" id="Resource_7n34x"]
-script = ExtResource("5_gkeqf")
+script = ExtResource("5_vra3k")
 PathNode = NodePath("Path3D")
-Enemy = ExtResource("9_pklxb")
+Enemy = ExtResource("6_u6ysk")
 EnemyCount = 10
 DeployDelay = 1.0
+Value_Overrides = {
+"MaxHP": 50.0
+}
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_llo7b"]
-script = ExtResource("4_oe4uc")
+script = ExtResource("4_rtet1")
 Pre_wave_delay = 25.0
-Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_7n34x")])
+Deployments = Array[ExtResource("5_vra3k")]([SubResource("Resource_7n34x")])
 WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_kbahb"]
-script = ExtResource("5_gkeqf")
+script = ExtResource("5_vra3k")
 PathNode = NodePath("Path3D2")
-Enemy = ExtResource("7_obxh0")
+Enemy = ExtResource("8_8kg8i")
 EnemyCount = 5
 DeployDelay = 2.0
 EnemyColor = 1
+Value_Overrides = {
+"MaxHP": 100.0
+}
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_6g3y4"]
-script = ExtResource("4_oe4uc")
+script = ExtResource("4_rtet1")
 Pre_wave_delay = 25.0
-Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_kbahb")])
+Deployments = Array[ExtResource("5_vra3k")]([SubResource("Resource_kbahb")])
 WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_erkhx"]
-script = ExtResource("5_gkeqf")
+script = ExtResource("5_vra3k")
 PathNode = NodePath("Path3D")
-Enemy = ExtResource("8_00yqc")
+Enemy = ExtResource("8_i1mc3")
 EnemyCount = 20
 DeployDelay = 1.0
 EnemyColor = 2
+Value_Overrides = {
+"MaxHP": 25.0
+}
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_fq0xv"]
-script = ExtResource("4_oe4uc")
+script = ExtResource("4_rtet1")
 Pre_wave_delay = 25.0
-Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_erkhx")])
+Deployments = Array[ExtResource("5_vra3k")]([SubResource("Resource_erkhx")])
 WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_bncp8"]
-script = ExtResource("5_gkeqf")
+script = ExtResource("5_vra3k")
 PathNode = NodePath("Path3D2")
-Enemy = ExtResource("9_u1yn4")
+Enemy = ExtResource("9_yh4vv")
 EnemyCount = 10
 DeployDelay = 1.0
 EnemyColor = 3
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_xvkkj"]
-script = ExtResource("4_oe4uc")
+script = ExtResource("4_rtet1")
 Pre_wave_delay = 25.0
-Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_bncp8")])
+Deployments = Array[ExtResource("5_vra3k")]([SubResource("Resource_bncp8")])
 WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_m62vg"]
-script = ExtResource("5_gkeqf")
+script = ExtResource("5_vra3k")
 PathNode = NodePath("Path3D")
-Enemy = ExtResource("10_t54gu")
+Enemy = ExtResource("10_cqx4t")
 EnemyCount = 10
 DeployDelay = 1.0
 EnemyColor = 4
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_51yfu"]
-script = ExtResource("4_oe4uc")
+script = ExtResource("4_rtet1")
 Pre_wave_delay = 25.0
-Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_m62vg")])
+Deployments = Array[ExtResource("5_vra3k")]([SubResource("Resource_m62vg")])
 WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_7b6tm"]
-script = ExtResource("5_gkeqf")
+script = ExtResource("5_vra3k")
 PathNode = NodePath("Path3D2")
-Enemy = ExtResource("9_pklxb")
+Enemy = ExtResource("6_u6ysk")
 EnemyCount = 10
 DeployDelay = 1.0
 EnemyColor = 5
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_fgedk"]
-script = ExtResource("4_oe4uc")
+script = ExtResource("4_rtet1")
 Pre_wave_delay = 25.0
-Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_7b6tm")])
+Deployments = Array[ExtResource("5_vra3k")]([SubResource("Resource_7b6tm")])
 WaveReward = 20
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Resource" id="Resource_a8fib"]
-script = ExtResource("5_gkeqf")
+script = ExtResource("5_vra3k")
 PathNode = NodePath("Path3D")
-Enemy = ExtResource("10_t54gu")
+Enemy = ExtResource("10_cqx4t")
 EnemyCount = 10
 DeployDelay = 1.0
 EnemyColor = 6
 metadata/_custom_type_script = "uid://0igd8g4yf8ww"
 
 [sub_resource type="Resource" id="Resource_41xog"]
-script = ExtResource("4_oe4uc")
+script = ExtResource("4_rtet1")
 Pre_wave_delay = 25.0
-Deployments = Array[ExtResource("5_gkeqf")]([SubResource("Resource_a8fib")])
+Deployments = Array[ExtResource("5_vra3k")]([SubResource("Resource_a8fib")])
 metadata/_custom_type_script = "uid://ds3m5it8756mk"
 
 [sub_resource type="Curve3D" id="Curve3D_ntdl1"]
@@ -153,7 +162,7 @@ albedo_color = Color(0, 1, 0, 0.47843137)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_444rv"]
 resource_name = "TowerMaterial"
 cull_mode = 2
-albedo_texture = ExtResource("13_ntdl1")
+albedo_texture = ExtResource("14_i1mc3")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oi2el"]
 _surfaces = [{
@@ -192,7 +201,7 @@ shadow_mesh = SubResource("ArrayMesh_oi2el")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gy2xw"]
 resource_name = "TowerMaterial"
 cull_mode = 2
-albedo_texture = ExtResource("13_i1mc3")
+albedo_texture = ExtResource("16_gkeqf")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jlf7x"]
 _surfaces = [{
@@ -229,7 +238,7 @@ shadow_mesh = SubResource("ArrayMesh_jlf7x")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ketjj"]
 resource_name = "TowerMaterial"
 cull_mode = 2
-albedo_texture = ExtResource("16_oe4uc")
+albedo_texture = ExtResource("18_hgsli")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_g1a1a"]
 _surfaces = [{
@@ -264,15 +273,15 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g1a1a")
 
 [node name="LevelManager" type="Node3D" unique_id=529117768]
-script = ExtResource("1_i1mc3")
+script = ExtResource("1_6h74v")
 
 [node name="ResourceManager" type="Node3D" parent="." unique_id=1871856534]
-script = ExtResource("2_yh4vv")
+script = ExtResource("2_qxmfn")
 HP = 50
 
 [node name="WaveManager" type="Node3D" parent="." unique_id=1628736384]
-script = ExtResource("3_cqx4t")
-waves = Array[ExtResource("4_oe4uc")]([SubResource("Resource_llo7b"), SubResource("Resource_6g3y4"), SubResource("Resource_fq0xv"), SubResource("Resource_xvkkj"), SubResource("Resource_51yfu"), SubResource("Resource_fgedk"), SubResource("Resource_41xog")])
+script = ExtResource("3_q1p60")
+waves = Array[ExtResource("4_rtet1")]([SubResource("Resource_llo7b"), SubResource("Resource_6g3y4"), SubResource("Resource_fq0xv"), SubResource("Resource_xvkkj"), SubResource("Resource_51yfu"), SubResource("Resource_fgedk"), SubResource("Resource_41xog")])
 
 [node name="Path3D" type="Path3D" parent="WaveManager" unique_id=139652685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1)
@@ -284,12 +293,12 @@ curve = SubResource("Curve3D_i1mc3")
 
 [node name="GridManager" type="GridMap" parent="." unique_id=330458226]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh_library = ExtResource("7_kmrm7")
+mesh_library = ExtResource("7_cy646")
 cell_scale = 0.999
 data = {
 "cells": PackedInt32Array(65535, 65535, 7, 65533, 65535, 1048584, 65532, 65535, 1048584, 65531, 65535, 1048584, 65530, 65535, 1048584, 65529, 65535, 1048584, 65528, 65535, 1048584, 65527, 65535, 1048585, 1, 65535, 1048584, 2, 65535, 1048584, 3, 65535, 1048584, 4, 65535, 1048584, 5, 65535, 1048584, 6, 65535, 1048584, 7, 65535, 1441801, 65535, 1, 8, 65535, 2, 8, 65535, 3, 8, 65535, 4, 8, 65535, 5, 8, 65535, 6, 8, 65535, 7, 1441801, 65535, 65533, 8, 65535, 65532, 8, 65535, 65531, 8, 65535, 65530, 8, 65535, 65529, 8, 65535, 65528, 8, 65535, 65527, 1048585, 65535, 0, 9, 65534, 65535, 9, 0, 65535, 655369, 65535, 65534, 655369, 65534, 0, 655369, 0, 65534, 9, 65532, 65532, 3, 2, 65532, 3, 2, 2, 3, 65534, 7, 1048584, 65533, 7, 1048584, 0, 65527, 1048584, 1, 65527, 1048584, 2, 65527, 1048584, 3, 65527, 1048584, 65532, 7, 1048584, 65531, 7, 1048584, 65527, 0, 8, 65527, 1, 8, 65527, 2, 8, 65527, 3, 8, 7, 65534, 8, 7, 65533, 8, 7, 65532, 8, 7, 65531, 8, 65535, 8, 2, 65526, 8, 4, 65526, 65535, 2, 65535, 65526, 2, 8, 65535, 2, 8, 65526, 4, 65526, 0, 0, 65526, 1, 0, 65526, 2, 0, 65526, 3, 0, 65531, 8, 0, 65532, 8, 0, 65533, 8, 0, 65534, 8, 0, 65531, 6, 0, 65532, 6, 0, 65533, 6, 0, 65534, 6, 0, 65534, 5, 0, 65534, 4, 0, 65534, 3, 0, 65534, 2, 0, 65534, 1, 0, 65533, 0, 0, 65532, 0, 0, 65531, 0, 0, 65530, 0, 0, 65529, 0, 0, 65528, 0, 0, 65528, 1, 0, 65528, 2, 0, 65528, 3, 0, 65527, 4, 12, 65530, 7, 1441804, 7, 65530, 655372, 4, 65527, 1048588, -65531, 65527, 1048588, -9, 5, 12, -7, 7, 1441804, -65529, 65529, 655372, -9, 4, 655360, -10, 4, 655360, -8, 4, 655360, -6, 6, 655360, -6, 7, 655360, -6, 8, 655360, -65530, 65530, 655360, -65529, 65530, 655360, -65528, 65530, 655360, -65532, 65528, 655360, -65532, 65527, 655360, -65532, 65526, 655360, -10, 3, 655360, -10, 2, 655360, -10, 1, 655360, -10, 0, 655360, -10, 65535, 655360, -4, 65532, 655360, -3, 65533, 655360, -4, 65533, 655360, -5, 65533, 655360, -5, 65532, 655360, -3, 65532, 655360, -3, 65531, 655360, -4, 65531, 655360, -5, 65531, 1048576, -65534, 65532, 655360, -65535, 65533, 655360, -65535, 65532, 655360, -65535, 65531, 655360, -65534, 65531, 655360, -65534, 65533, 655360, -65533, 65533, 655360, -65533, 65532, 655360, -65533, 65531, 655360, -65535, 1, 655360, -65534, 1, 655360, -65533, 1, 655360, -65533, 2, 655360, -65535, 2, 655360, -65534, 2, 655360, -65535, 3, 655360, -65534, 3, 655360, -65533, 3, 655360, -8, 1, 1441792, -8, 2, 1441792, -8, 3, 1441792, -8, 0, 1441792, -7, 0, 1441792, -6, 0, 1441792, -2, 0, 1441792, -3, 0, 1441792, -4, 0, 1441792, -5, 0, 1441792, -2, 1, 1441792, -2, 2, 1441792, -2, 3, 1441792, -2, 6, 1441792, -2, 5, 1441792, -2, 4, 1441792, -3, 6, 1441792, -4, 6, 1441792, -5, 6, 1441792, -65536, 0, 1441792, -65536, 1, 1441792, -65536, 2, 1441792, -65536, 3, 1441792, -65536, 4, 1441792, -65536, 5, 1441792, -65536, 6, 1441792, -65536, 7, 1441792, -65536, 8, 1441792, -5, 8, 1441792, -4, 8, 1441792, -3, 8, 1441792, -2, 8, 1441792, -1, 8, 1441792, -2, 65534, 1441792, -3, 65534, 1441792, -4, 65534, 1441792, -5, 65534, 1441792, -6, 65534, 1441792, -7, 65534, 1441792, -8, 65534, 1441792, -9, 65534, 1441792, -10, 65534, 1441792, -2, 65533, 1441792, -2, 65532, 1441792, -2, 65531, 1441792, -2, 65530, 1441792, -2, 65529, 1441792, -2, 65528, 1441792, -2, 65527, 1441792, -2, 65526, 1441792, -1, 65526, 1441792, -65536, 65526, 1441792, -65535, 65526, 1441792, -65534, 65526, 1441792, -65533, 65526, 1441792, -65536, 65534, 1441792, -65535, 65534, 1441792, -65534, 65534, 1441792, -65533, 65534, 1441792, -65532, 65534, 1441792, -65531, 65534, 1441792, -65530, 65534, 1441792, -65530, 65533, 1441792, -65530, 65532, 1441792, -65530, 65531, 1441792, -65536, 65533, 1441792, -65536, 65532, 1441792, -65536, 65531, 1441792, -65536, 65530, 1441792, -65536, 65529, 1441792, -65536, 65528, 1441792, -65535, 65528, 1441792, -65534, 65528, 1441792, -65533, 65528, 1441792, -65535, 0, 1441792, -65534, 0, 1441792, -65533, 0, 1441792, -65532, 0, 1441792, -65531, 0, 1441792, -65530, 0, 1441792, -65529, 0, 1441792, -65528, 0, 1441792, -65528, 65535, 1441792, -65528, 65534, 1441792, -65528, 65533, 1441792, -65528, 65532, 1441792, -65528, 65531, 1441792, -65528, 65526, 1441792, -10, 8, 1441792, -9, 3, 1441792, -9, 2, 1441792, -9, 1, 1441792, -9, 0, 1441792, -9, 65535, 1441792, -8, 65535, 1441792, -7, 65535, 1441792, -6, 65535, 1441792, -5, 65535, 1441792, -4, 65535, 1441792, -3, 65535, 1441792, -2, 65535, 1441792, -1, 65535, 1441792, -1, 0, 1441792, -1, 1, 1441792, -1, 2, 1441792, -1, 3, 1441792, -1, 4, 1441792, -1, 5, 1441792, -1, 6, 1441792, -1, 7, 1441792, -2, 7, 1441792, -3, 7, 1441792, -4, 7, 1441792, -5, 7, 1441792, -65536, 65535, 1441792, -65535, 65535, 1441792, -65534, 65535, 1441792, -65533, 65535, 1441792, -65532, 65535, 1441792, -65531, 65535, 1441792, -65530, 65535, 1441792, -65529, 65535, 1441792, -65529, 65534, 1441792, -65529, 65533, 1441792, -65529, 65532, 1441792, -65529, 65531, 1441792, -1, 65534, 1441792, -1, 65533, 1441792, -1, 65532, 1441792, -1, 65531, 1441792, -1, 65530, 1441792, -1, 65529, 1441792, -1, 65528, 1441792, -1, 65527, 1441792, -65536, 65527, 1441792, -65535, 65527, 1441792, -65534, 65527, 1441792, -65533, 65527, 1441792, -3, 1, 1441792, -3, 2, 1441792, -3, 3, 1441792, -4, 3, 1441792, -4, 2, 1441792, -4, 1, 1441792, -5, 1, 1441792, -5, 2, 1441792, -5, 3, 1441792, 65532, 2, 1441795, 65534, 65534, 1441792, 65533, 65534, 1441792, 65532, 65534, 1441792, 65531, 65534, 1441792, 65530, 65534, 1441792, 65529, 65534, 1441792, 65528, 65534, 1441792, 65527, 65534, 1441792, 65526, 65534, 1441792, 65534, 65533, 1441792, 65534, 65532, 1441792, 65534, 65531, 1441792, 65534, 65530, 1441792, 65534, 65529, 1441792, 65534, 65528, 1441792, 65534, 65527, 1441792, 65534, 65526, 1441792, 3, 65526, 1441792, 2, 65526, 1441792, 1, 65526, 1441792, 0, 65526, 1441792, 0, 8, 1441792, 0, 7, 1441792, 0, 6, 1441792, 0, 5, 1441792, 0, 4, 1441792, 0, 3, 1441792, 0, 2, 1441792, 0, 1, 1441792, 1, 0, 1441792, 0, 0, 1441792, 2, 0, 1441792, 3, 0, 1441792, 4, 0, 1441792, 5, 0, 1441792, 6, 0, 1441792, 7, 0, 1441792, 8, 0, 1441792, 8, 65534, 1441792, 8, 65533, 1441792, 8, 65532, 1441792, 8, 65531, 1441792, 1, 65534, 1441792, 2, 65534, 1441792, 3, 65534, 1441792, 4, 65534, 1441792, 5, 65534, 1441792, 6, 65534, 1441792, 6, 65533, 1441792, 6, 65532, 1441792, 6, 65531, 1441792, 0, 65533, 1441792, 0, 65532, 1441792, 0, 65531, 1441792, 0, 65530, 1441792, 0, 65529, 1441792, 0, 65528, 1441792, 1, 65528, 1441792, 2, 65528, 1441792, 3, 65528, 1441792, 65530, 6, 1441793, 65530, 8, 1441793, 8, 65530, 655361, 6, 65530, 655361, 4, 65528, 1048577, 4, 65526, 1048577, 65528, 4, 1, 65526, 4, 1, -8, 5, 1, -10, 5, 1, -7, 6, 1441793, -7, 8, 1441793, -65530, 65529, 655361, -65528, 65529, 655361, -65531, 65528, 1048577, -65531, 65526, 1048577, -3, 4, 1048576, -4, 5, 1048576, -3, 5, 1048576, -4, 4, 1048576, -5, 4, 1048576, -5, 5, 1048576, -6, 5, 1048576, -7, 5, 1048576, -7, 4, 1048576, -6, 4, 1048576, -6, 3, 1048576, -7, 3, 1048576, -7, 2, 1048576, -6, 2, 1048576, -6, 1, 1048576, -7, 1, 1048576, -6, 65533, 1048576, -7, 65533, 1048576, -8, 65533, 1048576, -9, 65533, 1048576, -10, 65533, 1048576, -10, 65532, 1048576, -10, 65531, 1048576, -10, 65530, 1048576, -9, 65530, 1048576, -9, 65529, 1048576, -10, 65529, 1048576, -10, 65528, 1048576, -10, 65527, 1048576, -9, 65527, 1048576, -10, 65526, 1048576, -9, 65526, 1048576, -8, 65526, 1048576, -7, 65527, 1048576, -6, 65527, 1048576, -5, 65526, 1048576, -4, 65526, 1048576, -3, 65526, 1048576, -6, 65526, 1048576, -7, 65526, 1048576, -5, 65527, 1048576, -4, 65527, 1048576, -3, 65527, 1048576, -3, 65528, 1048576, -3, 65529, 1048576, -4, 65529, 1048576, -4, 65530, 1048576, -3, 65530, 1048576, -4, 65528, 1048576, -5, 65529, 1048576, -5, 65530, 1048576, -5, 65528, 1048576, -6, 65529, 1048576, -6, 65530, 1048576, -6, 65531, 1048576, -6, 65532, 1048576, -6, 65528, 1048576, -7, 65528, 1048576, -7, 65529, 1048576, -8, 65529, 1048576, -8, 65530, 1048576, -8, 65531, 1048576, -7, 65532, 1048576, -7, 65531, 1048576, -7, 65530, 1048576, -8, 65532, 1048576, -9, 65532, 1048576, -9, 65531, 1048576, -8, 65528, 1048576, -8, 65527, 1048576, -9, 65528, 1048576, -65532, 1, 1048576, -65531, 1, 1048576, -65531, 2, 1048576, -65532, 2, 1048576, -65532, 3, 1048576, -65531, 3, 1048576, -65530, 2, 1048576, -65530, 1, 1048576, -65530, 3, 1048576, -65529, 2, 1048576, -65529, 1, 1048576, -65528, 1, 1048576, -65528, 2, 1048576, -65528, 3, 1048576, -65529, 3, 1048576, -65528, 4, 1048576, -65529, 4, 1048576, -65529, 5, 1048576, -65529, 6, 1048576, -65530, 6, 1048576, -65530, 5, 1048576, -65531, 5, 1048576, -65531, 4, 1048576, -65532, 4, 1048576, -65533, 4, 1048576, -65533, 5, 1048576, -65534, 5, 1048576, -65535, 5, 1048576, -65535, 4, 1048576, -65534, 4, 1048576, -65535, 6, 1048576, -65535, 7, 1048576, -65535, 8, 1048576, -65534, 8, 1048576, -65533, 8, 1048576, -65533, 7, 1048576, -65533, 6, 1048576, -65534, 6, 1048576, -65534, 7, 1048576, -65532, 6, 1048576, -65532, 5, 1048576, -65532, 7, 1048576, -65532, 8, 1048576, -65531, 8, 1048576, -65531, 7, 1048576, -65531, 6, 1048576, -65530, 7, 1048576, -65530, 8, 1048576, -65529, 8, 1048576, -65529, 7, 1048576, -65528, 8, 1048576, -65528, 7, 1048576, -65528, 6, 1048576, -65528, 5, 1048576, -65530, 4, 1048576, -65535, 65530, 1048576, -65535, 65529, 1048576, -65534, 65529, 1048576, -65534, 65530, 1048576, -65533, 65530, 1048576, -65533, 65529, 1048576, -65532, 65529, 1048576, -65532, 65530, 1048576, -65532, 65531, 1048576, -65532, 65532, 1048576, -65532, 65533, 1048576, -65531, 65533, 1048576, -65531, 65532, 1048576, -65531, 65531, 1048576, -65531, 65530, 1048576, -65531, 65529, 1048576, 131068, 65534, 1048589, 131067, 65534, 1048589, 131066, 65534, 1048589, 131065, 65534, 1048589, 131064, 65534, 1048589, 131063, 65534, 1048589, 131062, 65534, 1048589, 65538, 65534, 1048589, 65539, 65534, 1048589, 65540, 65534, 1048589, 65541, 65534, 1048589, 65542, 65534, 1441806, 65538, 0, 1048589, 65539, 0, 1048589, 65540, 0, 1048589, 65541, 0, 1048589, 65542, 0, 1048589, 65543, 0, 1048589, 65544, 0, 1048589, 131068, 0, 1048589, 131067, 0, 1048589, 131066, 0, 1048589, 131065, 0, 1048589, 65536, 65532, 13, 65536, 65531, 13, 65536, 65530, 13, 65536, 65529, 13, 65536, 65528, 1048590, 131064, 1, 13, 131064, 2, 13, 131064, 3, 13, 65542, 65533, 13, 65542, 65532, 13, 65542, 65531, 13, 131070, 65532, 13, 131070, 65531, 13, 131070, 65530, 13, 131070, 65529, 13, 131070, 65528, 13, 131070, 65527, 13, 131070, 65526, 13, 65536, 8, 13, 65536, 7, 13, 65536, 6, 13, 65536, 5, 13, 65536, 4, 13, 65536, 3, 13, 65536, 2, 13, 131070, 2, 13, 131070, 3, 13, 131070, 4, 13, 131070, 5, 13, 131070, 6, 1441806, 131064, 0, 1048590, 131069, 6, 1441805, 131068, 6, 1441805, 131067, 6, 1441805, 65537, 65528, 1441805, 65538, 65528, 1441805, 65539, 65528, 1441805, 1, 8, 1441805, 2, 8, 1441805, 3, 8, 1441805, 4, 8, 1441805, 5, 8, 1441805, 6, 8, 1441805, 7, 8, 1441805, 65527, 65526, 1441805, 65528, 65526, 1441805, 65529, 65526, 1441805, 65530, 65526, 1441805, 65531, 65526, 1441805, 65532, 65526, 1441805, 65533, 65526, 1441805, 65526, 65527, 655373, 65526, 65528, 655373, 65526, 65529, 655373, 65526, 65530, 655373, 65526, 65533, 655373, 65526, 65532, 655373, 65526, 65531, 655373, 8, 7, 655373, 8, 6, 655373, 8, 5, 655373, 8, 4, 655373, 8, 3, 655373, 8, 2, 655373, 8, 1, 655373, 65526, 65526, 1048590, 8, 8, 1441806)
 }
-script = ExtResource("13_hcrex")
+script = ExtResource("8_yv57f")
 towerPlacementCostIncrement = {
 "Emitter": 100,
 "Filter": 5,
@@ -310,42 +319,48 @@ mesh = SubResource("PlaneMesh_nyyhf")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_iw5u7")
 
-[node name="Emitter" parent="GridManager" unique_id=1184000997 instance=ExtResource("14_tip0l")]
+[node name="Emitter" parent="GridManager" unique_id=1184000997 instance=ExtResource("9_y8c3a")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -7, 3, -7)
 mesh = SubResource("ArrayMesh_puudx")
 color = 2
+distance = 100.0
+intensity = 15.0
 availableColors = Array[int]([2])
 configurable = false
 destroyable = false
 
-[node name="Emitter2" parent="GridManager" unique_id=606853635 instance=ExtResource("14_tip0l")]
+[node name="Emitter2" parent="GridManager" unique_id=606853635 instance=ExtResource("9_y8c3a")]
 transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 5, 3, -7)
 mesh = SubResource("ArrayMesh_puudx")
 color = 1
+distance = 100.0
+intensity = 15.0
 availableColors = Array[int]([1])
 configurable = false
 destroyable = false
 
-[node name="Emitter3" parent="GridManager" unique_id=1777052747 instance=ExtResource("14_tip0l")]
+[node name="Emitter3" parent="GridManager" unique_id=1777052747 instance=ExtResource("9_y8c3a")]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 5, 3, 5)
 mesh = SubResource("ArrayMesh_puudx")
+distance = 100.0
+intensity = 15.0
 availableColors = Array[int]([0])
 configurable = false
 destroyable = false
 
-[node name="Prism" parent="GridManager" unique_id=1419345679 instance=ExtResource("12_ntdl1")]
+[node name="Prism" parent="GridManager" unique_id=1419345679 instance=ExtResource("15_oe4uc")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -1, 3, -1)
 mesh = SubResource("ArrayMesh_seapq")
 
-[node name="Mirror" parent="GridManager" unique_id=921851020 instance=ExtResource("15_cqx4t")]
+[node name="Mirror" parent="GridManager" unique_id=921851020 instance=ExtResource("17_owbbi")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -19, 3, 17)
 mesh = SubResource("ArrayMesh_0f1mf")
 
-[node name="Mirror2" parent="GridManager" unique_id=426495633 instance=ExtResource("15_cqx4t")]
+[node name="Mirror2" parent="GridManager" unique_id=426495633 instance=ExtResource("17_owbbi")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 17, 3, -19)
 mesh = SubResource("ArrayMesh_0f1mf")
 
-[node name="Emitter4" parent="GridManager" unique_id=857528272 instance=ExtResource("14_tip0l")]
+[node name="Emitter4" parent="GridManager" unique_id=857528272 instance=ExtResource("9_y8c3a")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -7, 3, 5)
 mesh = SubResource("ArrayMesh_puudx")
 color = 6
@@ -358,7 +373,7 @@ configurable = false
 upgradable = false
 destroyable = false
 
-[node name="Camera3D" parent="." unique_id=638536597 instance=ExtResource("10_kmrm7")]
+[node name="Camera3D" parent="." unique_id=638536597 instance=ExtResource("10_hfrol")]
 transform = Transform3D(-0.7071067, 0.5416751, -0.45451942, 0, 0.6427875, 0.7660443, 0.7071067, 0.5416751, -0.45451942, -14.635586, 25.98133, -14.635586)
 pos = Vector3(-1, 3, -1)
 dist = 30.0
